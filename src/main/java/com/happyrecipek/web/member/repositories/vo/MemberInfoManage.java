@@ -2,6 +2,7 @@ package com.happyrecipek.web.member.repositories.vo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.happyrecipek.web.com.annotations.Description;
@@ -16,14 +17,12 @@ import lombok.Setter;
 @Builder
 public class MemberInfoManage {
 	
-	@Description(logicalName="회원순번")
-	@GeneratedValue
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int member_seq;
 	
-	@Description(logicalName="회원id")
-	@Id
+	@Description(logicalName="회원아이디")
 	private String member_id;
-	
 	@Description(logicalName="체크박스")
 	private String member_check_yn;
 	@Description(logicalName="회원성명")
