@@ -4,27 +4,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import com.happyrecipek.web.com.annotations.Description;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
-@Getter
-@Setter
-@Builder
+@Table(name="MEMBER_INFO_MANAGE", schema="happyrecipek")
+@Data
 public class MemberInfoManage {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int member_seq;
 	
-	@Description(logicalName="회원아이디")
-	private String member_id;
 	@Description(logicalName="체크박스")
 	private String member_check_yn;
+	@Description(logicalName="회원암호")
+	@NotEmpty(message="Your Password Must Have At Least 8 Characters")
+	private String member_password;
+	@NotEmpty(message="Your Id Must Have")
+	@Description(logicalName="회원아이디")
+	private String member_id;
 	@Description(logicalName="회원성명")
 	private String member_name;
 	@Description(logicalName="휴대폰첫자리")
@@ -46,7 +49,7 @@ public class MemberInfoManage {
 	@Description(logicalName="회원인증여부")
 	private String member_auth_yn;
 	@Description(logicalName="등록일")
-	private String regist_date;
+	private String register_date;
 	@Description(logicalName="수정일")
 	private String update_date;
 }
