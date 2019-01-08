@@ -17,5 +17,5 @@ server:
   port: 8080
 logging:
   level:
-    sql: debug
-    web: debug    root: debug
+    sql: info
+    web: info    root: info
