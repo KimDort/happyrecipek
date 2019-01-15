@@ -26,7 +26,7 @@ public class Member {
 	
 	@Id
 	@Column(name="MEMBER_SEQ")
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int memberSeq;
 	
 	@Column(name="MEMBER_CHECK_YN")
@@ -89,7 +89,7 @@ public class Member {
 		,joinColumns= {@JoinColumn(name="member_seq", referencedColumnName="member_seq")}
 		,inverseJoinColumns= {@JoinColumn(name="authority_role_seq", referencedColumnName="authority_role_seq")}
 		)
-	private List<AuthorityRole> roles;
+	private List<AuthorityRole> authorityRole;
 
 	public int getMemberSeq() {
 		return memberSeq;
@@ -203,12 +203,12 @@ public class Member {
 		this.updateDate = updateDate;
 	}
 
-	public List<AuthorityRole> getRoles() {
-		return roles;
+	public List<AuthorityRole> getAuthorityRole() {
+		return authorityRole;
 	}
 
-	public void setRoles(List<AuthorityRole> roles) {
-		this.roles = roles;
+	public void setAuthorityRole(List<AuthorityRole> authorityRole) {
+		this.authorityRole = authorityRole;
 	}
 	
 }

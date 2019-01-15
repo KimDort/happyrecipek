@@ -19,7 +19,7 @@ import lombok.Data;
 public class ProgramRole {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Description(logicalName="프로그램권한순번")
 	private Integer program_role_seq;
 	

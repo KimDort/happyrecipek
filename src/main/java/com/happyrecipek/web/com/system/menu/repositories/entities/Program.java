@@ -20,7 +20,7 @@ import lombok.Data;
 public class Program {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Description(logicalName="프로그램순번")
 	private Integer program_seq;
 	

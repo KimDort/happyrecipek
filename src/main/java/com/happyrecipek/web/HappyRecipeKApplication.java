@@ -10,7 +10,8 @@ public class HappyRecipeKApplication extends SpringBootServletInitializer{
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(HappyRecipeKApplication.class);
+		return builder
+					.sources(HappyRecipeKApplication.class);
 	}
 
 	public static void main(String[] args) {

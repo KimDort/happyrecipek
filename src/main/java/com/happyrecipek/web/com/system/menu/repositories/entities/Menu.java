@@ -19,7 +19,7 @@ import lombok.Data;
 public class Menu {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Description(logicalName="메뉴순번")
 	private Integer menu_seq;
 	
