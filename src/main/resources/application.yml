@@ -1,20 +1,23 @@
 spring:
   datasource:
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    #driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    driver-class-name: org.mariadb.jdbc.Driver
     #driver-class-name: com.mysql.jdbc.Driver
-    url : jdbc:log4jdbc:mysql://localhost:3306/happyrecipek?serverTimezone=UTC
+    #url : jdbc:mariadb://localhost:3306/polales3
+    url : jdbc:mariadb://localhost:3306/happyrecipek
+    #username: polales3
     username: root
     password: cjsekd13!
   jpa:
-    show-sql: true
+    show-sql: false
     generate-ddl: false
     hibernate:
       ddl-auto: update
   thymeleaf:
     mode: LEGACYHTML5
     cache: false
-server:
-  port: 8080
+server:  port: 8080
+  #port: 8381
 #logging:
   #level:
    # sql: debug
