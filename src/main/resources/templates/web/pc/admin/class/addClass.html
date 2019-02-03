@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	layout:decorator="layout/pc/default">
+<head>
+<title>Happy Recipe K - Administrator Class Add Page</title>
+<th:block layout:fragment="custom_css">
+</th:block>
+</head>
+<body>
+	<div layout:fragment="content" class="content">
+		<form th:action="@{/admin/class/addClassProc}" method="POST" enctype="multipart/form-data" th:object="${classManage}" role="form">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="page-header">
+							<h1 id="">Happy Recipe K - Cooking Class Add Page</h1>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-group">
+							<span class="input-group-addon">Title</span>
+							<input type="text" class="form-control" name="classTitle">
+						</div>
+					</div>	
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-group">
+							<span class="input-group-addon">Title Image</span>
+							<input type="file" class="form-control" id="input_title_image" name="imageFile">
+						</div>
+					</div>	
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon">Start Day</span>
+							<input type="text" class="form-control" id="class_start_day" readonly="readonly" name="classStartDay">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon">End Day</span>
+							<input type="text" class="form-control" id="class_end_day" readonly="readonly" name="classEndDay">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon">Start Time</span>
+							<input type="text" class="form-control" id="class_start_time" readonly="readonly" name="classStartTime">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="input-group">
+							<span class="input-group-addon">End Time</span>
+							<input type="text" class="form-control" id="class_end_time" readonly="readonly" name="classEndTime">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<textarea name="classContent"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="input-group">
+							<span class="input-group-addon">Min Member</span>
+							<input type="number" class="form-control" id="min_member" name="classMinMember">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="input-group" style="width: 100%;">
+							<input type="text" class="form-control" value="~" readonly="readonly" style="width: 100%">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="input-group">
+							<span class="input-group-addon">Max Member</span>
+							<input type="number" class="form-control" id="max_member" name="classMaxMember">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="input-group">
+							<span class="input-group-addon">Main Display</span>
+		    				<div id="radioBtn" class="btn-group">
+		    					<a class="btn btn-primary btn-sm active" data-toggle="main_display_yn" data-title="Y">YES</a>
+		    					<a class="btn btn-primary btn-sm notActive" data-toggle="main_display_yn" data-title="N">NO</a>
+		    				</div>
+	    					<input type="hidden" name="classDisplayYn" id="main_display_yn">
+	    				</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="page-header">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 align-right">
+						<button type="button" class="btn btn-default pull-right" onclick="submit()">Done</button>
+						<button type="button" class="btn btn-danger pull-right">Cancle</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block layout:fragment="custom_script">
+		<script src="//cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+		<script>
+			/* 
+			* Ckeditor : S
+			*/
+			CKEDITOR.replace(
+				'classContent',
+				{
+					filebrowserUploadUrl:'/ckeditor/imageUpload'
+				}
+			);
+			/* 
+			* Ckeditor : E
+			*/
+			
+			/* 
+			* Datepicker : S
+			*/
+			$("#class_start_day").datepicker({
+				changeMonth: true
+				, changeYear: true
+				, nextText: 'Next Month'
+				, prevText: 'prev Month'
+				, dateFormat: 'yy-mm-dd'
+			});
+			$("#class_end_day").datepicker({
+				changeMonth: true
+				, changeYear: true
+				, nextText: 'Next Month'
+				, prevText: 'prev Month'
+				, dateFormat: 'yy-mm-dd'
+			});
+			/* 
+			* Datepicker : E
+			*/
+			
+			/* 
+			* Timepicker : S
+			*/
+			$("#class_start_time").timepicker({
+				timeFormat : "hh:mm p"
+			});
+			$("#class_end_time").timepicker({
+				timeFormat : "hh:mm p"
+			});
+			/* 
+			* Image Preview : S
+			*/
+			function readImageUrl(input){
+				if(input.files && input.files[0]){
+					var reader = new FileReader();
+					
+					reader.onload = function(e){
+						$("#title_image_selecte").attr("src", e.target.result);
+					}
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+			/* 
+			* Image Preview : E
+			*/
+			
+			/* 
+			* Document Ready Area : S
+			*/
+			$(document).ready(function(){
+				$("#input_title_image").on("change", function(){
+					readImageUrl(this);
+				});
+			});
+			/* 
+			* Document Ready Area : E
+			*/
+			
+			/* 
+			* Radio Button Controller : S
+			*/
+			$('#radioBtn a').on('click', function(){
+			    var sel = $(this).data('title');
+			    var tog = $(this).data('toggle');
+			    $('#'+tog).prop('value', sel);
+			    
+			    $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
+			    $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
+			});
+			/* 
+			* Radio Button Controller : E
+			*/
+		</script>
+</body>
+</html>

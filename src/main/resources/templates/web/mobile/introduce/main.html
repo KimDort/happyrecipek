@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	layout:decorator="layout/pc/default">
+<head>
+<title>Happy Recipe K - Cooking Class</title>
+<th:block layout:fragment="custom_css">
+</th:block>
+</head>
+<body>
+	<div layout:fragment="content" class="content">
+		<div class="container">
+			<div class="row">
+				<div class="page-header">
+					<h1 id="">Happy Recipe K - Introduce</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container">
+					<div class="col-md-6">
+						<img alt="" th:src="@{/assets/img/introduce/Introduce_001.jpg}" style="width: 100%"/>
+					</div>
+					<div class="col-md-6">
+						<h1>Happy Recipe K</h1>
+						<p>성명 : 니나기 카요 / Ninagi  Kayo</p>
+						<p>Happy_Recipe_K<br/>
+							🍴ᴄᴏᴏᴋɪɴɢ ᴄʟᴀss🍴<br/>
+							🔹ғᴏᴏᴅ & ᴛᴀʙʟᴇ sᴛʏʟɪsᴛ🔹<br/>
+							🇯🇵ᴊᴀᴘᴀɴ⇄🇰🇷ᴋᴏʀᴇᴀ<br/>
+							🔹한국 서울에서 일식 클래스<br/>
+							🔹일본 후쿠오카 한식 클래스<br/>
+							🇯🇵福岡北九州にて 韓国宮廷料理<br/>
+							韓国家庭料理教室<br/>
+							🇰🇷韓国にて和食教室</p>
+						<p>
+							Connection<br/>
+							<a class="fa fa-instagram fa-2x" th:href="@{https://www.instagram.com/happy_recipe_k/}"></a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container">
+					<div class="row">
+						<div class="page-header">
+							<h3 id="">활동 이력</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_001.jpg}" style="width: 100%"/>
+						</div>
+						<div class="col-sm-4">
+							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_002.jpg}" style="width: 100%"/>
+						</div>
+						<div class="col-sm-4">
+							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_003.jpg}" style="width: 100%"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_004.jpg}" style="width: 100%"/>
+						</div>
+						<div class="col-sm-4">
+							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_005.jpg}" style="width: 100%"/>
+						</div>
+						<div class="col-sm-4">
+							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_001.jpg}" style="width: 100%"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			</div>
+		</div>
+	</div>
+	<th:block layout:fragment="custom_script">
+	</th:block>
+</body>
+</html>
