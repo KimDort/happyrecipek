@@ -1,5 +1,7 @@
 package com.happyrecipek.web.admin.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.happyrecipek.web.admin.repositories.entities.ClassManage;

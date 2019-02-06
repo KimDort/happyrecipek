@@ -1,5 +1,7 @@
 package com.happyrecipek.web.com.system.files.ckeditor.entities;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,14 +20,6 @@ public class CommonFileInfo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Description(logicalName="공통파일순번")
 	private Integer commonFileSeq;
-	
-	@Column(name="COMMON_FILE_REGISTER_BBS_SEQ")
-	@Description(logicalName="공통파일등록게시판순번")
-	private Integer commonFileRegisterBbsSeq;
-	
-	@Column(name="COMMON_FILE_REGISTER_BBS")
-	@Description(logicalName="공통파일등록게시판")
-	private String commonFileRegisterBbs;
 	
 	@Column(name="COMMON_FILE_ORG_NAME")
 	@Description(logicalName="공통파일원본이름")
@@ -53,7 +47,7 @@ public class CommonFileInfo {
 	
 	@Column(name="REGISTER_DATE")
 	@Description(logicalName="공통파일등록일")
-	private String registerDate;
+	private Timestamp registerDate;
 	
 	@Column(name="REGISTER_ID")
 	@Description(logicalName="공통파일등록자")
@@ -65,22 +59,6 @@ public class CommonFileInfo {
 
 	public void setCommonFileSeq(Integer commonFileSeq) {
 		this.commonFileSeq = commonFileSeq;
-	}
-
-	public Integer getCommonFileRegisterBbsSeq() {
-		return commonFileRegisterBbsSeq;
-	}
-
-	public void setCommonFileRegisterBbsSeq(Integer commonFileRegisterBbsSeq) {
-		this.commonFileRegisterBbsSeq = commonFileRegisterBbsSeq;
-	}
-
-	public String getCommonFileRegisterBbs() {
-		return commonFileRegisterBbs;
-	}
-
-	public void setCommonFileRegisterBbs(String commonFileRegisterBbs) {
-		this.commonFileRegisterBbs = commonFileRegisterBbs;
 	}
 
 	public String getCommonFileOrgName() {
@@ -131,11 +109,11 @@ public class CommonFileInfo {
 		this.commonFileRealPath = commonFileRealPath;
 	}
 
-	public String getRegisterDate() {
+	public Timestamp getRegisterDate() {
 		return registerDate;
 	}
 
-	public void setRegisterDate(String registerDate) {
+	public void setRegisterDate(Timestamp registerDate) {
 		this.registerDate = registerDate;
 	}
 
@@ -149,12 +127,11 @@ public class CommonFileInfo {
 
 	@Override
 	public String toString() {
-		return "CommonFileInfo [commonFileSeq=" + commonFileSeq + ", commonFileRegisterBbsSeq="
-				+ commonFileRegisterBbsSeq + ", commonFileRegisterBbs=" + commonFileRegisterBbs + ", commonFileOrgName="
-				+ commonFileOrgName + ", commonFileCopyName=" + commonFileCopyName + ", commonFileSize="
-				+ commonFileSize + ", commonFileExt=" + commonFileExt + ", commonFileWebUrl=" + commonFileWebUrl
+		return "CommonFileInfo [commonFileSeq=" + commonFileSeq + ", commonFileOrgName=" + commonFileOrgName
+				+ ", commonFileCopyName=" + commonFileCopyName + ", commonFileSize=" + commonFileSize
+				+ ", commonFileExt=" + commonFileExt + ", commonFileWebUrl=" + commonFileWebUrl
 				+ ", commonFileRealPath=" + commonFileRealPath + ", registerDate=" + registerDate + ", registerId="
 				+ registerId + "]";
 	}
-	
+
 }

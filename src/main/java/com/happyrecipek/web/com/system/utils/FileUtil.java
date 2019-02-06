@@ -26,7 +26,7 @@ public final class FileUtil {
 	 *@return List
 	 * Create File in Real Path
 	 **/
-	public static List<CommonFileInfo> createFile(String bbsName, Integer bbsSeq, MultipartHttpServletRequest request)throws Exception {
+	public static List<CommonFileInfo> createFile(MultipartHttpServletRequest request)throws Exception {
 		List<CommonFileInfo> fileInfos = new ArrayList<>();
 
 		Set<String> getKeys = request.getFileMap().keySet();
@@ -60,8 +60,6 @@ public final class FileUtil {
 					fileInfo.setCommonFileExt(fileExt);
 					fileInfo.setCommonFileWebUrl("/image/"+DateUtil.getYear()+"/"+DateUtil.getMonth()+"/"+DateUtil.getDay()+"/");
 					fileInfo.setCommonFileRealPath(uploadPath);
-					fileInfo.setCommonFileRegisterBbs(bbsName);
-					fileInfo.setCommonFileRegisterBbsSeq(bbsSeq);
 					fileInfos.add(fileInfo);
 				}
 				

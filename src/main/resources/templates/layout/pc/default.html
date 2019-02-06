@@ -9,50 +9,58 @@
 <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE"></title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
 <link rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css}" />
-<link rel="stylesheet" th:href="@{/assets/font-awesome-4.5.0/css/font-awesome.min.css}" />
 <link rel="stylesheet" th:href="@{/assets/css/pc/styles.css}" />
+<link rel="stylesheet" th:href="@{/assets/css/pc/template.css}" />
+<link rel="stylesheet" th:href="@{/assets/css/pc/template_base.css}" />
 <link rel="stylesheet" th:href="@{//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css}">
 <link rel="stylesheet" th:href="@{'//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css'}">
+<link th:href='@{https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600}' rel='stylesheet' type='text/css'>
+<link th:href="@{http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css}" rel="stylesheet">
 <th:block layout:fragment="custom_css">
 </th:block>
 </head>
 
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<!-- Nav : S -->
+	<nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll="200">
 		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">Happy Recipe K</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="/introduce">Introduce</a></li>
-					<li><a href="/cooking/list">Class</a></li>
-					<li><a href="#">Consultant</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li sec:authorize="isAuthenticated()">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">
+                    Happy Recipe K
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+            	<li><a th:href="@{/introduce}" data-toggle="tooltip" title="회사소개">About us</a></li>
+            	<li><a th:href="@{/}" data-toggle="tooltip" title="회사소개">Working</a></li>
+            	<li><a th:href="@{/cooking/list}" data-toggle="tooltip" title="회사소개">Cooking Class</a></li>
+            	<li><a th:href="@{/}" data-toggle="tooltip" title="회사소개">Connect us</a></li>
+            </ul>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right navbar-uppercase">
+                    <li sec:authorize="isAuthenticated()">
 						<a th:href="@{/logout}">Logout</a><a sec:authentication="name"></a>
 					</li>
 					<li sec:authorize="!isAuthenticated()"><a href="" data-toggle="modal" data-target="#myModal">Login</a></li>
-				</ul>
-			</div>
-		</div>
+                    <li class="dropdown">
+                        <a href="#gaia" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-share-alt"></i> Share
+                        </a>
+                        <ul class="dropdown-menu dropdown-danger">
+                            <li><a href="#"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+                            <!-- <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li> -->
+                            <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
 	</nav>
-
-	<div class="container">
-
-		<div layout:fragment="content">
-			<!-- Your Page Content Here -->
-		</div>
-
+	<!-- Nav : E -->
+	
+	<div layout:fragment="content">
+		<!-- Your Page Content Here -->
 	</div>
+	
 	<!-- Login Modal : S -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-sm">
@@ -111,34 +119,117 @@
 	<!-- Login Modal : E -->
 	<script th:src="@{'/assets/js/jquery-2.1.4.min.js'}"></script>
 	<script th:src="@{'/assets/bootstrap/js/bootstrap.min.js'}"></script>
+	<script th:src="@{'/assets/js/gaia.js'}"></script>
+	<script th:src="@{'/assets/js/modernizr.js'}"></script>
 	<script th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
 	<script th:src="@{'//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js'}"></script>
 	<th:block layout:fragment="custom_script">
 	</th:block>
-	<footer style="margin-top: 100px">
-		<div class="footer">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
-					<ul class="list-unstyled list-inline social text-center">
-						<li class="list-inline-item"><a href="javascript:void();"><i
-								class="fa fa-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i
-								class="fa fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a th:href="@{https://www.instagram.com/happy_recipe_k/}"><i
-								class="fa fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"><i
-								class="fa fa-google-plus"></i></a></li>
-						<li class="list-inline-item"><a href="javascript:void();"
-							target="_blank"><i class="fa fa-envelope"></i></a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2">
-					<p class="h6">&copy All right Reversed.<a class="text-black ml-2" href="#">Happy Recipe K</a></p>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<!-- Footer : S -->
+	<footer class="footer footer-big footer-color-black" data-color="black">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-3">
+                    <div class="info">
+                        <h5 class="title">Company</h5>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="/">Home</a></li>
+                                <li>
+                                <li>
+                                    <a href="/introduce">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Cooking Class</a>
+                                </li>
+                                <li>
+                                    <a href="#"></a>
+                                </li>
+                                <li>
+                                    <a href="#"></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-offset-1 col-sm-3">
+                    <div class="info">
+                        <h5 class="title"> Help and Support</h5>
+                         <nav>
+                            <ul>
+                                <li>
+                                    <a href="#">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a href="#">How it works</a>
+                                </li>
+                                <li>
+                                    <a href="#"></a>
+                                </li>
+                                <li>
+                                    <a href="#"></a>
+                                </li>
+                                <li>
+                                    <a href="#"></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <div class="info">
+                        <h5 class="title">Company Address</h5>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                    	<i class="fa fa-compass"></i>
+                                        <b>서울특별시 중구 세종대로 55, 19층(태평로 2가, 부영태평빌딩)</b><br/>
+                                        <i class="fa fa-compass"></i><b>55, Sejong-daero, Jung-gu, Seoul</b><br/>
+                                        Zipcode : 04513
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-2 col-md-offset-1 col-sm-3">
+                    <div class="info">
+                        <h5 class="title">Follow us on</h5>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a th:href="@{https://www.facebook.com/Happyrecipek-1853896101539012/}" class="btn btn-social btn-facebook btn-simple">
+                                        <i class="fa fa-facebook-square"></i> Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{https://www.instagram.com/happy_recipe_k/}" class="btn btn-social btn-instagram btn-simple">
+                                        <i class="fa fa-instagram"></i> Instagram
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn btn-social btn-youtube btn-simple">
+                                        <i class="fa fa-youtube"></i> Youtube
+                                    </a>
+                                </li>
+                                <li>
+                                	<a href="">
+                                		<img th:src="@{/assets/img/index/kakaolink_btn_small.png}" style="width:20px;-webkit-filter: grayscale(100%);filter: grayscale(100%);"> Kakao Plus Friend
+                                	</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="copyright">
+                 © <script> document.write(new Date().getFullYear()) </script> Happy Recipe K
+            </div>
+        </div>
+    </footer>
+	<!-- Footer : E -->
 </body>
 </html>
