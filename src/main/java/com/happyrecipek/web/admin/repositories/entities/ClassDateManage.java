@@ -2,6 +2,7 @@ package com.happyrecipek.web.admin.repositories.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class ClassDateManage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Description(logicalName="클래스날짜관리순번")
-	private Integer ClassDateSeq;
+	private Integer classDateSeq;
 	
 	@Column(name="CLASS_START_DAY")
 	@Description(logicalName="클래스 시작일")
@@ -39,17 +40,16 @@ public class ClassDateManage {
 	@Column(name="CLASS_END_TIME")
 	@Description(logicalName="클래스 종료시간")
 	private String classEndTime;
-	
-	@ManyToMany
-	@JoinColumn(name="classSeq")
-	private List<ClassManage> classManage;
 
+	@ManyToOne
+	private ClassManage classManage;
+	
 	public Integer getClassDateSeq() {
-		return ClassDateSeq;
+		return classDateSeq;
 	}
 
 	public void setClassDateSeq(Integer classDateSeq) {
-		ClassDateSeq = classDateSeq;
+		this.classDateSeq = classDateSeq;
 	}
 
 	public String getClassStartDay() {
@@ -68,18 +68,34 @@ public class ClassDateManage {
 		this.classEndDay = classEndDay;
 	}
 
-	public List<ClassManage> getClassManage() {
+	public String getClassStartTime() {
+		return classStartTime;
+	}
+
+	public void setClassStartTime(String classStartTime) {
+		this.classStartTime = classStartTime;
+	}
+
+	public String getClassEndTime() {
+		return classEndTime;
+	}
+
+	public void setClassEndTime(String classEndTime) {
+		this.classEndTime = classEndTime;
+	}
+
+	public ClassManage getClassManage() {
 		return classManage;
 	}
 
-	public void setClassManage(List<ClassManage> classManage) {
+	public void setClassManage(ClassManage classManage) {
 		this.classManage = classManage;
 	}
 
 	@Override
 	public String toString() {
-		return "ClassDateManage [ClassDateSeq=" + ClassDateSeq + ", classStartDay=" + classStartDay + ", classEndDay="
-				+ classEndDay + ", classManage=" + classManage + "]";
+		return "ClassDateManage [classDateSeq=" + classDateSeq + ", classStartDay=" + classStartDay + ", classEndDay="
+				+ classEndDay + ", classStartTime=" + classStartTime + ", classEndTime=" + classEndTime + "]";
 	}
-	
+
 }

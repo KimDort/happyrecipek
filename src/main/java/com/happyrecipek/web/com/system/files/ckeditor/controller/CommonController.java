@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.mobile.device.Device;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class CommonController {
 	public Map<String, Object> imageUploadProcess(HttpServletRequest request
 			, HttpServletResponse response
 			, @RequestParam MultipartFile upload
+			, Device device
 			)throws Exception{
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=utf-8");

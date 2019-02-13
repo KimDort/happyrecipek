@@ -1,3 +1,4 @@
+.ui-timepicker-container {z-index:9999 !important; }
 .details-card {
 	background: #ecf0f1;
 }

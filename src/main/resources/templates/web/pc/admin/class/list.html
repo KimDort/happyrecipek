@@ -43,14 +43,14 @@
 			<div class="row">
 				<section id="pinBoot">
 					<article class="white-panel" th:each="class : ${classList}">
-						<img th:src="${class.fileInfo.commonFileWebUrl}+${class.fileInfo.commonFileCopyName}" alt="" style="width: 100%;">
+						<!-- <img th:src="${class.fileInfo.commonFileWebUrl}+${class.fileInfo.commonFileCopyName}" alt="" style="width: 100%;"> -->
 						<h4 th:text="${class.classTitle}"></h4>
 						<div style="width: 100%;">
-							<span th:each="classDate : ${class.classDateManage}">
+							<!-- <span th:each="classDate : ${class.classDateManage}">
 								<span th:text="${classDate.classStartDay}"></span>
 								<span>&#126;</span>
 								<span th:text="${classDate.classEndDay}"></span>
-							</span>
+							</span> -->
 						</div>
 					</article>
 				</section>

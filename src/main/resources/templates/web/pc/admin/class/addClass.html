@@ -21,83 +21,114 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
-						<div class="input-group">
-							<span class="input-group-addon">Title</span>
-							<input type="text" class="form-control" name="classTitle">
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="input-group">
-							<span class="input-group-addon">Title Image</span>
-							<input type="file" class="form-control" id="input_title_image" name="imageFile">
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="input-group">
-							<span class="input-group-addon">Start Day</span>
-							<input type="text" class="form-control" id="class_start_day" readonly="readonly" name="classStartDay">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="input-group">
-							<span class="input-group-addon">End Day</span>
-							<input type="text" class="form-control" id="class_end_day" readonly="readonly" name="classEndDay">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Setting - Title Text</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div class="input-group">
+									<span class="input-group-addon">Title</span>
+									<input type="text" class="form-control" name="classTitle">
+								</div>
+							</div>	
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-6">
-						<div class="input-group">
-							<span class="input-group-addon">Start Time</span>
-							<input type="text" class="form-control" id="class_start_time" readonly="readonly" name="classStartTime">
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="input-group">
-							<span class="input-group-addon">End Time</span>
-							<input type="text" class="form-control" id="class_end_time" readonly="readonly" name="classEndTime">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<textarea name="classContent"></textarea>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<div class="input-group">
-							<span class="input-group-addon">Min Member</span>
-							<input type="number" class="form-control" id="min_member" name="classMinMember">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="input-group" style="width: 100%;">
-							<input type="text" class="form-control" value="~" readonly="readonly" style="width: 100%">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="input-group">
-							<span class="input-group-addon">Max Member</span>
-							<input type="number" class="form-control" id="max_member" name="classMaxMember">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Setting - Class Thumbnail Image</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div class="input-group">
+									<span class="input-group-addon">Title Image</span>
+									<input type="file" class="form-control" id="input_title_image" name="imageFile">
+								</div>
+							</div>	
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
-						<div class="input-group">
-							<span class="input-group-addon">Main Display</span>
-		    				<div id="radioBtn" class="btn-group">
-		    					<a class="btn btn-primary btn-sm active" data-toggle="main_display_yn" data-title="Y">YES</a>
-		    					<a class="btn btn-primary btn-sm notActive" data-toggle="main_display_yn" data-title="N">NO</a>
-		    				</div>
-	    					<input type="hidden" name="classDisplayYn" id="main_display_yn">
-	    				</div>
+					<div class="panel panel-primary" id="panelDateTime">
+						<div class="panel-heading">
+							Setting - Date & Time
+						</div>
+						<div class="panel-body" id="panelDateTimeArea">
+							<div class="col-md-6">
+								<div class="input-group" id="class_start_day">
+									<span class="input-group-addon">Start Day</span>
+									<input type="text" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group" id="class_end_day">
+									<span class="input-group-addon">End Day</span>
+									<input type="text" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group" id="class_start_time">
+									<span class="input-group-addon">Start Time</span>
+									<input type="text" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group" id="class_end_time">
+									<span class="input-group-addon">End Time</span>
+									<input type="text" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div class="col-md-12 text-right">
+								<button type="button" class="btn btn-default" id="btnAddDateTimeArea" onclick="createDateTimeArea(this)"><span class="glyphicon glyphicon-plus"></span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Setting - Max & Min Join Member
+						</div>
+						<div class="panel-body">
+							<div class="col-md-6">
+								<div class="input-group">
+									<span class="input-group-addon">Min Member</span>
+									<input type="number" class="form-control" id="min_member" name="classMinMember">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group">
+									<span class="input-group-addon">Max Member</span>
+									<input type="number" class="form-control" id="max_member" name="classMaxMember">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Setting - Content Text
+						</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<textarea name="classContent"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							Setting - Class Main Display
+						</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div id="radioBtn" class="btn-group">
+			    					<a class="btn btn-primary btn-sm active" data-toggle="main_display_yn" data-title="Y">YES</a>
+			    					<a class="btn btn-primary btn-sm notActive" data-toggle="main_display_yn" data-title="N">NO</a>
+			    				</div>
+		    					<input type="hidden" name="classDisplayYn" id="main_display_yn">
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="row">
@@ -108,7 +139,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 align-right">
-						<button type="button" class="btn btn-default pull-right" onclick="submit()">Done</button>
+						<button type="button" class="btn btn-primary pull-right" onclick="submit()">Done</button>
 						<button type="button" class="btn btn-danger pull-right">Cancle</button>
 					</div>
 				</div>
@@ -131,39 +162,6 @@
 			* Ckeditor : E
 			*/
 			
-			/* 
-			* Datepicker : S
-			*/
-			$("#class_start_day").datepicker({
-				changeMonth: true
-				, changeYear: true
-				, nextText: 'Next Month'
-				, prevText: 'prev Month'
-				, dateFormat: 'yy-mm-dd'
-			});
-			$("#class_end_day").datepicker({
-				changeMonth: true
-				, changeYear: true
-				, nextText: 'Next Month'
-				, prevText: 'prev Month'
-				, dateFormat: 'yy-mm-dd'
-			});
-			/* 
-			* Datepicker : E
-			*/
-			
-			/* 
-			* Timepicker : S
-			*/
-			$("#class_start_time").timepicker({
-				timeFormat : "hh:mm p"
-			});
-			$("#class_end_time").timepicker({
-				timeFormat : "hh:mm p"
-			});
-			/* 
-			* Image Preview : S
-			*/
 			function readImageUrl(input){
 				if(input.files && input.files[0]){
 					var reader = new FileReader();
@@ -179,12 +177,63 @@
 			*/
 			
 			/* 
+			* Create DatePicker : S
+			*/
+			function createDateFicker(){
+				var getInputLength = $("input[id*='class_start_day_']").length;
+				
+				for(var i=0; i < getInputLength; i++){
+					$("#class_start_day_"+i).datepicker({
+						changeMonth: true
+						, changeYear: true
+						, nextText: 'Next Month'
+						, prevText: 'prev Month'
+						, dateFormat: 'yy-mm-dd'
+					});	
+					
+					$("input[id*='class_end_day_']").eq(i).datepicker({
+						changeMonth: true
+						, changeYear: true
+						, nextText: 'Next Month'
+						, prevText: 'prev Month'
+						, dateFormat: 'yy-mm-dd'
+					});	
+				}
+			};
+			/* 
+			* Create DatePicker : E
+			*/
+			
+			/* 
+			* Create TimePicker : S
+			*/
+			function createTimeFicker(){
+				var getInputLength = $("input[id*='class_start_time_']").length;
+				for(var i=0; i < getInputLength; i++){
+					$("input[id*='class_start_time_']").eq(i).timepicker({
+						timeFormat : "HH:mm"
+					});
+					
+					$("input[id*='class_end_time_']").eq(i).timepicker({
+						timeFormat : "HH:mm"
+					});
+				}
+			}
+			/* 
+			* Create TimePicker : E
+			*/
+			
+			/* 
 			* Document Ready Area : S
 			*/
 			$(document).ready(function(){
 				$("#input_title_image").on("change", function(){
 					readImageUrl(this);
 				});
+				createDateTimeId();
+				createTimeFicker();
+				createDateFicker();
+				createDateTimeIndex();
 			});
 			/* 
 			* Document Ready Area : E
@@ -203,6 +252,78 @@
 			});
 			/* 
 			* Radio Button Controller : E
+			*/
+			
+			/* 
+			* Create Date & Time Area : S
+			*/
+			function createDateTimeArea(getThis){
+				var cloneDateTimeArea = $(getThis).closest("#panelDateTimeArea").clone();
+				cloneDateTimeArea.find("input[id*=class_start_], input[id*=class_end_]").removeClass();
+				cloneDateTimeArea.find("input[id*=class_start_], input[id*=class_end_]").val("");
+				cloneDateTimeArea.find("input[id*=class_start_], input[id*=class_end_]").addClass("form-control");
+				
+				/** Create Minus Button*/
+				if(cloneDateTimeArea.find("button[id*='btnDelDateTimeArea']").length < 1){
+					cloneDateTimeArea.find("button[id*='btnAddDateTimeArea']").parent().append('<button type="button" class="btn btn-default" id="btnDelDateTimeArea" onclick="deleteDateTimeArea(this)"><span class="glyphicon glyphicon-minus"></span></button>')
+				}
+				$(getThis).closest(".panel").append(cloneDateTimeArea);
+				
+				createDateTimeId();
+				createTimeFicker();
+				createDateFicker();
+				createDateTimeIndex();
+			}
+			/* 
+			* Create Date & Time Area : E
+			*/
+			
+			/* 
+			* Delete Date & Time Area : S
+			*/
+			function deleteDateTimeArea(getThis){
+				$(getThis).closest("#panelDateTimeArea").remove();
+				createDateFicker();
+				createTimeFicker();
+				createDateTimeIndex();
+			}
+			/* 
+			* Delete Date & Time Area : E
+			*/
+			
+			/* 
+			* Create Date & Time Id : S
+			*/
+			function createDateTimeId(){
+				var getDateTimeCount = $("div[id='class_start_day']").length;
+				
+				for(var i=0; i < getDateTimeCount; i++){
+					$("div[id='class_start_day']").eq(i).find("input[type=text]").attr("id", "class_start_day_"+i);
+					$("div[id='class_end_day']").eq(i).find("input[type=text]").attr("id", "class_end_day_"+i);
+					$("div[id='class_start_time']").eq(i).find("input[type=text]").attr("id", "class_start_time_"+i);
+					$("div[id='class_end_time']").eq(i).find("input[type=text]").attr("id", "class_end_time_"+i);
+				}
+			}
+			/* 
+			* Create Date & Time Id : E
+			*/
+			
+			/* 
+			* Create Date & Time Index : S
+			*/
+			function createDateTimeIndex(){
+				var getDateTimeCount = $("#panelDateTime").children().find("input[id*='class_start_day_']").length;
+				for(var i=0; i< getDateTimeCount; i++){
+					/**Date*/
+					$("input[id*=class_start_day_]").eq(i).attr("name", "classDateManage["+i+"].classStartDay");
+					$("input[id*=class_end_day_]").eq(i).attr("name", "classDateManage["+i+"].classEndDay");
+					/**Time*/
+					$("input[id*=class_start_time_]").eq(i).attr("name", "classDateManage["+i+"].classStartTime");
+					$("input[id*=class_end_time_]").eq(i).attr("name", "classDateManage["+i+"].classEndTime");
+				}
+			}
+			/* 
+			* Create Date & Time Index : E
 			*/
 		</script>
 </body>

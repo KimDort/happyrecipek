@@ -80,4 +80,15 @@ public final class FileUtil {
 		String getRealPath = request.getSession().getServletContext().getRealPath("/");
 		return getRealPath;
 	}
+	
+	/**
+	 *@author KYJ
+	 *@since 2019-02-10
+	 *@param  String device
+	 *@return 
+	 * Image Resize to Device
+	 **/
+	public static final void imageResizer(String device, String filePath, String fileName, String fileExt)throws Exception {
+		
+	}
 }

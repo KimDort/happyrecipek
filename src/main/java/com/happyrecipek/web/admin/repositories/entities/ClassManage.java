@@ -3,8 +3,10 @@ package com.happyrecipek.web.admin.repositories.entities;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -74,10 +76,7 @@ public class ClassManage{
 	})
 	private CommonFileInfo fileInfo;
 	
-	@OneToMany
-	@JoinColumns({
-		@JoinColumn(name="CLASS_SEQ")
-	})
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="classManage")
 	private List<ClassDateManage> classDateManage;
 	
 	

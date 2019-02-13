@@ -23,8 +23,8 @@ public class MainController {
 		String setReturn="";
 		
 		if(device.isMobile()) {
-			//setReturn = "web/mobile/index";
-			setReturn="web/pc/index";
+			setReturn = "web/mobile/index";
+			//setReturn="web/pc/index";
 		}else if(device.isTablet()) {
 			setReturn = "";
 		}else if(device.isNormal()) {
