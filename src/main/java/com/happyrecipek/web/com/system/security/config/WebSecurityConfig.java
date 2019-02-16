@@ -95,6 +95,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 					.antMatchers("/cooking/**").permitAll()
 					.antMatchers("/introduce/**").permitAll()
 					.antMatchers("/admin/**/**").permitAll()
+					.antMatchers("/test").permitAll()
 					//.antMatchers("/introduce/write").hasRole("ADMIN")
 					//.antMatchers("/introduce/write").permitAll()
 					.anyRequest().authenticated()

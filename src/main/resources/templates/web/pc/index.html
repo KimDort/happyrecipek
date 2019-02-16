@@ -149,44 +149,19 @@
 		    					<div class="row">
 		    						<div class="col-md-10 col-md-offset-1">
 		    							<div class="row">
-		    								<div class="col-md-4">
+		    								<div class="col-md-4" th:each="class : ${classList}">
 		    									<div class="card card-member">
 		    										<div class="content">
 		    											<div class="avatar avatar-danger">
-		                                                    <img class="img-round" src="/assets/img/index/cooking-class-001.jpg" style="border-radius: 10%;"/>
+		                                                    <img class="img-round" th:src="${class.fileInfo.commonFileWebUrl}+${class.fileInfo.commonFileCopyName}" style="border-radius: 10%;"/>
 		                                                </div>
 		                                                <div class="description">
-		                                                    <h3 class="title">봄 맞이 지라시 스시</h3>
-		                                                    <p class="small-text">2019. 03. 02</p>
-		                                                    <p class="description"></p>
-		                                                </div>
-		    										</div>
-		    									</div>
-		    								</div>
-		    								<div class="col-md-4">
-		    									<div class="card card-member">
-		    										<div class="content">
-		    											<div class="avatar avatar-danger">
-		                                                    <img class="img-round" src="/assets/img/index/cooking-class-002.jpg" style="border-radius: 10%;"/>
-		                                                </div>
-		                                                <div class="description">
-		                                                    <h3 class="title">봄 맞이 도시락</h3>
-		                                                    <p class="small-text">2019. 03. 09</p>
-		                                                    <p class="description"></p>
-		                                                </div>
-		    										</div>
-		    									</div>
-		    								</div>
-		    								<div class="col-md-4">
-		    									<div class="card card-member">
-		    										<div class="content">
-		    											<div class="avatar avatar-danger">
-		                                                    <img class="img-round" src="/assets/img/index/cooking-class-001.jpg" style="border-radius: 10%;"/>
-		                                                </div>
-		                                                <div class="description">
-		                                                    <h3 class="title">봄 맞이 지라시 스시</h3>
-		                                                    <p class="small-text">2019. 03. 09</p>
-		                                                    <p class="description"></p>
+		                                                    <h3 class="title" th:text="${#strings.abbreviate(class.classTitle, 25)}"></h3>
+		                                                    <div th:each="classDate : ${class.classDateManage}">
+			                                                    <p class="small-text" th:text="${classDate.classStartDay}"></p>
+			                                                    <p class="small-text" th:text="${classDate.classStartTime}"></p>
+			                                                    <p class="description"></p>
+		                                                    </div>
 		                                                </div>
 		    										</div>
 		    									</div>

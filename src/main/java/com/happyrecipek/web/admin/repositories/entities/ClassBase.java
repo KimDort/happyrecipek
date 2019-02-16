@@ -23,18 +23,22 @@ import com.happyrecipek.web.com.system.annotations.Description;
 import com.happyrecipek.web.com.system.files.ckeditor.entities.CommonFileInfo;
 
 @Entity
-@Table(name="COOKING_CLASS")
-public class ClassManage{
+@Table(name="CLASS_BASE_INFO", schema="HAPPYRECIPEK")
+public class ClassBase{
 	
 	@Id
 	@Column(name="CLASS_SEQ")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Description(logicalName="클래스 순번")
-	private Integer classSeq;
+	private int classSeq;
 	
 	@Column(name="CLASS_TITLE")
 	@Description(logicalName="클래스 제목")
 	private String classTitle;
+	
+	@Column(name="CLASS_TYPE")
+	@Description(logicalName="클래스 종류")
+	private String classType;
 	
 	@Column(name="CLASS_CONTENT", columnDefinition="TEXT")
 	@Description(logicalName="클래스 내용")
@@ -48,7 +52,7 @@ public class ClassManage{
 	@Description(logicalName="클래스 최대인원")
 	private String classMaxMember;
 	
-	@Column(name="CLASS_DISLAY_YN")
+	@Column(name="CLASS_DISPLAY_YN")
 	@Description(logicalName="클래스 메인 페이지 표시여부")
 	private String classDisplayYn;
 	
@@ -76,24 +80,33 @@ public class ClassManage{
 	})
 	private CommonFileInfo fileInfo;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="classManage")
-	private List<ClassDateManage> classDateManage;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="classSeq")
+	private List<ClassDate> classDateManage;
 	
 	
-	public List<ClassDateManage> getClassDateManage() {
+	public List<ClassDate> getClassDateManage() {
 		return classDateManage;
 	}
 
-	public void setClassDateManage(List<ClassDateManage> classDateManage) {
+	public void setClassDateManage(List<ClassDate> classDateManage) {
 		this.classDateManage = classDateManage;
 	}
 
-	public Integer getClassSeq() {
+	public int getClassSeq() {
 		return classSeq;
 	}
 
-	public void setClassSeq(Integer classSeq) {
+	public void setClassSeq(int classSeq) {
 		this.classSeq = classSeq;
+	}
+
+	public String getClassType() {
+		return classType;
+	}
+
+	public void setClassType(String classType) {
+		this.classType = classType;
 	}
 
 	public String getClassTitle() {

@@ -1,29 +1,22 @@
 package com.happyrecipek.web.admin.repositories.entities;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.happyrecipek.web.com.system.annotations.Description;
 
 @Entity
-@Table(name="COOKING_CLASS_DATE")
-public class ClassDateManage {
+@Table(name="CLASS_DATE_INFO", schema="HAPPYRECIPEK")
+public class ClassDate {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Description(logicalName="클래스날짜관리순번")
-	private Integer classDateSeq;
+	private int classDateSeq;
 	
 	@Column(name="CLASS_START_DAY")
 	@Description(logicalName="클래스 시작일")
@@ -40,15 +33,12 @@ public class ClassDateManage {
 	@Column(name="CLASS_END_TIME")
 	@Description(logicalName="클래스 종료시간")
 	private String classEndTime;
-
-	@ManyToOne
-	private ClassManage classManage;
 	
-	public Integer getClassDateSeq() {
+	public int getClassDateSeq() {
 		return classDateSeq;
 	}
 
-	public void setClassDateSeq(Integer classDateSeq) {
+	public void setClassDateSeq(int classDateSeq) {
 		this.classDateSeq = classDateSeq;
 	}
 
@@ -82,14 +72,6 @@ public class ClassDateManage {
 
 	public void setClassEndTime(String classEndTime) {
 		this.classEndTime = classEndTime;
-	}
-
-	public ClassManage getClassManage() {
-		return classManage;
-	}
-
-	public void setClassManage(ClassManage classManage) {
-		this.classManage = classManage;
 	}
 
 	@Override

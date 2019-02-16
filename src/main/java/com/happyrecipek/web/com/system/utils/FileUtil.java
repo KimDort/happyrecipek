@@ -29,25 +29,50 @@ public final class FileUtil {
 	public static List<CommonFileInfo> createFile(MultipartHttpServletRequest request)throws Exception {
 		List<CommonFileInfo> fileInfos = new ArrayList<>();
 
+		/**
+		 * Get Upload File Name Set
+		 **/
 		Set<String> getKeys = request.getFileMap().keySet();
 		MultipartFile getFiles = null;
 		
 		for(String key : getKeys) {
 			getFiles = request.getFileMap().get(key);
+			/**
+			 * Check File is Null
+			 **/
 			if(!getFiles.isEmpty() && getFiles != null) {
 				CommonFileInfo fileInfo = new CommonFileInfo();
-				String uploadPath = getRealPath(request)+"/image/"+DateUtil.getYear()+"/"+DateUtil.getMonth()+"/"+DateUtil.getDay()+"/";
+				/**
+				 * Create Upload Path
+				 **/
+				String basePath = getRealPath(request)+"/image/"+DateUtil.getYear()+"/"+DateUtil.getMonth()+"/"+DateUtil.getDay()+"/";
+				String basWebPath = "/image/"+DateUtil.getYear()+"/"+DateUtil.getMonth()+"/"+DateUtil.getDay()+"/";
+				String origianlPath = basePath+"/original/";
+				String uploadPath = basePath;
+				
+				/**
+				 * Get File Info
+				 **/
 				String fileOrgName = getFiles.getOriginalFilename();
 				String fileExt = fileOrgName.substring(fileOrgName.lastIndexOf(".") + 1);
 				String copyFileName = DateUtil.getCurrentDate()+"."+fileExt;
 				long fileSize = getFiles.getSize();
 				
-				File checkFolders = new File(uploadPath);
+				/**
+				 * Check Or Create Folder : S
+				 * */
+				File checkFolders = new File(origianlPath);
 				if(!checkFolders.exists()) {
 					checkFolders.mkdirs();
 				}
+				/**
+				 * Check Or Create Folder : E
+				 * */
 				
-				File createFile = new File(uploadPath+copyFileName);
+				/**
+				 * Create Original File : S
+				 * */
+				File createFile = new File(origianlPath+copyFileName);
 				if(createFile.createNewFile()) {
 					getFiles.transferTo(createFile);
 					
@@ -56,13 +81,22 @@ public final class FileUtil {
 					 * */
 					fileInfo.setCommonFileOrgName(fileOrgName);
 					fileInfo.setCommonFileCopyName(copyFileName);
+					fileInfo.setCommonFileThumbName(copyFileName);
+					fileInfo.setCommonFileResizeName(copyFileName);
 					fileInfo.setCommonFileSize(fileSize);
 					fileInfo.setCommonFileExt(fileExt);
 					fileInfo.setCommonFileWebUrl("/image/"+DateUtil.getYear()+"/"+DateUtil.getMonth()+"/"+DateUtil.getDay()+"/");
 					fileInfo.setCommonFileRealPath(uploadPath);
 					fileInfos.add(fileInfo);
 				}
+				/**
+				 * Create Original File : E
+				 * */
 				
+				/**
+				 * Create Thumb & Resizing File
+				 * */
+				fileInfos = ImageUtil.imageResizer(origianlPath, basePath, basWebPath, fileExt, copyFileName, fileInfos);
 			}
 		}
 		

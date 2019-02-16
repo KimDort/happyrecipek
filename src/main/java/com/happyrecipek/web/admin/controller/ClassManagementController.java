@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.happyrecipek.web.admin.repositories.ClassDateRepository;
 import com.happyrecipek.web.admin.repositories.ClassRepository;
-import com.happyrecipek.web.admin.repositories.entities.ClassManage;
+import com.happyrecipek.web.admin.repositories.entities.ClassBase;
 import com.happyrecipek.web.com.system.files.ckeditor.entities.CommonFileInfo;
 import com.happyrecipek.web.com.system.files.ckeditor.repositories.CommonFileRepository;
 import com.happyrecipek.web.com.system.utils.FileUtil;
@@ -36,8 +35,6 @@ public class ClassManagementController {
 	@Autowired
 	private CommonFileRepository commonFileRepository;
 
-	@Autowired
-	private ClassDateRepository classDateRepository;
 	/**
 	 * @author KYJ
 	 * @since 2019-01-03
@@ -51,8 +48,7 @@ public class ClassManagementController {
 		/**
 		 * Selection Class List Repository
 		 */
-		List<ClassManage> resultList = classRepository.findAll();
-		System.out.println(resultList.toString());
+		List<ClassBase> resultList = classRepository.findAll();
 
 		model.addAttribute("classList", resultList);
 
@@ -97,12 +93,11 @@ public class ClassManagementController {
 	 * @return String Cooking Class Add Process Method
 	 */
 	@RequestMapping("/admin/class/addClassProc")
-	public String classAddProc(@ModelAttribute("classManage") ClassManage classManage,
+	public String classAddProc(@ModelAttribute("classManage") ClassBase classManage,
 			MultipartHttpServletRequest request) throws Exception {
 		/**
 		 * Step 1 : Create Real File In Server
 		 **/
-		System.out.println("class manage info : " + classManage.toString());
 
 		Set<String> keys = request.getFileMap().keySet();
 		List<CommonFileInfo> fileInfos = null;
@@ -124,6 +119,7 @@ public class ClassManagementController {
 		if (fileInfos != null && !fileInfos.isEmpty()) {
 			for (CommonFileInfo fileInfo : fileInfos) {
 				getSavedFileInfo = new CommonFileInfo();
+				fileInfo.setCommonFileLocation("CLASS");
 				getSavedFileInfo = commonFileRepository.save(fileInfo);
 			}
 		}

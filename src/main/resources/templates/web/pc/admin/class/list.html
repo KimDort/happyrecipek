@@ -18,6 +18,7 @@
 		  background: white;
 		  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 		  padding: 10px;
+		  overflow: hidden;
 		}
 		.white-panel:hover {
 		  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
@@ -43,14 +44,30 @@
 			<div class="row">
 				<section id="pinBoot">
 					<article class="white-panel" th:each="class : ${classList}">
-						<!-- <img th:src="${class.fileInfo.commonFileWebUrl}+${class.fileInfo.commonFileCopyName}" alt="" style="width: 100%;"> -->
-						<h4 th:text="${class.classTitle}"></h4>
+						<img th:src="${class.fileInfo.commonFileWebUrl}+${class.fileInfo.commonFileCopyName}" alt="" style="width: 100%;">
+						<h4 th:text="${#strings.abbreviate(class.classTitle, 25)}"></h4>
 						<div style="width: 100%;">
-							<!-- <span th:each="classDate : ${class.classDateManage}">
+							<span>Day : </span>
+							<span th:each="classDate : ${class.classDateManage}">
 								<span th:text="${classDate.classStartDay}"></span>
-								<span>&#126;</span>
 								<span th:text="${classDate.classEndDay}"></span>
-							</span> -->
+							</span>
+						</div>
+						<div style="width: 100%;">
+							<span>Time : </span>
+							<span th:each="classDate : ${class.classDateManage}">
+								<span th:text="${classDate.classStartTime}"></span>
+								<span>&#126;</span>
+								<span th:text="${classDate.classEndTime}"></span>
+							</span>
+						</div>
+						<div style="width: 100%;">
+							<span>Min Member :</span>
+							<span th:text="${class.classMinMember}"></span>
+						</div>
+						<div style="width: 100%;">
+							<span>Min Member :</span>
+							<span th:text="${class.classMaxMember}"></span>
 						</div>
 					</article>
 				</section>
