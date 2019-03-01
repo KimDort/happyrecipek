@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -132,5 +134,31 @@ public class ClassManagementController {
 		classRepository.save(classManage);
 		//classDateRepository.saveAll(classManage.getClassDateManage());
 		return "redirect:/admin/class/classListPage";
+	}
+	
+	/**
+	 * @author KYJ
+	 * @since 2019-01-03
+	 * @param Device
+	 * @return String Cooking Class Add Page Method
+	 */
+	@RequestMapping("/admin/class/classDetailPage")
+	public String classDetailPage(Device device, Model model,@RequestParam("seq")int seq) {
+		String returnPage = "";
+		
+		ClassBase getDetail= new ClassBase();
+		getDetail = classRepository.findByClassSeq(seq);
+		model.addAttribute("getDetail", getDetail);
+		
+		if (device.isMobile()) {
+			returnPage = "web/pc/admin/class/detail";
+			// returnPage = "web/mobile/admin/class/addClass";
+		} else if (device.isTablet()) {
+			returnPage = "";
+		} else if (device.isNormal()) {
+			returnPage = "web/pc/admin/class/detail";
+		}
+
+		return returnPage;
 	}
 }

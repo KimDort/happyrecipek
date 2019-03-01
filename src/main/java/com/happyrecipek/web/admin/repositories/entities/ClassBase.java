@@ -23,7 +23,7 @@ import com.happyrecipek.web.com.system.annotations.Description;
 import com.happyrecipek.web.com.system.files.ckeditor.entities.CommonFileInfo;
 
 @Entity
-@Table(name="CLASS_BASE_INFO", schema="HAPPYRECIPEK")
+@Table(name="class_base_info")
 public class ClassBase{
 	
 	@Id

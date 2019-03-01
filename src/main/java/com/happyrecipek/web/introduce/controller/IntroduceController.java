@@ -17,11 +17,11 @@ public class IntroduceController {
 		String returnPage="";
 		
 		if(device.isMobile()) {
-			returnPage = "web/mobile/introduce/main";
+			returnPage = "web/mobile/introduce/introduce";
 		}else if(device.isTablet()) {
 			returnPage = "";
 		}else if(device.isNormal()) {
-			returnPage = "web/pc/introduce/main";
+			returnPage = "web/pc/introduce/introduce";
 		}
 		
 		return returnPage;

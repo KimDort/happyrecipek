@@ -1041,7 +1041,7 @@
 }
 
 .fixed-plugin li.header-title{
-    height: 30px;
+  height: 30px;
   line-height: 40px;
   font-size: 12px;
   font-weight: 600;
@@ -1281,7 +1281,7 @@
          -o-transform: translateY(-50%);
          -ms-transform: translateY(-50%);
          transform: translateY(-50%);
-         top: 27px;
+         top: 107px;
          opacity: 0;
          
          transform-origin: 0 0;

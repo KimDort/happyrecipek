@@ -29,16 +29,17 @@ public class MainController {
 		List<ClassBase> classList = new ArrayList<>();
 		classList = classRepository.findAllActiveClassBasesNative();
 		
-		model.addAttribute("classList", classList);
 		
 		if(device.isMobile()) {
 			setReturn = "web/mobile/index";
-			//setReturn="web/pc/index";
+			
 		}else if(device.isTablet()) {
 			setReturn = "";
 		}else if(device.isNormal()) {
 			setReturn="web/pc/index";
 		}
+		
+		model.addAttribute("classList", classList);
 		
 		return setReturn;
 	}

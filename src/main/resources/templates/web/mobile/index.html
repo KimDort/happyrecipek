@@ -133,73 +133,55 @@
 		    	</div>
 		    </div>
 		    <!-- Section Cooking Class : S -->
-		    <div class="section section-our-team-freebie">
-		    	<div class="parallax filter filter-color-black">
-		    		<div class="image" style="background-image:url('/assets/img/index/header-3.jpg')"></div>
-		    		<div class="container">
-		    			<div class="content">
-		    				<div class="row">
-		    					<div class="title-area">
-									<h1 class="title-modern">Cooking Class</h1>
-			                        <p>2019. 2 ~ 3</p>
-			                    </div>
-		    				</div>
-		    				
-		    				<div class="team">
-		    					<div class="row">
-		    						<div class="col-md-10 col-md-offset-1">
-		    							<div class="row">
-		    								<div class="col-md-4">
-		    									<div class="card card-member">
-		    										<div class="content">
-		    											<div class="avatar avatar-danger">
-		                                                    <img class="img-round" src="/assets/img/index/cooking-class-001.jpg" style="border-radius: 10%;"/>
-		                                                </div>
-		                                                <div class="description">
-		                                                    <h3 class="title">봄 맞이 지라시 스시</h3>
-		                                                    <p class="small-text">2019. 03. 02</p>
-		                                                    <p class="description"></p>
-		                                                </div>
-		    										</div>
-		    									</div>
-		    								</div>
-		    								<div class="col-md-4">
-		    									<div class="card card-member">
-		    										<div class="content">
-		    											<div class="avatar avatar-danger">
-		                                                    <img class="img-round" src="/assets/img/index/cooking-class-002.jpg" style="border-radius: 10%;"/>
-		                                                </div>
-		                                                <div class="description">
-		                                                    <h3 class="title">봄 맞이 도시락</h3>
-		                                                    <p class="small-text">2019. 03. 09</p>
-		                                                    <p class="description"></p>
-		                                                </div>
-		    										</div>
-		    									</div>
-		    								</div>
-		    								<div class="col-md-4">
-		    									<div class="card card-member">
-		    										<div class="content">
-		    											<div class="avatar avatar-danger">
-		                                                    <img class="img-round" src="/assets/img/index/cooking-class-001.jpg" style="border-radius: 10%;"/>
-		                                                </div>
-		                                                <div class="description">
-		                                                    <h3 class="title">봄 맞이 지라시 스시</h3>
-		                                                    <p class="small-text">2019. 03. 09</p>
-		                                                    <p class="description"></p>
-		                                                </div>
-		    										</div>
-		    									</div>
-		    								</div>
-		    							</div>
-		    						</div>
-		    					</div>
-		    				</div>
-		    			</div>
-		    		</div>
-		    	</div>
-		    </div>
-		   <!-- Section Cooking Class : E -->
+		<div class="section section-our-team-freebie">
+			<div class="parallax filter filter-color-black">
+				<div class="image"
+					style="background-image: url('/assets/img/index/header-3.jpg')"></div>
+				<div class="container">
+					<div class="content">
+						<div class="row">
+							<div class="title-area">
+								<h1 class="title-modern">Cooking Class</h1>
+								<p>2019. 2 ~ 3</p>
+								<button type="button" class="btn btn-default" data-toggle="modal" data-target="#classModal">Open Modal</button>
+							</div>
+						</div>
+
+						<div class="team">
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<div class="row">
+										<div class="col-md-4" th:each="class, index : ${classList}">
+											<div class="card card-member" th:onclick="'openClassModal(\'' + ${class.classSeq} + '\')'">
+												<div class="content">
+													<div class="avatar avatar-danger">
+														<img class="img-round"
+															th:src="${class.fileInfo.commonFileThumbWebUrl}+${class.fileInfo.commonFileCopyName}"
+															style="border-radius: 10%;" />
+													</div>
+													<div class="description">
+														<h3 class="title"
+															th:text="${#strings.abbreviate(class.classTitle, 25)}"></h3>
+														<div th:each="classDate : ${class.classDateManage}">
+															<p class="small-text"
+																th:text="${classDate.classStartDay}"></p>
+															<p class="small-text"
+																th:text="${classDate.classStartTime}"></p>
+															<p class="description"></p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Section Cooking Class : E -->
 		   <!-- Section How It Work : S -->
 		    <div class="section">
 		    	<div class="container">
@@ -313,6 +295,27 @@
 		    			</div>
 		    		</div>
 		   		</div>
+		   		<!-- Class Modal : S -->
+				<!-- Modal -->
+				<div id="classModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title" id="modal-header"></h4>
+							</div>
+							<div class="modal-body" id="modal-body">
+								
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+			
+					</div>
+				</div>
+				<!-- Class Modal : E -->
 		   	</div>
 		    <!-- Section Contact Us : E -->
 		</div>
@@ -327,6 +330,29 @@
 			      plusFriendId: '_fScmj', // 플러스친구 홈 URL에 명시된 id로 설정합니다.
 			      color: 'black'
 			    });
+			    function openClassModal(getSeq){
+					$("#modal-header").text("");
+					$("#modal-body").empty();
+					
+					$.ajax({
+						url:"/cooking/detail?classSeq="+getSeq
+						, type :"GET"
+						, success : function(data){
+							$.each(data, function(key, value){
+								if(key=="classTitle"){
+									$("#modal-header").text(value);
+								}else if(key=="classContent"){
+									var str="";
+									str += '<div style="width:100%">';
+									str += value;
+									str += '</div>';
+									$("#modal-body").append(str);
+								}
+							});
+						}
+					});
+					$("#classModal").modal();
+				}
 			</script>
 		</th:block>
 	</body>

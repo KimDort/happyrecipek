@@ -12,7 +12,7 @@ import com.happyrecipek.web.com.system.annotations.Description;
 import lombok.Data;
 
 @Entity
-@Table(name="MESSAGES")
+@Table(name="messages")
 @Data
 public class Message {
 	@Id

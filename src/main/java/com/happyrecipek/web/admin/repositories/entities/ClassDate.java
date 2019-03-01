@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import com.happyrecipek.web.com.system.annotations.Description;
 
 @Entity
-@Table(name="CLASS_DATE_INFO", schema="HAPPYRECIPEK")
+@Table(name="class_date_info")
 public class ClassDate {
 	
 	@Id

@@ -21,7 +21,7 @@ import com.happyrecipek.web.com.system.security.repositories.entities.AuthorityR
 import lombok.Data;
 
 @Entity
-@Table(name="MEMBER_INFO_MANAGE", schema="happyrecipek")
+@Table(name="member_info_manage")
 public class Member {
 	
 	@Id

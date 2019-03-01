@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	layout:decorator="layout/pc/admin/default">
+<head>
+<title>Happy Recipe K - Administrator Class Add Page</title>
+<th:block layout:fragment="custom_css">
+</th:block>
+</head>
+<body>
+	<div layout:fragment="content" class="content">
+		<form th:action="@{/admin/class/addClassProc}" method="POST" enctype="multipart/form-data" th:object="${classManage}" role="form">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="page-header">
+							<h1 id="">Happy Recipe K - Cooking Class Add Page</h1>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Setting - Title Text</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div class="input-group">
+									<span class="input-group-addon">Title</span>
+									<input type="text" class="form-control" name="classTitle" th:value="${getDetail.classTitle}">
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Setting - Class Thumbnail Image</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div class="input-group">
+									<span class="input-group-addon">Title Image</span>
+									<input type="file" class="form-control" id="input_title_image" name="imageFile">
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary" id="panelDateTime" th:each="getDate : ${getDetail.classDateManage}">
+						<div class="panel-heading">
+							Setting - Date & Time<input type="hidden" name="classType" value="ONEDAY" >
+						</div>
+						<div class="panel-body" id="panelDateTimeArea">
+							<div class="col-md-12">
+								<div class="input-group" id="class_start_day">
+									<span class="input-group-addon">Start Day</span>
+									<input type="text" class="form-control" readonly="readonly" th:value="${getDate.classStartDay}">
+								</div>
+							</div>
+							<div class="col-md-6" style="display: none;">
+								<div class="input-group" id="class_end_day">
+									<span class="input-group-addon">End Day</span>
+									<input type="text" class="form-control" readonly="readonly" th:value="${getDate.classEndDay}">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group" id="class_start_time">
+									<span class="input-group-addon">Start Time</span>
+									<input type="text" class="form-control" readonly="readonly" th:value="${getDate.classStartTime}">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group" id="class_end_time">
+									<span class="input-group-addon">End Time</span>
+									<input type="text" class="form-control" readonly="readonly" th:value="${getDate.classEndTime}">
+								</div>
+							</div>
+							<div class="col-md-12 text-right">
+								<button type="button" class="btn btn-default" id="btnAddDateTimeArea" onclick="createDateTimeArea(this)"><span class="glyphicon glyphicon-plus"></span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Setting - Max & Min Join Member
+						</div>
+						<div class="panel-body">
+							<div class="col-md-6">
+								<div class="input-group">
+									<span class="input-group-addon">Min Member</span>
+									<input type="number" class="form-control" id="min_member" name="classMinMember" th:value="${getDetail.classMinMember}">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group">
+									<span class="input-group-addon">Max Member</span>
+									<input type="number" class="form-control" id="max_member" name="classMaxMember" th:value="${getDetail.classMaxMember}">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Setting - Content Text
+						</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<textarea name="classContent" th:text="${getDetail.classContent}"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							Setting - Class Main Display
+						</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div id="radioBtn" class="btn-group">
+			    					<a class="btn btn-primary btn-sm active" data-toggle="main_display_yn" data-title="Y">YES</a>
+			    					<a class="btn btn-primary btn-sm notActive" data-toggle="main_display_yn" data-title="N">NO</a>
+			    				</div>
+		    					<input type="hidden" name="classDisplayYn" id="main_display_yn" th:value="${getDetail.classDisplayYn}">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="page-header">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 align-right">
+						<button type="button" class="btn btn-primary pull-right" onclick="submit()">Modify</button>
+						<button type="button" class="btn btn-danger pull-right" id="btnCancle">Cancle</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block layout:fragment="custom_script">
+		<script src="//cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+		<script>
+			/* 
+			* Ckeditor : S
+			*/
+			CKEDITOR.replace(
+				'classContent',
+				{
+					filebrowserUploadUrl:'/ckeditor/imageUpload'
+				}
+			);
+			/* 
+			* Ckeditor : E
+			*/
+			
+			function readImageUrl(input){
+				if(input.files && input.files[0]){
+					var reader = new FileReader();
+					
+					reader.onload = function(e){
+						$("#title_image_selecte").attr("src", e.target.result);
+					}
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+			/* 
+			* Image Preview : E
+			*/
+			
+			/* 
+			* Create DatePicker : S
+			*/
+			function createDateFicker(){
+				var getInputLength = $("input[id*='class_start_day_']").length;
+				
+				for(var i=0; i < getInputLength; i++){
+					$("#class_start_day_"+i).datepicker({
+						changeMonth: true
+						, changeYear: true
+						, nextText: 'Next Month'
+						, prevText: 'prev Month'
+						, dateFormat: 'yy-mm-dd'
+					});	
+					
+					$("input[id*='class_end_day_']").eq(i).datepicker({
+						changeMonth: true
+						, changeYear: true
+						, nextText: 'Next Month'
+						, prevText: 'prev Month'
+						, dateFormat: 'yy-mm-dd'
+					});	
+				}
+			};
+			/* 
+			* Create DatePicker : E
+			*/
+			
+			/* 
+			* Create TimePicker : S
+			*/
+			function createTimeFicker(){
+				var getInputLength = $("input[id*='class_start_time_']").length;
+				for(var i=0; i < getInputLength; i++){
+					$("input[id*='class_start_time_']").eq(i).timepicker({
+						timeFormat : "HH:mm"
+					});
+					
+					$("input[id*='class_end_time_']").eq(i).timepicker({
+						timeFormat : "HH:mm"
+					});
+				}
+			}
+			/* 
+			* Create TimePicker : E
+			*/
+			
+			/* 
+			* Document Ready Area : S
+			*/
+			$(document).ready(function(){
+				$("#input_title_image").on("change", function(){
+					readImageUrl(this);
+				});
+				createDateTimeId();
+				createTimeFicker();
+				createDateFicker();
+				createDateTimeIndex();
+				
+				$("#btnCancle").on("click", function(){
+					$(location).attr("href", "/admin/class/classListPage");
+				});
+			});
+			/* 
+			* Document Ready Area : E
+			*/
+			
+			/* 
+			* Radio Button Controller : S
+			*/
+			$('#radioBtn a').on('click', function(){
+			    var sel = $(this).data('title');
+			    var tog = $(this).data('toggle');
+			    $('#'+tog).prop('value', sel);
+			    
+			    $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
+			    $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
+			});
+			/* 
+			* Radio Button Controller : E
+			*/
+			
+			/* 
+			* Create Date & Time Area : S
+			*/
+			function createDateTimeArea(getThis){
+				var cloneDateTimeArea = $(getThis).closest("#panelDateTimeArea").clone();
+				cloneDateTimeArea.find("input[id*=class_start_], input[id*=class_end_]").removeClass();
+				cloneDateTimeArea.find("input[id*=class_start_], input[id*=class_end_]").val("");
+				cloneDateTimeArea.find("input[id*=class_start_], input[id*=class_end_]").addClass("form-control");
+				
+				/** Create Minus Button*/
+				if(cloneDateTimeArea.find("button[id*='btnDelDateTimeArea']").length < 1){
+					cloneDateTimeArea.find("button[id*='btnAddDateTimeArea']").parent().append('<button type="button" class="btn btn-default" id="btnDelDateTimeArea" onclick="deleteDateTimeArea(this)"><span class="glyphicon glyphicon-minus"></span></button>')
+				}
+				$(getThis).closest(".panel").append(cloneDateTimeArea);
+				
+				createDateTimeId();
+				createTimeFicker();
+				createDateFicker();
+				createDateTimeIndex();
+			}
+			/* 
+			* Create Date & Time Area : E
+			*/
+			
+			/* 
+			* Delete Date & Time Area : S
+			*/
+			function deleteDateTimeArea(getThis){
+				$(getThis).closest("#panelDateTimeArea").remove();
+				createDateFicker();
+				createTimeFicker();
+				createDateTimeIndex();
+			}
+			/* 
+			* Delete Date & Time Area : E
+			*/
+			
+			/* 
+			* Create Date & Time Id : S
+			*/
+			function createDateTimeId(){
+				var getDateTimeCount = $("div[id='class_start_day']").length;
+				
+				for(var i=0; i < getDateTimeCount; i++){
+					$("div[id='class_start_day']").eq(i).find("input[type=text]").attr("id", "class_start_day_"+i);
+					$("div[id='class_end_day']").eq(i).find("input[type=text]").attr("id", "class_end_day_"+i);
+					$("div[id='class_start_time']").eq(i).find("input[type=text]").attr("id", "class_start_time_"+i);
+					$("div[id='class_end_time']").eq(i).find("input[type=text]").attr("id", "class_end_time_"+i);
+				}
+			}
+			/* 
+			* Create Date & Time Id : E
+			*/
+			
+			/* 
+			* Create Date & Time Index : S
+			*/
+			function createDateTimeIndex(){
+				var getDateTimeCount = $("#panelDateTime").children().find("input[id*='class_start_day_']").length;
+				for(var i=0; i< getDateTimeCount; i++){
+					/**Date*/
+					$("input[id*=class_start_day_]").eq(i).attr("name", "classDateManage["+i+"].classStartDay");
+					$("input[id*=class_end_day_]").eq(i).attr("name", "classDateManage["+i+"].classEndDay");
+					/**Time*/
+					$("input[id*=class_start_time_]").eq(i).attr("name", "classDateManage["+i+"].classStartTime");
+					$("input[id*=class_end_time_]").eq(i).attr("name", "classDateManage["+i+"].classEndTime");
+				}
+			}
+			/* 
+			* Create Date & Time Index : E
+			*/
+		</script>
+</body>
+</html>

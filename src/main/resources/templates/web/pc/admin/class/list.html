@@ -32,19 +32,19 @@
 </th:block>
 </head>
 <body>
-	<div layout:fragment="content">
+	<div layout:fragment="content" style="margin-top: 50px">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="page-header">
-						<h1 id="">Cooking Class Management List Page</h1>
+						<h1 id="">Cooking Class </h1>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<section id="pinBoot">
-					<article class="white-panel" th:each="class : ${classList}">
-						<img th:src="${class.fileInfo.commonFileWebUrl}+${class.fileInfo.commonFileCopyName}" alt="" style="width: 100%;">
+					<article class="white-panel" th:each="class : ${classList}" th:onclick="'openDetailPage(\'' + ${class.classSeq} + '\')'">
+						<!-- <img th:src="${class.fileInfo.commonFileThumbWebUrl}+${class.fileInfo.commonFileCopyName}" alt="" style="width: 100%;"> -->
 						<h4 th:text="${#strings.abbreviate(class.classTitle, 25)}"></h4>
 						<div style="width: 100%;">
 							<span>Day : </span>
@@ -71,19 +71,6 @@
 						</div>
 					</article>
 				</section>
-				<!-- <div th:each="class : ${classList}">
-					<div class="col-lg-4" style="float: left;">
-						<div class="card">
-		                    <div class="card-img">
-		                        <img th:src="${class.fileInfo.commonFileWebUrl}+${class.fileInfo.commonFileCopyName}" alt="" style="width: 100%;">
-		                    </div>
-		                    <div class="card-desc">
-		                        <h3 th:text="${class.classTitle}"></h3>
-		                        <a href="#" class="btn btn-info">Read</a>   
-		                    </div>
-		                </div>
-					</div>
-				</div> -->
 			</div>
 		</div>
 	</div>
@@ -238,6 +225,10 @@
 				}
 
 			})(jQuery, window, document);
+			
+			function openDetailPage(getSeq){
+				$(location).attr("href", "/admin/class/classDetailPage?seq="+getSeq);
+			}
 		</script>
 	</th:block>
 </body>

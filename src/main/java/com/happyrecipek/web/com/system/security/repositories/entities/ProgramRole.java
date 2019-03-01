@@ -14,7 +14,7 @@ import com.happyrecipek.web.com.system.menu.repositories.entities.Program;
 import lombok.Data;
 
 @Entity
-@Table(name="PROGRAM_ROLE")
+@Table(name="program_role")
 @Data
 public class ProgramRole {
 

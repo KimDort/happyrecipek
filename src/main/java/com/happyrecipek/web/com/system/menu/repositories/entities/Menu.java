@@ -14,7 +14,7 @@ import com.happyrecipek.web.com.system.annotations.Description;
 import lombok.Data;
 
 @Entity
-@Table(name="MENU", schema="happyrecipek")
+@Table(name="menu")
 @Data
 public class Menu {
 

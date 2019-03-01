@@ -15,7 +15,7 @@ import com.happyrecipek.web.com.system.security.repositories.entities.AuthorityR
 import lombok.Data;
 
 @Entity
-@Table(name="PROGRAM", schema="happyrecipek")
+@Table(name="program")
 @Data
 public class Program {
 

@@ -17,7 +17,7 @@ import com.happyrecipek.web.member.repositories.entities.Member;
 import lombok.Data;
 
 @Entity
-@Table(name="AUTHORITY_ROLES", schema="happyrecipek")
+@Table(name="authority_roles")
 public class AuthorityRole {
 	@Id
 	@Description(logicalName="권한순번")

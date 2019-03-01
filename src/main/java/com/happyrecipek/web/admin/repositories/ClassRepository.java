@@ -9,11 +9,13 @@ import com.happyrecipek.web.admin.repositories.entities.ClassDate;
 import com.happyrecipek.web.admin.repositories.entities.ClassBase;
 
 public interface ClassRepository extends JpaRepository<ClassBase, Integer>{
-	@Query(value="SELECT * FROM CLASS_BASE_INFO A"
-			+ " INNER JOIN CLASS_DATE_INFO B"
-			+ " ON A.CLASS_SEQ = B.CLASS_SEQ"
-			+ " WHERE A.CLASS_DISPLAY_YN = 'Y'"
-			+ " AND (B.CLASS_START_DAY > LAST_DAY(NOW() - INTERVAL 2 MONTH) AND B.CLASS_START_DAY <= LAST_DAY(NOW()))"
+	@Query(value="select * from class_base_info a"
+			+ " inner join class_date_info b"
+			+ " on a.class_seq = b.class_seq"
+			+ " where a.class_display_yn = 'y'"
+			+ " and (b.class_start_day > last_day(now() - interval 2 month) and b.class_start_day <= last_day(now() + interval 1 month))"
 			, nativeQuery = true)
 	List<ClassBase> findAllActiveClassBasesNative();
+	
+	ClassBase findByClassSeq(Integer ClassSeq);
 }

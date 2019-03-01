@@ -55,6 +55,7 @@ public final class FileUtil {
 				 **/
 				String fileOrgName = getFiles.getOriginalFilename();
 				String fileExt = fileOrgName.substring(fileOrgName.lastIndexOf(".") + 1);
+				fileExt.toLowerCase();
 				String copyFileName = DateUtil.getCurrentDate()+"."+fileExt;
 				long fileSize = getFiles.getSize();
 				

@@ -14,7 +14,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.happyrecipek.web.com.system.annotations.Description;
 
 @Entity
-@Table(name="COMMON_FILE_INFO")
+@Table(name="common_file_info")
 public class CommonFileInfo {
 
 	@Id
