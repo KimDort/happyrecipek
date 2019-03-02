@@ -30,8 +30,7 @@ public class CookingController {
 		model.addAttribute("classList", resultList);
 
 		if (device.isMobile()) {
-			returnPage = "web/pc/cooking/list";
-			// returnPage = "web/mobile/admin/class/addClass";
+			returnPage = "web/mobile/cooking/list";
 		} else if (device.isTablet()) {
 			returnPage = "";
 		} else if (device.isNormal()) {

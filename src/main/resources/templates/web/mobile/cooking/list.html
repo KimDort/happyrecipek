@@ -103,6 +103,11 @@
 					<div class="modal-body" id="modal-body">
 						
 					</div>
+					<div class="page-header col-md-12">
+						<h5><span class="glyphicon glyphicon-chevron-down"></span>Kakao Plus Friend / 카카오 플러스 친구</h5>
+						<h3 class="title" id="plusfriend-addfriend-button">
+						</h3>
+					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
@@ -113,6 +118,7 @@
 		<!-- Class Modal : E -->
 	</div>
 	<th:block layout:fragment="custom_script">
+		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 		<script>
 			$(document).ready(function() {
 				$('#pinBoot').pinterest_grid({
@@ -280,16 +286,20 @@
 								str += '<div style="width:100%">';
 								str += value;
 								str += '</div>';
-								str += '<div class="page-header col-md-12">'
-								str += '<h5><span class="glyphicon glyphicon-chevron-down"></span>Kakao Plus Friend / 카카오 플러스 친구</h5>';
-								str += '<img alt="" src="/assets/img/index/kakao_qrcode.png" style="border-radius: 10%;width:100px;">';
-								str += '</div>';
 								$("#modal-body").append(str);
 							}
 						});
 					}
 				});
 				$("#classModal").modal();
+				// 사용할 앱의 JavaScript 키를 설정해 주세요.
+			    Kakao.init('fa2898cddd176380bd1c3c8bb9c3ad88');
+			    // 플러스친구 친구추가 버튼을 생성합니다.
+			    Kakao.PlusFriend.createAddFriendButton({
+			      container: '#plusfriend-addfriend-button',
+			      plusFriendId: '_fScmj', // 플러스친구 홈 URL에 명시된 id로 설정합니다.
+			      color: 'black'
+			    });
 			}
 		</script>
 	</th:block>
