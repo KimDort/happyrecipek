@@ -1575,12 +1575,17 @@ a,
 }
 
 .footer-color-gray {
-  background-color: #F5F5F5;
+  background-color: #dfdfdf;
 }
 
 .footer-color-black,
 .footer-transparent {
   background-color: rgba(30, 30, 30, 0.97);
+  color: #DDDDDD;
+}
+.footer-color-beige,
+.footer-transparent {
+  background-color: #EEE6C4;
   color: #DDDDDD;
 }
 .footer-color-black nav > ul a,

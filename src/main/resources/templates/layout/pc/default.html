@@ -39,9 +39,8 @@
             <div class="collapse navbar-collapse">
             	<ul class="nav navbar-nav navbar-left navbar-uppercase">
             		<li><a th:href="@{/introduce}" data-toggle="tooltip" title="회사소개">About us</a></li>
-	            	<li><a th:href="@{/}" data-toggle="tooltip" title="회사소개">Working</a></li>
-	            	<li><a th:href="@{/cooking/list}" data-toggle="tooltip" title="회사소개">Cooking Class</a></li>
-	            	<li><a th:href="@{/}" data-toggle="tooltip" title="회사소개">Connect us</a></li>
+	            	<li><a th:href="@{/cooking/list}" data-toggle="tooltip" title="쿠킹클래스">Cooking Class</a></li>
+	            	<li><a th:href="@{/}" data-toggle="tooltip" title="연락하기">Connect us</a></li>
             	</ul>
                 <ul class="nav navbar-nav navbar-right navbar-uppercase">
                     <li sec:authorize="isAuthenticated()">
@@ -53,9 +52,9 @@
                             <i class="fa fa-share-alt"></i> Share
                         </a>
                         <ul class="dropdown-menu dropdown-danger">
-                            <li><a href="#"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+                            <li><a href="https://www.facebook.com/HappyRecipeK/"><i class="fa fa-facebook-square"></i> Facebook</a></li>
                             <!-- <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li> -->
-                            <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+                            <li><a href="https://www.instagram.com/happy_recipe_k"><i class="fa fa-instagram"></i> Instagram</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -133,7 +132,7 @@
 	<th:block layout:fragment="custom_script">
 	</th:block>
 	<!-- Footer : S -->
-	<footer class="footer footer-big footer-color-black" data-color="black">
+	<footer class="footer footer-big footer-color-gray" data-color="black">
         <div class="container">
             <div class="row">
                 <div class="col-md-2 col-sm-3">
@@ -207,7 +206,7 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a th:href="@{https://www.facebook.com/Happyrecipek-1853896101539012/}" class="btn btn-social btn-facebook btn-simple">
+                                    <a th:href="@{https://www.facebook.com/HappyRecipeK/}" class="btn btn-social btn-facebook btn-simple">
                                         <i class="fa fa-facebook-square"></i> Facebook
                                     </a>
                                 </li>
@@ -217,7 +216,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="btn btn-social btn-youtube btn-simple">
+                                    <a th:href="@{https://www.youtube.com/channel/UC7f85ApuuOnQeCBqPWtTHDA}" class="btn btn-social btn-youtube btn-simple">
                                         <i class="fa fa-youtube"></i> Youtube
                                     </a>
                                 </li>

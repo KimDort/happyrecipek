@@ -5,7 +5,7 @@
 	xmlns:sec="http://www.springframework.org/schema/security"
 	layout:decorator="layout/pc/default">
 <head>
-<title>Happy Recipe K - Cooking Class</title>
+<title>Happy Recipe K - Company Introduce</title>
 <th:block layout:fragment="custom_css">
 	<style>
 		.main-raised {
@@ -38,7 +38,7 @@
 		}
 		
 		.slick-slide img {
-		    width: 250px;
+		    width: 300px;
 		}
 		
 		.slick-slider
@@ -163,8 +163,6 @@
 	                    <div class="title-area">
 	                        <h1 class="title-modern">Happy Recipe K</h1>
 	                        <p>Welcome To Happy Recipe K</p>
-	                        <!-- <h3>Welcome to Happy Recipe K</h3>
-	                        <h3>This Company is Recipe Create, Food Styling, Table Coordinate, Menu Consultant, Etc..</h3> -->
 	                        <div class="separator line-separator">♦</div>
 	                    </div>
 	                </div>
@@ -187,9 +185,48 @@
 										</div>
 										<div class="col-md-12">
 											<div class="col-md-12" style="margin: 0">
-												<h3><span class="glyphicon glyphicon-asterisk"></span> Company Name</h3>
+												<h3><span class="glyphicon glyphicon-asterisk"></span> Company Name / 회사명</h3>
 												<div class="page-header col-md-12" style="margin: 0">
 													<h5><span class="glyphicon glyphicon-chevron-right"></span> Happy Recipe K / 해피레시피케이</h5>
+												</div>
+												<h3><span class="glyphicon glyphicon-asterisk"></span> CEO Name / 대표명</h3>
+												<div class="page-header col-md-12" style="margin: 0">
+													<h5><span class="glyphicon glyphicon-chevron-right"></span> Ninagi Kayo / 니나기 카요(蜷木　佳代)</h5>
+												</div>
+												<h3><span class="glyphicon glyphicon-asterisk"></span> CEO Introduce / 대표 소개</h3>
+												<div class="page-header col-md-12" style="margin: 0">
+													<h5><span class="glyphicon glyphicon-chevron-right"></span>출생지</h5>
+													<ul>
+														<li>키타큐슈</li>
+													</ul>
+													<h5><span class="glyphicon glyphicon-chevron-right"></span>연혁</h5>
+													<ul>
+														<li>(주)Happy Recipe K 일본 본사 설립</li>
+														<li>Happy Recipe K 한국 지사 설립</li>
+													</ul>
+													<h5><span class="glyphicon glyphicon-chevron-right"></span>자격증 및 협회</h5>
+													<ul>
+														<li>푸드스타일 리스트</li>
+														<li>식건강 코디네이트 협회 회원</li>
+														<li>일본푸드라이센스국제협회회원</li>
+														<li>요리기술검정고급취득</li>
+													</ul>
+													<h5><span class="glyphicon glyphicon-chevron-right"></span>교육 이력</h5>
+													<ul>
+														<li>요리연구가 [Aikawa]선생님께 20년 동안 일본 요리 및 세계요리 공부 및 전수받음</li>
+														<li>한국어 유학을 마친 후, 한국요리 공부를 위한 요리 한국 유학</li>
+														<li>궁중음식요리연구원에서 기초 요리 코스, 한국요리비법전수과정 수료</li>
+														<li>한국전통음식연구소에서 김치, 한국 디저트, 발효음식과정 수료</li>
+														<li>사찰약선요리 및 떡 등 한국음식 강의 수료</li>
+													</ul>
+													<h5><span class="glyphicon glyphicon-chevron-right"></span>활동 이력</h5>
+													<ul>
+														<li>Food Creator로 활동</li>
+														<li>한국어 유학을 마친 후, 한국요리 공부를 위한 요리 한국 유학</li>
+														<li>기업, 일반음식점포 등 대상으로 요리 메뉴, 레시피, 개발 등 컨설턴팅 진행</li>
+														<li>2018년 키타큐슈 시 의뢰로 한국인을 위한 정보지[키타큐슈 레시피 북]제작</li>
+														<li>마린 멧세 후쿠오카 도자기 박람회에서 한국 테이블 세팅 강연</li>
+													</ul>
 												</div>
 											</div>
 										</div>
@@ -209,13 +246,12 @@
 															 	<img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_008.jpg}">
 															 </div>
 															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_004.jpg}"></div>
-															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_005.jpg}"></div>
 															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_006.jpg}"></div>
 															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_007.jpg}"></div>
 														</section>
 													</div>
 												</div>
-												<div class="page-header col-md-12" style="margin: 0">
+												<div class="page-header col-md-12" style="margin: 0;margin-top: 20px;">
 													<h5><span class="glyphicon glyphicon-chevron-down"></span>Food Recipe Creator & Styling</h5>
 													<div class="col-md-12">
 														<section class="foodCreator slider">
@@ -232,7 +268,7 @@
 														</section>
 													</div>
 												</div>
-												<div class="page-header col-md-12" style="margin: 0">
+												<div class="page-header col-md-12" style="margin: 0;margin-top: 20px;margin-bottom: 30px;">
 													<h5><span class="glyphicon glyphicon-chevron-down"></span>Cook Teacher</h5>
 													<div class="col-md-12">
 														<section class="cookTeacher slider">
@@ -240,11 +276,6 @@
 															 	<img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_002.jpg}">
 															 	<img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_003.jpg}">
 															 </div>
-															 <div class="slide">
-															 	<img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_004.jpg}">
-															 	<img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_005.jpg}">
-															 </div>
-															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_006.jpg}"></div>
 															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_007.jpg}"></div>
 															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_008.jpg}"></div>
 															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_009.jpg}"></div>
@@ -267,7 +298,7 @@
 		<script>
 			$(document).ready(function(){
 			    $('.tableCoordinator').slick({
-			        slidesToShow: 4,
+			        slidesToShow: 3,
 			        slidesToScroll: 1,
 			        autoplay: true,
 			        autoplaySpeed: 4000,
@@ -288,7 +319,7 @@
 			    });
 			    
 			    $('.foodCreator').slick({
-			        slidesToShow: 4,
+			        slidesToShow: 3,
 			        slidesToScroll: 1,
 			        autoplay: true,
 			        autoplaySpeed: 3500,
@@ -309,7 +340,7 @@
 			    });
 			    
 			    $('.cookTeacher').slick({
-			        slidesToShow: 4,
+			        slidesToShow: 3,
 			        slidesToScroll: 1,
 			        autoplay: true,
 			        autoplaySpeed: 2500,
