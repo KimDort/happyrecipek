@@ -1,173 +1,117 @@
 <!DOCTYPE html>
-<html 
-	xmlns="http://www.w3.org/1999/xhtml" 
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.springframework.org/schema/security"
 	layout:decorator="layout/pc/default">
-	<head>
-		<title>Happy Recipe K</title>
-		<th:block layout:fragment="custom_css">
-			
-		</th:block>
-	</head>
-	<body>
-		<div layout:fragment="content">
-			<!-- Section Header : S -->
-			<div class="section section-header">
-				<!-- Carousel : S -->
-					<div id="myCarousel" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						    <li data-target="#myCarousel" data-slide-to="1"></li>
-						    <li data-target="#myCarousel" data-slide-to="2"></li>
-						</ol>
-						
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner">
-							<div class="item active">
-								<div class="parallax filter filter-color-black">
-						            <div class="image" style="background-image: url('/assets/img/index/header-1.jpg')"></div>
-						            <div class="container">
-						                <div class="content">
-						                    <div class="title-area">
-						                        <h1 class="title-modern">Happy Recipe K</h1>
-						                        <p>테이블 코디네이터 / Table Coordinator</p>
-						                        <!-- <h3>Welcome to Happy Recipe K</h3>
+<head>
+<title>Happy Recipe K</title>
+<th:block layout:fragment="custom_css">
+
+</th:block>
+</head>
+<body>
+	<div layout:fragment="content">
+		<!-- Section Header : S -->
+		<div class="section section-header">
+			<!-- Carousel : S -->
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner">
+					<div class="item active">
+						<div class="parallax filter filter-color-black">
+							<div class="image"
+								style="background-image: url('/assets/img/index/header-1.jpg')"></div>
+							<div class="container">
+								<div class="content">
+									<div class="title-area">
+										<h1 class="title-modern">Happy Recipe K</h1>
+										<p>테이블 코디네이터 / Table Coordinator</p>
+										<!-- <h3>Welcome to Happy Recipe K</h3>
 						                        <h3>This Company is Recipe Create, Food Styling, Table Coordinate, Menu Consultant, Etc..</h3> -->
-						                        <div class="separator line-separator">♦</div>
-						                    </div>
-						                </div>
-						            </div>
-						        </div>
-							</div>
-							<div class="item">
-								<div class="parallax filter filter-color-black">
-						            <div class="image" style="background-image: url('/assets/img/index/header-2.jpg')"></div>
-						            <div class="container">
-						                <div class="content">
-						                    <div class="title-area">
-						                        <h1 class="title-modern">Happy Recipe K</h1>
-						                        <p>푸드 스타일링 / Food Styling</p>
-						                        <!-- <h3>Welcome to Happy Recipe K</h3>
-						                        <h3>This Company is Recipe Create, Food Styling, Table Coordinate, Menu Consultant, Etc..</h3> -->
-						                        <div class="separator line-separator">♦</div>
-						                    </div>
-						                </div>
-						            </div>
-						        </div>
-							</div>
-							<div class="item">
-								<div class="parallax filter filter-color-black">
-						            <div class="image" style="background-image: url('/assets/img/index/header-3.jpg')"></div>
-						            <div class="container">
-						                <div class="content">
-						                    <div class="title-area">
-						                        <h1 class="title-modern">Happy Recipe K</h1>
-						                        <p>푸드 크리에이터 / Food Creator</p>
-						                        <!-- <h3>Welcome to Happy Recipe K</h3>
-						                        <h3>This Company is Recipe Create, Food Styling, Table Coordinate, Menu Consultant, Etc..</h3> -->
-						                        <div class="separator line-separator">♦</div>
-						                    </div>
-						                </div>
-						            </div>
-						        </div>
+										<div class="separator line-separator">♦</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				<!-- Carousel : E -->
-		    </div>
-		    <!-- Section Header : E -->
-		    
-		    <div class="section">
-		    	<div class="container">
-		    		<div class="row">
-		    			<div class="title-area">
-		    				<h2>Food & Recipe Created</h2>
-		    				<div class="separator separator-danger">✻</div>
-		    				<p class="description">제대로 된 요리들을 알려드립니다.</p>
-		    				<p class="description">I will you about proper dishes.</p>
-		    			</div>
-		    		</div>
-		    		<div class="row">
-		    			<div class="col-md-4">
-		    				<div class="info-icon">
-		    					<div class="media">
-                        			<div class="media-left">
-                        				<a href="/introduce">
-                        					<img th:src="@{/assets/img/index/food-create-media-001.jpg}" class="media-object" style="width: 100%">
-                        				</a>
-                        			</div>
-                        		</div>
-                        		<h3>일본 음식 / Japanese Food</h3>
-                     			<p class="description"><h6>전통 일본요리 및 가정식 요리 등을 문화와 함께 재미있게 알려드릴 수 있습니다.</h6></p>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4">
-		    				<div class="info-icon">
-		    					<div class="media">
-                        			<div class="media-left">
-                        				<a href="/introduce">
-                        					<img th:src="@{/assets/img/index/food-create-media-002.jpg}" class="media-object" style="width: 100%">
-                        				</a>
-                        			</div>
-                        		</div>
-                        		<h3>한국 음식 / Korean Food</h3>
-                     			<p class="description"><h6>전통음식요리연구소, 궁중음식연구원 과정 수료로 한국 음식의 깊이 있게 공부하였습니다.</h6></p>
-		    				</div>
-		    			</div>
-		    			<div class="col-md-4">
-		    				<div class="info-icon">
-		    					<div class="media">
-                        			<div class="media-left">
-                        				<a href="/introduce">
-                        					<img th:src="@{/assets/img/index/food-create-media-003.jpg}" class="media-object" style="width: 100%">
-                        				</a>
-                        			</div>
-                        		</div>
-                        		<h3>다른 나라 음식 / Other Country Food</h3>
-                     			<p class="description"><h6>프랑스 <a th:href="@{https://www.cordonbleu.edu/home/ko}">르 꼬르동 블루</a>출신 선생님께 유럽 전역의 음식 문화 및 요리 방법 등을 배웠습니다.</h6></p>
-		    				</div>
-		    			</div>
-		    		</div>
-		    	</div>
-		    </div>
-		    <!-- Section Cooking Class : S -->
-		<div class="section section-our-team-freebie">
-			<div class="parallax filter filter-color-black">
-				<div class="image"
-					style="background-image: url('/assets/img/index/header-3.jpg')"></div>
-				<div class="container">
-					<div class="content">
-						<div class="row">
-							<div class="title-area">
-								<h1 class="title-modern">Cooking Class</h1>
-								<p>2019. 2 ~ 3</p>
+					<div class="item">
+						<div class="parallax filter filter-color-black">
+							<div class="image"
+								style="background-image: url('/assets/img/index/header-2.jpg')"></div>
+							<div class="container">
+								<div class="content">
+									<div class="title-area">
+										<h1 class="title-modern">Happy Recipe K</h1>
+										<p>푸드 스타일링 / Food Styling</p>
+										<!-- <h3>Welcome to Happy Recipe K</h3>
+						                        <h3>This Company is Recipe Create, Food Styling, Table Coordinate, Menu Consultant, Etc..</h3> -->
+										<div class="separator line-separator">♦</div>
+									</div>
+								</div>
 							</div>
 						</div>
+					</div>
+					<div class="item">
+						<div class="parallax filter filter-color-black">
+							<div class="image"
+								style="background-image: url('/assets/img/index/header-3.jpg')"></div>
+							<div class="container">
+								<div class="content">
+									<div class="title-area">
+										<h1 class="title-modern">Happy Recipe K</h1>
+										<p>푸드 크리에이터 / Food Creator</p>
+										<!-- <h3>Welcome to Happy Recipe K</h3>
+						                        <h3>This Company is Recipe Create, Food Styling, Table Coordinate, Menu Consultant, Etc..</h3> -->
+										<div class="separator line-separator">♦</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Carousel : E -->
+		</div>
+		<!-- Section Header : E -->
+		<!-- Section Work : S -->
+		<div class="section">
+			<div class="container">
+				<div class="content">
+					<div class="row">
+						<div class="title-area">
+							<h1 class="title-modern">Cooking Class</h1>
+							<p>2019. 2 ~ 3</p>
+						</div>
+					</div>
 
-						<div class="team">
-							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
-									<div class="row">
-										<div class="col-md-4" th:each="class, index : ${classList}">
-											<div class="card card-member" th:onclick="'openClassModal(\'' + ${class.classSeq} + '\')'">
-												<div class="content">
-													<div class="avatar avatar-danger">
-														<img class="img-round"
-															th:src="${class.fileInfo.commonFileThumbWebUrl}+${class.fileInfo.commonFileCopyName}"
-															style="border-radius: 10%;" />
-													</div>
-													<div class="description">
-														<h3 class="title"
-															th:text="${#strings.abbreviate(class.classTitle, 25)}"></h3>
-														<div th:each="classDate : ${class.classDateManage}">
-															<p class="small-text"
-																th:text="${classDate.classStartDay}"></p>
-															<p class="small-text"
-																th:text="${classDate.classStartTime}"></p>
-															<p class="description"></p>
-														</div>
+					<div class="team">
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1">
+								<div class="row">
+									<div class="col-md-4" th:each="class, index : ${classList}">
+										<div class="card card-member"
+											th:onclick="'openClassModal(\'' + ${class.classSeq} + '\')'">
+											<div class="content">
+												<div class="avatar avatar-danger">
+													<img class="img-round"
+														th:src="${class.fileInfo.commonFileThumbWebUrl}+${class.fileInfo.commonFileCopyName}"
+														style="border-radius: 10%;" />
+												</div>
+												<div class="description">
+													<h3 class="title"
+														th:text="${#strings.abbreviate(class.classTitle, 25)}"></h3>
+													<div th:each="classDate : ${class.classDateManage}">
+														<p class="small-text" th:text="${classDate.classStartDay}"></p>
+														<p class="small-text"
+															th:text="${classDate.classStartTime}"></p>
+														<p class="description"></p>
 													</div>
 												</div>
 											</div>
@@ -180,179 +124,272 @@
 				</div>
 			</div>
 		</div>
-		<!-- Section Cooking Class : E -->
-		   <!-- Section How It Work : S -->
-		    <div class="section">
-		    	<div class="container">
-		    		<div class="row">
-		    			<div class="title-area">
-		    				<h2>How it works</h2>
-		    				<div class="separator separator-danger">✻</div>
-		    			</div>
-		    		</div>
-		    		<div class="row">
-						<div class="col-md-4">
-							<div class="card card-member">
-								<div class="content">
-									<div class="avatar avatar-danger">
-										<img class="img-round" src="/assets/img/index/table-coordinate.png" style="border-radius: 10%;"/>
-                                        </div>
-                                        <div class="description">
-                                            <h3 class="title">Table Coordinate</h3>
-                                            <p class="small-text">테이블 코디네이터</p>
-                                            <p class="description">감각적인 센스로 각 요리마다 멋진 분위기를 연출 할 수 있습니다.</p>
-                                        </div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card card-member">
-								<div class="content">
-									<div class="avatar avatar-danger">
-                                              <img class="img-round" src="/assets/img/index/female-cook.png" style="border-radius: 10%;"/>
-                                          </div>
-                                          <div class="description">
-                                              <h3 class="title">Food&Recipe Create</h3>
-                                              <p class="small-text">요리&레시피 제작</p>
-                                              <p class="description">원하는 요리를 개성 있고 맛있게 레시피를 제작 합니다.</p>
-                                          </div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card card-member">
-								<div class="content">
-									<div class="avatar avatar-danger">
-                                              <img class="img-round" src="/assets/img/index/idea-icon-png-11.png" style="border-radius: 10%;"/>
-                                          </div>
-                                          <div class="description">
-                                              <h3 class="title">Consulting</h3>
-                                              <p class="small-text">컨설팅</p>
-                                              <p class="description">음식점 메뉴 및 음식 개발 및 사후 서비스까지 맞춤 컨설팅을 제공합니다.</p>
-                                          </div>
-								</div>
-							</div>
+		<!-- Section Work : E -->
+		<!-- Section Cooking Class : S -->
+		<div class="section section-our-team-freebie">
+			<div class="parallax filter filter-color-black">
+				<div class="image"
+					style="background-image: url('/assets/img/index/header-3.jpg')"></div>
+				<div class="container">
+					<div class="row">
+						<div class="title-area">
+							<h2>Food & Recipe Created</h2>
+							<div class="separator separator-danger">✻</div>
+							<p class="description">제대로 된 요리들을 알려드립니다.</p>
+							<p class="description">I will you about proper dishes.</p>
 						</div>
 					</div>
-		    	</div>
-		    </div>
-			<!-- Section How It Work : E -->
-		   	<!-- Section Contact Us : S -->
-		   	<div class="section section-our-team-freebie">
-		   		<div class="parallax filter filter-color-black">
-		   			<div class="image" style="background-image:url('/assets/img/index/header-3.jpg')"></div>
-		   			<div class="container">
-		    			<div class="content">
-		    				<div class="row">
-		    					<div class="title-area">
-									<h2>Contact Us</h2>
-									<div class="separator separator-danger">✻</div>
-			                    </div>
-		    				</div>
-		    				
-		    				<div class="team">
-		    					<div class="row">
-		    						<div class="col-md-10 col-md-offset-1">
-		    							<div class="row">
-		    								<div class="col-md-4">
-		    									<div class="card card-member">
-		    										<div class="content">
-		    											<div class="avatar avatar-danger">
-		    												
-		                                                </div>
-		                                                <div class="description">
-		                                                    <h3 class="title" id="plusfriend-addfriend-button">
-		                                                    	<img class="img-round" src="/assets/img/index/contact_kakao.png" style="border-radius: 10%;"/>
-		                                                    </h3>
-		                                                    <p class="small-text">Kakao Plus Friends</p>
-		                                                    <p class="description">카카오 플러스 친구</p>
-		                                                </div>
-		    										</div>
-		    									</div>
-		    								</div>
-		    								<div class="col-md-4">
-		    									<div class="card card-member">
-		    										<div class="content">
-		    											<div class="avatar avatar-danger">
-		                                                    <img class="img-round" src="/assets/img/index/mail-send.png" style="border-radius: 10%;"/>
-		                                                </div>
-		                                                <div class="description">
-		                                                    <h3 class="title">
-		                                                    	<img alt="" th:src="@{/assets/img/index/gmail.png}" style="width:50px;-webkit-filter: grayscale(100%);filter: grayscale(100%);">
-		                                                    </h3>
-		                                                    <p class="small-text">Gmail : <a th:href="@{mailto:happyrecipek@naver.com}">happyrecipek@naver.com</a></p>
-		                                                    <p class="description">구글 G메일</p>
-		                                                </div>
-		    										</div>
-		    									</div>
-		    								</div>
-		    								
-		    							</div>
-		    						</div>
-		    					</div>
-		    				</div>
-		    			</div>
-		    		</div>
-		   		</div>
-		   		<!-- Class Modal : S -->
-				<!-- Modal -->
-				<div id="classModal" class="modal fade" role="dialog">
-					<div class="modal-dialog">
-						<!-- Modal content-->
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title" id="modal-header"></h4>
-							</div>
-							<div class="modal-body" id="modal-body">
-								
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="info-icon">
+								<div class="media">
+									<div class="media-left">
+										<a href="/introduce"> <img
+											th:src="@{/assets/img/index/food-create-media-001.jpg}"
+											class="media-object" style="width: 100%">
+										</a>
+									</div>
+								</div>
+								<h3>일본 음식 / Japanese Food</h3>
+								<p class="description">
+								<h6>전통 일본요리 및 가정식 요리 등을 문화와 함께 재미있게 알려드릴 수 있습니다.</h6>
+								</p>
 							</div>
 						</div>
-			
+						<div class="col-md-4">
+							<div class="info-icon">
+								<div class="media">
+									<div class="media-left">
+										<a href="/introduce"> <img
+											th:src="@{/assets/img/index/food-create-media-002.jpg}"
+											class="media-object" style="width: 100%">
+										</a>
+									</div>
+								</div>
+								<h3>한국 음식 / Korean Food</h3>
+								<p class="description">
+								<h6>전통음식요리연구소, 궁중음식연구원 과정 수료로 한국 음식의 깊이 있게 공부하였습니다.</h6>
+								</p>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="info-icon">
+								<div class="media">
+									<div class="media-left">
+										<a href="/introduce"> <img
+											th:src="@{/assets/img/index/food-create-media-003.jpg}"
+											class="media-object" style="width: 100%">
+										</a>
+									</div>
+								</div>
+								<h3>다른 나라 음식 / Other Country Food</h3>
+								<p class="description">
+								<h6>
+									프랑스 <a th:href="@{https://www.cordonbleu.edu/home/ko}">르
+										꼬르동 블루</a>출신 선생님께 유럽 전역의 음식 문화 및 요리 방법 등을 배웠습니다.
+								</h6>
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
-				<!-- Class Modal : E -->
-		   	</div>
-		    <!-- Section Contact Us : E -->
+			</div>
 		</div>
-		<th:block layout:fragment="custom_script">
-			<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-			<script type='text/javascript'>
-			    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-			    Kakao.init('fa2898cddd176380bd1c3c8bb9c3ad88');
-			    // 플러스친구 친구추가 버튼을 생성합니다.
-			    Kakao.PlusFriend.createAddFriendButton({
-			      container: '#plusfriend-addfriend-button',
-			      plusFriendId: '_fScmj', // 플러스친구 홈 URL에 명시된 id로 설정합니다.
-			      color: 'black'
-			    });
-			    function openClassModal(getSeq){
-					$("#modal-header").text("");
-					$("#modal-body").empty();
-					
-					$.ajax({
-						url:"/cooking/detail?classSeq="+getSeq
-						, type :"GET"
-						, success : function(data){
-							$.each(data, function(key, value){
-								if(key=="classTitle"){
-									$("#modal-header").text(value);
-								}else if(key=="classContent"){
-									var str="";
-									str += '<div style="width:100%">';
-									str += value;
-									str += '</div>';
-									$("#modal-body").append(str);
-								}
-							});
-						}
-					});
-					$("#classModal").modal();
-				}
-			</script>
-		</th:block>
-	</body>
+		<!-- Section Cooking Class : E -->
+		<!-- Section How It Work : S -->
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<div class="title-area">
+						<h2>How it works</h2>
+						<div class="separator separator-danger">✻</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="card card-member">
+							<div class="content">
+								<div class="avatar avatar-danger">
+									<img class="img-round"
+										src="/assets/img/index/table-coordinate.png"
+										style="border-radius: 10%;" />
+								</div>
+								<div class="description">
+									<h3 class="title">Table Coordinate</h3>
+									<p class="small-text">테이블 코디네이터</p>
+									<p class="description">감각적인 센스로 각 요리마다 멋진 분위기를 연출 할 수 있습니다.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card card-member">
+							<div class="content">
+								<div class="avatar avatar-danger">
+									<img class="img-round" src="/assets/img/index/female-cook.png"
+										style="border-radius: 10%;" />
+								</div>
+								<div class="description">
+									<h3 class="title">Food&Recipe Create</h3>
+									<p class="small-text">요리&레시피 제작</p>
+									<p class="description">원하는 요리를 개성 있고 맛있게 레시피를 제작 합니다.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card card-member">
+							<div class="content">
+								<div class="avatar avatar-danger">
+									<img class="img-round"
+										src="/assets/img/index/idea-icon-png-11.png"
+										style="border-radius: 10%;" />
+								</div>
+								<div class="description">
+									<h3 class="title">Consulting</h3>
+									<p class="small-text">컨설팅</p>
+									<p class="description">음식점 메뉴 및 음식 개발 및 사후 서비스까지 맞춤 컨설팅을
+										제공합니다.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Section How It Work : E -->
+		<!-- Section Contact Us : S -->
+		<div class="section section-our-team-freebie">
+			<div class="parallax filter filter-color-black">
+				<div class="image"
+					style="background-image: url('/assets/img/index/header-3.jpg')"></div>
+				<div class="container">
+					<div class="content">
+						<div class="row">
+							<div class="title-area">
+								<h2>Contact Us</h2>
+								<div class="separator separator-danger">✻</div>
+							</div>
+						</div>
+
+						<div class="team">
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<div class="row">
+										<div class="col-md-4">
+											<div class="card card-member">
+												<div class="content">
+													<div class="avatar avatar-danger"></div>
+													<div class="description">
+														<h3 class="title" id="plusfriend-addfriend-button">
+															<img class="img-round"
+																src="/assets/img/index/contact_kakao.png"
+																style="border-radius: 10%;" />
+														</h3>
+														<p class="small-text">Kakao Plus Friends</p>
+														<p class="description">카카오 플러스 친구</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="card card-member">
+												<div class="content">
+													<div class="avatar avatar-danger">
+														<img class="img-round"
+															src="/assets/img/index/mail-send.png"
+															style="border-radius: 10%;" />
+													</div>
+													<div class="description">
+														<h3 class="title">
+															<img alt="" th:src="@{/assets/img/index/gmail.png}"
+																style="width: 50px; -webkit-filter: grayscale(100%); filter: grayscale(100%);">
+														</h3>
+														<p class="small-text">
+															Gmail : <a th:href="@{mailto:happyrecipek@gmail.com}">happyrecipek@gmail.com</a>
+														</p>
+														<p class="description">구글 G메일</p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Class Modal : S -->
+			<!-- Modal -->
+			<div id="classModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title" id="modal-header"></h4>
+						</div>
+						<div class="modal-body" id="modal-body"></div>
+						<div class="page-header col-md-12">
+							<h5><span class="glyphicon glyphicon-chevron-down"></span>Kakao Plus Friend / 카카오 플러스 친구</h5>
+							<h3 class="title" id="modal-plusfriend-addfriend-button">
+							</h3>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- Class Modal : E -->
+		</div>
+		<!-- Section Contact Us : E -->
+	</div>
+	<th:block layout:fragment="custom_script">
+		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+		<script type='text/javascript'>
+			// 사용할 앱의 JavaScript 키를 설정해 주세요.
+			Kakao.init('fa2898cddd176380bd1c3c8bb9c3ad88');
+			// 플러스친구 친구추가 버튼을 생성합니다.
+			Kakao.PlusFriend.createAddFriendButton({
+				container : '#plusfriend-addfriend-button',
+				plusFriendId : '_fScmj', // 플러스친구 홈 URL에 명시된 id로 설정합니다.
+				color : 'black'
+			});
+			
+			Kakao.PlusFriend.createAddFriendButton({
+				container : '#modal-plusfriend-addfriend-button',
+				plusFriendId : '_fScmj', // 플러스친구 홈 URL에 명시된 id로 설정합니다.
+				color : 'black'
+			});
+			function openClassModal(getSeq) {
+				$("#modal-header").text("");
+				$("#modal-body").empty();
+
+				$.ajax({
+					url : "/cooking/detail?classSeq=" + getSeq,
+					type : "GET",
+					success : function(data) {
+						$.each(data, function(key, value) {
+							if (key == "classTitle") {
+								$("#modal-header").text(value);
+							} else if (key == "classContent") {
+								var str = "";
+								str += '<div style="width:100%">';
+								str += value;
+								str += '</div>';
+								$("#modal-body").append(str);
+							}
+						});
+					}
+				});
+				$("#classModal").modal();
+			}
+		</script>
+	</th:block>
+</body>
 </html>

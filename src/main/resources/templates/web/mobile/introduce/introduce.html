@@ -5,77 +5,363 @@
 	xmlns:sec="http://www.springframework.org/schema/security"
 	layout:decorator="layout/pc/default">
 <head>
-<title>Happy Recipe K - Cooking Class</title>
+<title>Happy Recipe K - Company Introduce</title>
 <th:block layout:fragment="custom_css">
+	<style>
+		.main-raised {
+		    margin: 180px 0 0;
+		    padding:0;
+		    border-radius: 6px;
+		    box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+		}
+		.main {
+		    background: #FFF;
+		    position: relative;
+		    z-index: 3;
+		}
+		.rounded-circle {
+		    border-radius: 50%!important;
+		}
+		.img-fluid, .img-thumbnail {
+		    max-width: 100%;
+		    height: auto;
+		}
+		.img-raised {
+		    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+		}
+		.profile-content{
+			margin-top: -180px;
+		}
+		/* Slider */
+		.slick-slide {
+		    margin: 0px
+		}
+		
+		.slick-slide img {
+		    width: 300px;
+		}
+		
+		.slick-slider
+		{
+		    position: relative;
+		    display: block;
+		    box-sizing: border-box;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		            user-select: none;
+		    -webkit-touch-callout: none;
+		    -khtml-user-select: none;
+		    -ms-touch-action: pan-y;
+		        touch-action: pan-y;
+		    -webkit-tap-highlight-color: transparent;
+		}
+		
+		.slick-list
+		{
+		    position: relative;
+		    display: block;
+		    overflow: hidden;
+		    margin: 0;
+		    padding: 0;
+		}
+		.slick-list:focus
+		{
+		    outline: none;
+		}
+		.slick-list.dragging
+		{
+		    cursor: pointer;
+		    cursor: hand;
+		}
+		
+		.slick-slider .slick-track,
+		.slick-slider .slick-list
+		{
+		    -webkit-transform: translate3d(0, 0, 0);
+		       -moz-transform: translate3d(0, 0, 0);
+		        -ms-transform: translate3d(0, 0, 0);
+		         -o-transform: translate3d(0, 0, 0);
+		            transform: translate3d(0, 0, 0);
+		}
+		
+		.slick-track
+		{
+		    position: relative;
+		    top: 0;
+		    left: 0;
+		    display: block;
+		}
+		.slick-track:before,
+		.slick-track:after
+		{
+		    display: table;
+		    content: '';
+		}
+		.slick-track:after
+		{
+		    clear: both;
+		}
+		.slick-loading .slick-track
+		{
+		    visibility: hidden;
+		}
+		
+		.slick-slide
+		{
+		    display: none;
+		    float: left;
+		    height: auto;
+		    min-height: 1px;
+		}
+		[dir='rtl'] .slick-slide
+		{
+		    float: right;
+		}
+		.slick-slide img
+		{
+		    display: block;
+		}
+		.slick-slide.slick-loading img
+		{
+		    display: none;
+		}
+		.slick-slide.dragging img
+		{
+		    pointer-events: none;
+		}
+		.slick-initialized .slick-slide
+		{
+		    display: block;
+		}
+		.slick-loading .slick-slide
+		{
+		    visibility: hidden;
+		}
+		.slick-vertical .slick-slide
+		{
+		    display: block;
+		    height: auto;
+		    border: 1px solid transparent;
+		}
+		.slick-arrow.slick-hidden {
+		    display: none;
+		}
+	</style>
 </th:block>
 </head>
 <body>
 	<div layout:fragment="content" class="content">
+		<!-- Section Header : S -->
+		<div class="section section-header">
+			<div class="parallax filter filter-color-black">
+	            <div class="image">
+					<iframe width="100%" height="100%" src="https://www.youtube.com/embed/y4RDmI7caQQ?&autoplay=1" frameborder="0" allow="autoplay;" allowfullscreen></iframe>            
+	            </div>
+	            <div class="container">
+	                <div class="content">
+	                    <div class="title-area">
+	                        <h1 class="title-modern">Happy Recipe K</h1>
+	                        <p>Welcome To Happy Recipe K</p>
+	                        <div class="separator line-separator">♦</div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+		</div>
 		<div class="container">
 			<div class="row">
-				<div class="page-header">
-					<h1 id="">Happy Recipe K - Introduce</h1>
+				<div class="main main-raised col-md-12">
+					<div class="profile-content">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="profile">
+										<div class="avatar" style="border: 0px;padding-bottom: 10px;">
+											<img th:src="@{/assets/img/logo.jpg}" alt="Circle Image" class="img-raised rounded-circle img-fluid" style="border: 0px;">
+										</div>
+										<div class="name">
+											<h2 class="title">Welcome to The Happy Recipe K</h2>
+										</div>
+										<div class="col-md-12">
+											<div class="col-md-12" style="margin: 0">
+												<h3><span class="glyphicon glyphicon-asterisk"></span> Company Name / 회사명</h3>
+												<div class="page-header col-md-12" style="margin: 0">
+													<h5><span class="glyphicon glyphicon-chevron-right"></span> Happy Recipe K / 해피레시피케이</h5>
+												</div>
+												<h3><span class="glyphicon glyphicon-asterisk"></span> CEO Name / 대표명</h3>
+												<div class="page-header col-md-12" style="margin: 0">
+													<h5><span class="glyphicon glyphicon-chevron-right"></span> Ninagi Kayo / 니나기 카요(蜷木　佳代)</h5>
+												</div>
+												<h3><span class="glyphicon glyphicon-asterisk"></span> CEO Introduce / 대표 소개</h3>
+												<div class="page-header col-md-12" style="margin: 0">
+													<h5><span class="glyphicon glyphicon-chevron-right"></span>출생지</h5>
+													<ul>
+														<li>키타큐슈</li>
+													</ul>
+													<h5><span class="glyphicon glyphicon-chevron-right"></span>연혁</h5>
+													<ul>
+														<li>(주)Happy Recipe K 일본 본사 설립</li>
+														<li>Happy Recipe K 한국 지사 설립</li>
+													</ul>
+													<h5><span class="glyphicon glyphicon-chevron-right"></span>자격증 및 협회</h5>
+													<ul>
+														<li>푸드스타일 리스트</li>
+														<li>식건강 코디네이트 협회 회원</li>
+														<li>일본푸드라이센스국제협회회원</li>
+														<li>요리기술검정고급취득</li>
+													</ul>
+													<h5><span class="glyphicon glyphicon-chevron-right"></span>교육 이력</h5>
+													<ul>
+														<li>요리연구가 [Aikawa]선생님께 20년 동안 일본 요리 및 세계요리 공부 및 전수받음</li>
+														<li>한국어 유학을 마친 후, 한국요리 공부를 위한 요리 한국 유학</li>
+														<li>궁중음식요리연구원에서 기초 요리 코스, 한국요리비법전수과정 수료</li>
+														<li>한국전통음식연구소에서 김치, 한국 디저트, 발효음식과정 수료</li>
+														<li>사찰약선요리 및 떡 등 한국음식 강의 수료</li>
+													</ul>
+													<h5><span class="glyphicon glyphicon-chevron-right"></span>활동 이력</h5>
+													<ul>
+														<li>Food Creator로 활동</li>
+														<li>한국어 유학을 마친 후, 한국요리 공부를 위한 요리 한국 유학</li>
+														<li>기업, 일반음식점포 등 대상으로 요리 메뉴, 레시피, 개발 등 컨설턴팅 진행</li>
+														<li>2018년 키타큐슈 시 의뢰로 한국인을 위한 정보지[키타큐슈 레시피 북]제작</li>
+														<li>마린 멧세 후쿠오카 도자기 박람회에서 한국 테이블 세팅 강연</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+				                        <div class="col-md-12">
+				                        	<div class="page-header col-md-12" style="margin: 0">
+												<h3><span class="glyphicon glyphicon-asterisk"></span>Company Work</h3>
+												<div class="page-header col-md-12" style="margin: 0">
+													<h5><span class="glyphicon glyphicon-chevron-down"></span>Table Coordinator & Setting</h5>
+													<div class="col-md-12">
+														<section class="tableCoordinator slider">
+															 <div class="slide">
+															 	<img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_001.jpg}">
+															 	<img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_002.jpg}">
+															 </div>
+															 <div class="slide">
+															 	<img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_003.jpg}">
+															 	<img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_008.jpg}">
+															 </div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_004.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_006.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/tablecoordinator/slider_img_007.jpg}"></div>
+														</section>
+													</div>
+												</div>
+												<div class="page-header col-md-12" style="margin: 0;margin-top: 20px;">
+													<h5><span class="glyphicon glyphicon-chevron-down"></span>Food Recipe Creator & Styling</h5>
+													<div class="col-md-12">
+														<section class="foodCreator slider">
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookcreator/slider_img_001.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookcreator/slider_img_002.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookcreator/slider_img_003.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookcreator/slider_img_004.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookcreator/slider_img_005.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookcreator/slider_img_006.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookcreator/slider_img_007.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookcreator/slider_img_008.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookcreator/slider_img_009.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookcreator/slider_img_010.jpg}"></div>
+														</section>
+													</div>
+												</div>
+												<div class="page-header col-md-12" style="margin: 0;margin-top: 20px;margin-bottom: 30px;">
+													<h5><span class="glyphicon glyphicon-chevron-down"></span>Cook Teacher</h5>
+													<div class="col-md-12">
+														<section class="cookTeacher slider">
+															 <div class="slide">
+															 	<img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_002.jpg}">
+															 	<img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_003.jpg}">
+															 </div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_007.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_008.jpg}"></div>
+															 <div class="slide"><img th:src="@{/assets/img/introduce/slider/cookteacher/slider_img_009.jpg}"></div>
+														</section>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="container">
-					<div class="col-md-6">
-						<img alt="" th:src="@{/assets/img/introduce/Introduce_001.jpg}" style="width: 100%"/>
-					</div>
-					<div class="col-md-6">
-						<h1>Happy Recipe K</h1>
-						<p>성명 : 니나기 카요 / Ninagi  Kayo</p>
-						<p>Happy_Recipe_K<br/>
-							🍴ᴄᴏᴏᴋɪɴɢ ᴄʟᴀss🍴<br/>
-							🔹ғᴏᴏᴅ & ᴛᴀʙʟᴇ sᴛʏʟɪsᴛ🔹<br/>
-							🇯🇵ᴊᴀᴘᴀɴ⇄🇰🇷ᴋᴏʀᴇᴀ<br/>
-							🔹한국 서울에서 일식 클래스<br/>
-							🔹일본 후쿠오카 한식 클래스<br/>
-							🇯🇵福岡北九州にて 韓国宮廷料理<br/>
-							韓国家庭料理教室<br/>
-							🇰🇷韓国にて和食教室</p>
-						<p>
-							Connection<br/>
-							<a class="fa fa-instagram fa-2x" th:href="@{https://www.instagram.com/happy_recipe_k/}"></a>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="container">
-					<div class="row">
-						<div class="page-header">
-							<h3 id="">활동 이력</h3>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-4">
-							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_001.jpg}" style="width: 100%"/>
-						</div>
-						<div class="col-sm-4">
-							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_002.jpg}" style="width: 100%"/>
-						</div>
-						<div class="col-sm-4">
-							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_003.jpg}" style="width: 100%"/>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-4">
-							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_004.jpg}" style="width: 100%"/>
-						</div>
-						<div class="col-sm-4">
-							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_005.jpg}" style="width: 100%"/>
-						</div>
-						<div class="col-sm-4">
-							<img alt="" th:src="@{/assets/img/introduce/Introduce_Active_001.jpg}" style="width: 100%"/>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
 			</div>
 		</div>
 	</div>
 	<th:block layout:fragment="custom_script">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+		<script>
+			$(document).ready(function(){
+			    $('.tableCoordinator').slick({
+			        slidesToShow: 1,
+			        slidesToScroll: 1,
+			        autoplay: true,
+			        autoplaySpeed: 4000,
+			        arrows: false,
+			        dots: false,
+			        pauseOnHover: false,
+			        responsive: [{
+			            breakpoint: 768,
+			            settings: {
+			                slidesToShow: 4
+			            }
+			        }, {
+			            breakpoint: 520,
+			            settings: {
+			                slidesToShow: 1
+			            }
+			        }]
+			    });
+			    
+			    $('.foodCreator').slick({
+			        slidesToShow: 1,
+			        slidesToScroll: 1,
+			        autoplay: true,
+			        autoplaySpeed: 3500,
+			        arrows: false,
+			        dots: false,
+			        pauseOnHover: false,
+			        responsive: [{
+			            breakpoint: 768,
+			            settings: {
+			                slidesToShow: 4
+			            }
+			        }, {
+			            breakpoint: 520,
+			            settings: {
+			                slidesToShow: 1
+			            }
+			        }]
+			    });
+			    
+			    $('.cookTeacher').slick({
+			        slidesToShow: 1,
+			        slidesToScroll: 1,
+			        autoplay: true,
+			        autoplaySpeed: 2500,
+			        arrows: false,
+			        dots: false,
+			        pauseOnHover: false,
+			        responsive: [{
+			            breakpoint: 768,
+			            settings: {
+			                slidesToShow: 4
+			            }
+			        }, {
+			            breakpoint: 520,
+			            settings: {
+			                slidesToShow: 1
+			            }
+			        }]
+			    });
+			    
+			});
+		</script>
 	</th:block>
 </body>
 </html>

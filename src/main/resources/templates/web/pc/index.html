@@ -80,9 +80,54 @@
 			<!-- Carousel : E -->
 		</div>
 		<!-- Section Header : E -->
-
+		<!-- Section Work : S -->
 		<div class="section">
 			<div class="container">
+					<div class="content">
+						<div class="row">
+							<div class="title-area">
+								<h1 class="title-modern">Cooking Class</h1>
+							</div>
+						</div>
+
+						<div class="team">
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<div class="row">
+										<div class="col-md-4" th:each="class, index : ${classList}">
+											<div class="card card-member" th:onclick="'openClassModal(\'' + ${class.classSeq} + '\')'">
+												<div class="content">
+													<div class="avatar avatar-danger">
+														<img class="img-round"
+															th:src="${class.fileInfo.commonFileThumbWebUrl}+${class.fileInfo.commonFileCopyName}"
+															style="border-radius: 10%;" />
+													</div>
+													<div class="description">
+														<h3 class="title"
+															th:text="${#strings.abbreviate(class.classTitle, 25)}"></h3>
+														<div th:each="classDate : ${class.classDateManage}">
+															<p class="small-text" th:text="${classDate.classStartDay}"></p>
+															<p class="small-text" th:text="${classDate.classStartTime}"></p>
+															<p class="description"></p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		<!-- Section Work : E -->
+		<!-- Section Cooking Class : S -->
+		<div class="section section-our-team-freebie">
+			<div class="parallax filter filter-color-black">
+				<div class="image"
+					style="background-image: url('/assets/img/index/header-3.jpg')"></div>
+				<div class="container">
 				<div class="row">
 					<div class="title-area">
 						<h2>Food & Recipe Created</h2>
@@ -145,50 +190,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Section Cooking Class : S -->
-		<div class="section section-our-team-freebie">
-			<div class="parallax filter filter-color-black">
-				<div class="image"
-					style="background-image: url('/assets/img/index/header-3.jpg')"></div>
-				<div class="container">
-					<div class="content">
-						<div class="row">
-							<div class="title-area">
-								<h1 class="title-modern">Cooking Class</h1>
-							</div>
-						</div>
-
-						<div class="team">
-							<div class="row">
-								<div class="col-md-10 col-md-offset-1">
-									<div class="row">
-										<div class="col-md-4" th:each="class, index : ${classList}">
-											<div class="card card-member" th:onclick="'openClassModal(\'' + ${class.classSeq} + '\')'">
-												<div class="content">
-													<div class="avatar avatar-danger">
-														<img class="img-round"
-															th:src="${class.fileInfo.commonFileThumbWebUrl}+${class.fileInfo.commonFileCopyName}"
-															style="border-radius: 10%;" />
-													</div>
-													<div class="description">
-														<h3 class="title"
-															th:text="${#strings.abbreviate(class.classTitle, 25)}"></h3>
-														<div th:each="classDate : ${class.classDateManage}">
-															<p class="small-text" th:text="${classDate.classStartDay}"></p>
-															<p class="small-text" th:text="${classDate.classStartTime}"></p>
-															<p class="description"></p>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 		<!-- Section Cooking Class : E -->
@@ -306,7 +307,7 @@
 																style="width: 50px; -webkit-filter: grayscale(100%); filter: grayscale(100%);">
 														</h3>
 														<p class="small-text">
-															Gmail : <a th:href="@{mailto:happyrecipek@naver.com}">happyrecipek@naver.com</a>
+															Gmail : <a th:href="@{mailto:happyrecipek@gmail.com}">happyrecipek@gmail.com</a>
 														</p>
 														<p class="description">구글 G메일</p>
 													</div>
