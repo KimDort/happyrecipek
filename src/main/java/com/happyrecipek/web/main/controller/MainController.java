@@ -10,7 +10,6 @@ import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.happyrecipek.web.admin.repositories.ClassRepository;
 import com.happyrecipek.web.admin.repositories.entities.ClassBase;
@@ -42,12 +41,5 @@ public class MainController {
 		model.addAttribute("classList", classList);
 		
 		return setReturn;
-	}
-	
-	@RequestMapping(value="/test")
-	public @ResponseBody List<ClassBase> testMethod(){
-		List<ClassBase> classList = new ArrayList<>();
-		classList = classRepository.findAllActiveClassBasesNative();
-		return classList;
 	}
 }
