@@ -1,4 +1,4 @@
-package com.happyrecipek.web.cooking.controller;
+package com.happyrecipek.web.controller.cooking;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.happyrecipek.web.main.controller;
+package com.happyrecipek.web.controller.main;
 
 import java.util.ArrayList;
 import java.util.List;

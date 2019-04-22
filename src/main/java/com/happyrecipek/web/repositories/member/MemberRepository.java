@@ -1,4 +1,4 @@
-package com.happyrecipek.web.member.repositories;
+package com.happyrecipek.web.repositories.member;
 
 import java.util.Optional;
 

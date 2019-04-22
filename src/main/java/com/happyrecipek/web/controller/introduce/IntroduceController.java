@@ -1,4 +1,4 @@
-package com.happyrecipek.web.introduce.controller;
+package com.happyrecipek.web.controller.introduce;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -6,7 +6,7 @@ import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.happyrecipek.web.main.controller.MainController;
+import com.happyrecipek.web.controller.main.MainController;
 
 @Controller
 public class IntroduceController {

@@ -12,8 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.happyrecipek.web.member.repositories.MemberRepository;
 import com.happyrecipek.web.member.repositories.entities.Member;
+import com.happyrecipek.web.repositories.member.MemberRepository;
 
 @Service
 @Transactional
