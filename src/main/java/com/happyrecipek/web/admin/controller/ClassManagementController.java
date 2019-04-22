@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.happyrecipek.web.admin.entities.ClassBase;
 import com.happyrecipek.web.admin.repositories.ClassRepository;
-import com.happyrecipek.web.admin.repositories.entities.ClassBase;
 import com.happyrecipek.web.com.system.files.ckeditor.entities.CommonFileInfo;
 import com.happyrecipek.web.com.system.files.ckeditor.repositories.CommonFileRepository;
 import com.happyrecipek.web.com.system.utils.FileUtil;

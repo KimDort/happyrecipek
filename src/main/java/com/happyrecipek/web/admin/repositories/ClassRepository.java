@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.happyrecipek.web.admin.repositories.entities.ClassDate;
-import com.happyrecipek.web.admin.repositories.entities.ClassBase;
+import com.happyrecipek.web.admin.entities.ClassBase;
+import com.happyrecipek.web.admin.entities.ClassDate;
 
 @Repository
 public interface ClassRepository extends JpaRepository<ClassBase, Integer>{

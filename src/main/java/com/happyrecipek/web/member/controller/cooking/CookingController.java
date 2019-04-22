@@ -1,4 +1,4 @@
-package com.happyrecipek.web.controller.cooking;
+package com.happyrecipek.web.member.controller.cooking;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.happyrecipek.web.admin.entities.ClassBase;
 import com.happyrecipek.web.admin.repositories.ClassRepository;
-import com.happyrecipek.web.admin.repositories.entities.ClassBase;
 
 @Controller
 public class CookingController {

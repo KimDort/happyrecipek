@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.happyrecipek.web.com.system.annotations.Description;
-import com.happyrecipek.web.member.repositories.entities.Member;
+import com.happyrecipek.web.member.entities.Member;
 
 import lombok.Data;
 

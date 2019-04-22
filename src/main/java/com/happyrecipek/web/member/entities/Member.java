@@ -1,4 +1,4 @@
-package com.happyrecipek.web.member.repositories.entities;
+package com.happyrecipek.web.member.entities;
 
 import java.util.List;
 

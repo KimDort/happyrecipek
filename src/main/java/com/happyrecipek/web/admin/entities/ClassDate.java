@@ -1,4 +1,4 @@
-package com.happyrecipek.web.admin.repositories.entities;
+package com.happyrecipek.web.admin.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
