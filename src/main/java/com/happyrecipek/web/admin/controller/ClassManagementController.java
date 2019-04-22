@@ -57,9 +57,9 @@ public class ClassManagementController {
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/class/list";
 			// returnPage = "web/mobile/admin/class/addClass";
-		} 
-		//else if (device.isTablet()) {returnPage = "";} 
-		else if (device.isNormal()) {
+		} else if (device.isTablet()) {
+			returnPage = "web/pc/admin/class/list";
+		} else if (device.isNormal()) {
 			returnPage = "web/pc/admin/class/list";
 		}
 
@@ -79,9 +79,9 @@ public class ClassManagementController {
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/class/addClass";
 			// returnPage = "web/mobile/admin/class/addClass";
-		} 
-		//else if (device.isTablet()) {returnPage = "";} 
-		else if (device.isNormal()) {
+		} else if (device.isTablet()) {
+			returnPage = "web/pc/admin/class/addClass";
+		} else if (device.isNormal()) {
 			returnPage = "web/pc/admin/class/addClass";
 		}
 
@@ -132,10 +132,10 @@ public class ClassManagementController {
 
 		classManage.setFileInfo(getSavedFileInfo);
 		classRepository.save(classManage);
-		//classDateRepository.saveAll(classManage.getClassDateManage());
+		// classDateRepository.saveAll(classManage.getClassDateManage());
 		return "redirect:/admin/class/classListPage";
 	}
-	
+
 	/**
 	 * @author KYJ
 	 * @since 2019-01-03
@@ -143,19 +143,19 @@ public class ClassManagementController {
 	 * @return String Cooking Class Add Page Method
 	 */
 	@RequestMapping("/admin/class/classDetailPage")
-	public String classDetailPage(Device device, Model model,@RequestParam("seq")int seq) {
+	public String classDetailPage(Device device, Model model, @RequestParam("seq") int seq) {
 		String returnPage = "";
-		
-		ClassBase getDetail= new ClassBase();
+
+		ClassBase getDetail = new ClassBase();
 		getDetail = classRepository.findByClassSeq(seq);
 		model.addAttribute("getDetail", getDetail);
-		
+
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/class/detail";
 			// returnPage = "web/mobile/admin/class/addClass";
-		} 
-		//else if (device.isTablet()) {returnPage = "";} 
-		else if (device.isNormal()) {
+		} else if (device.isTablet()) {
+			returnPage = "web/pc/admin/class/detail";
+		} else if (device.isNormal()) {
 			returnPage = "web/pc/admin/class/detail";
 		}
 

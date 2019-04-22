@@ -17,15 +17,15 @@ public class ScheduleManagementController {
 	@RequestMapping("/admin/schedule/scheduleListPage")
 	public String scheduleListPage(Device device, Model model) {
 		String returnPage = "";
-		
+
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/schedule/list";
-		} 
-		//else if (device.isTablet()) {returnPage = "";} 
-		else if (device.isNormal()) {
+		} else if (device.isTablet()) {
+			returnPage = "web/pc/admin/schedule/list";
+		} else if (device.isNormal()) {
 			returnPage = "web/pc/admin/schedule/list";
 		}
-		
+
 		return returnPage;
 	}
 }

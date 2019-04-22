@@ -16,30 +16,29 @@ import com.happyrecipek.web.admin.repositories.ClassRepository;
 
 @Controller
 public class MainController {
-	
+
 	private static final Logger log = LogManager.getLogger(MainController.class);
-	
+
 	@Autowired
 	private ClassRepository classRepository;
-	
-	@RequestMapping(value="/")
+
+	@RequestMapping(value = "/")
 	public String mainPage(Device device, Model model) {
-		String setReturn="";
+		String setReturn = "";
 		List<ClassBase> classList = new ArrayList<>();
 		classList = classRepository.findAllActiveClassBasesNative();
-		
-		
-		if(device.isMobile()) {
+
+		if (device.isMobile()) {
 			setReturn = "web/mobile/index";
-			
+
+		} else if (device.isTablet()) {
+			setReturn = "web/mobile/index";
+		} else if (device.isNormal()) {
+			setReturn = "web/pc/index";
 		}
-		//else if(device.isTablet()) {setReturn = "";}
-		else if(device.isNormal()) {
-			setReturn="web/pc/index";
-		}
-		
+
 		model.addAttribute("classList", classList);
-		
+
 		return setReturn;
 	}
 }

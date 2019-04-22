@@ -13,17 +13,17 @@ public class RecipeManagementController {
 	 * @return String Recipe List Page
 	 */
 	@RequestMapping("/admin/recipe/recipeListPage")
-	public String recipeListPage(Device device ) {
-		String returnPage="";
-		
+	public String recipeListPage(Device device) {
+		String returnPage = "";
+
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/recipe/list";
-		} 
-		//else if (device.isTablet()) {returnPage = "";} 
-		else if (device.isNormal()) {
+		} else if (device.isTablet()) {
+			returnPage = "web/pc/admin/recipe/list";
+		} else if (device.isNormal()) {
 			returnPage = "web/pc/admin/recipe/list";
 		}
-		
+
 		return returnPage;
 	}
 }

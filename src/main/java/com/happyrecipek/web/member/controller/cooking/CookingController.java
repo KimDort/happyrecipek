@@ -14,10 +14,10 @@ import com.happyrecipek.web.admin.repositories.ClassRepository;
 
 @Controller
 public class CookingController {
-	
+
 	@Autowired
 	private ClassRepository classRepository;
-	
+
 	@RequestMapping("/cooking/list")
 	public String listPage(Device device, Model model) {
 		String returnPage = "";
@@ -31,15 +31,15 @@ public class CookingController {
 
 		if (device.isMobile()) {
 			returnPage = "web/mobile/cooking/list";
-		} 
-		//else if (device.isTablet()) {returnPage = "";} 
-		else if (device.isNormal()) {
+		} else if (device.isTablet()) {
+			returnPage = "web/mobile/cooking/list";
+		} else if (device.isNormal()) {
 			returnPage = "web/pc/cooking/list";
 		}
 
 		return returnPage;
 	}
-	
+
 	/**
 	 * @author KYJ
 	 * @since 2019-01-03

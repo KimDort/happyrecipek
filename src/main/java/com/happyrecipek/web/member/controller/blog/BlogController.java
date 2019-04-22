@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BlogController {
-	
+
 	@RequestMapping("/blog/list")
 	public String listPage(Device device, Model model) {
 		String returnPage = "";
@@ -17,9 +17,9 @@ public class BlogController {
 		 */
 		if (device.isMobile()) {
 			returnPage = "web/mobile/blog/list";
-		} 
-		//else if (device.isTablet()) { returnPage = ""; }
-		else if (device.isNormal()) {
+		} else if (device.isTablet()) {
+			returnPage = "web/mobile/blog/list";
+		} else if (device.isNormal()) {
 			returnPage = "web/pc/blog/list";
 		}
 
