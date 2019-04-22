@@ -18,9 +18,9 @@ public class IntroduceController {
 		
 		if(device.isMobile()) {
 			returnPage = "web/mobile/introduce/introduce";
-		}else if(device.isTablet()) {
-			returnPage = "";
-		}else if(device.isNormal()) {
+		}
+		//else if(device.isTablet()) {returnPage = "";}
+		else if(device.isNormal()) {
 			returnPage = "web/pc/introduce/introduce";
 		}
 		

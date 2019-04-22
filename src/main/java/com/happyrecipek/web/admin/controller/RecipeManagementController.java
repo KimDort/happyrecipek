@@ -18,9 +18,9 @@ public class RecipeManagementController {
 		
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/recipe/list";
-		} else if (device.isTablet()) {
-			returnPage = "";
-		} else if (device.isNormal()) {
+		} 
+		//else if (device.isTablet()) {returnPage = "";} 
+		else if (device.isNormal()) {
 			returnPage = "web/pc/admin/recipe/list";
 		}
 		

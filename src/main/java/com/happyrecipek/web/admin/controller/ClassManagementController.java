@@ -57,9 +57,9 @@ public class ClassManagementController {
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/class/list";
 			// returnPage = "web/mobile/admin/class/addClass";
-		} else if (device.isTablet()) {
-			returnPage = "";
-		} else if (device.isNormal()) {
+		} 
+		//else if (device.isTablet()) {returnPage = "";} 
+		else if (device.isNormal()) {
 			returnPage = "web/pc/admin/class/list";
 		}
 
@@ -79,9 +79,9 @@ public class ClassManagementController {
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/class/addClass";
 			// returnPage = "web/mobile/admin/class/addClass";
-		} else if (device.isTablet()) {
-			returnPage = "";
-		} else if (device.isNormal()) {
+		} 
+		//else if (device.isTablet()) {returnPage = "";} 
+		else if (device.isNormal()) {
 			returnPage = "web/pc/admin/class/addClass";
 		}
 
@@ -153,9 +153,9 @@ public class ClassManagementController {
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/class/detail";
 			// returnPage = "web/mobile/admin/class/addClass";
-		} else if (device.isTablet()) {
-			returnPage = "";
-		} else if (device.isNormal()) {
+		} 
+		//else if (device.isTablet()) {returnPage = "";} 
+		else if (device.isNormal()) {
 			returnPage = "web/pc/admin/class/detail";
 		}
 

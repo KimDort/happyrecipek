@@ -20,9 +20,9 @@ public class ScheduleManagementController {
 		
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/schedule/list";
-		} else if (device.isTablet()) {
-			returnPage = "";
-		} else if (device.isNormal()) {
+		} 
+		//else if (device.isTablet()) {returnPage = "";} 
+		else if (device.isNormal()) {
 			returnPage = "web/pc/admin/schedule/list";
 		}
 		

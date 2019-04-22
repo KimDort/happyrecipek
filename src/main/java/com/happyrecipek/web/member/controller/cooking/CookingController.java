@@ -31,9 +31,9 @@ public class CookingController {
 
 		if (device.isMobile()) {
 			returnPage = "web/mobile/cooking/list";
-		} else if (device.isTablet()) {
-			returnPage = "";
-		} else if (device.isNormal()) {
+		} 
+		//else if (device.isTablet()) {returnPage = "";} 
+		else if (device.isNormal()) {
 			returnPage = "web/pc/cooking/list";
 		}
 
