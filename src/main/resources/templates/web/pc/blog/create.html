@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	layout:decorator="layout/pc/admin/default">
+<head>
+<title>Happy Recipe K - Administrator Blog Create</title>
+<th:block layout:fragment="custom_css">
+</th:block>
+</head>
+<body>
+	<div layout:fragment="content" class="content">
+		<form th:action="@{/admin/blog/createProc}" method="POST" enctype="multipart/form-data" th:object="${blog}" role="form">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="page-header">
+							<h1 id="">Happy Recipe K - Blog Create</h1>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Setting - Title Text</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div class="input-group">
+									<span class="input-group-addon">Title</span>
+									<input type="text" class="form-control" name="blogTitle">
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Setting - Content Text
+						</div>
+						<div class="panel-body">
+							<div class="col-md-12" style="height: 500px;"  id="blogContent">
+								<textarea name="blogContent"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							Setting - Blog Main Display
+						</div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div id="radioBtn" class="btn-group">
+			    					<a class="btn btn-primary btn-sm active" data-toggle="main_display_yn" data-title="Y">YES</a>
+			    					<a class="btn btn-primary btn-sm notActive" data-toggle="main_display_yn" data-title="N">NO</a>
+			    				</div>
+		    					<input type="hidden" name="blogDisplayYn" id="main_display_yn" value="Y">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="page-header">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 align-right">
+						<button type="button" class="btn btn-primary pull-right" onclick="submit()">Done</button>
+						<button type="button" class="btn btn-danger pull-right">Cancle</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<th:block layout:fragment="custom_script">
+		<script src="//cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
+		<script>
+			/* 
+			* Ckeditor : S
+			*/
+			CKEDITOR.replace(
+				'blogContent',
+				{
+					filebrowserUploadUrl:'/ckeditor/imageUpload'
+					,on:{
+						'instanceReady':function(evt){
+							evt.editor.resize("500px", $("#blogContent").height());
+						}
+					}
+				}
+			);
+			/* 
+			* Ckeditor : E
+			*/
+		</script>
+</body>
+</html>

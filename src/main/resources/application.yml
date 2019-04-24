@@ -15,11 +15,11 @@ spring:
     cache: false  servlet:    multipart:      max-file-size: 30MB
       max-request-size: 30MB
 server:  port: 8080
-#logging:
-  #level:
-   # sql: debug
-    #web: info
-    #root: info
+logging:
+  level:
+    sql: debug
+    web: info
+    root: info
 facebook:
   client:
     clientId: <your-client-id>
