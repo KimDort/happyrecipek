@@ -39,7 +39,7 @@
 							Setting - Content Text
 						</div>
 						<div class="panel-body">
-							<div class="col-md-12" style="height: 500px;"  id="blogContent">
+							<div class="col-md-12" style="height: 500px;" id="blogContentDiv">
 								<textarea name="blogContent"></textarea>
 							</div>
 						</div>
@@ -56,7 +56,7 @@
 			    					<a class="btn btn-primary btn-sm active" data-toggle="main_display_yn" data-title="Y">YES</a>
 			    					<a class="btn btn-primary btn-sm notActive" data-toggle="main_display_yn" data-title="N">NO</a>
 			    				</div>
-		    					<input type="hidden" name="blogDisplayYn" id="main_display_yn" value="Y">
+		    					<input type="hidden" name="displayYn" id="main_display_yn" value="Y">
 							</div>
 						</div>
 					</div>
@@ -88,7 +88,7 @@
 					filebrowserUploadUrl:'/ckeditor/imageUpload'
 					,on:{
 						'instanceReady':function(evt){
-							evt.editor.resize("500px", $("#blogContent").height());
+							evt.editor.resize("500px", $("#blogContentDiv").height());
 						}
 					}
 				}

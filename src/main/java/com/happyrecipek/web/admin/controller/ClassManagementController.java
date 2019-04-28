@@ -100,7 +100,7 @@ public class ClassManagementController {
 		/**
 		 * Step 1 : Create Real File In Server
 		 **/
-
+		FileUtil fileUtil = new FileUtil();
 		Set<String> keys = request.getFileMap().keySet();
 		List<CommonFileInfo> fileInfos = null;
 
@@ -108,7 +108,7 @@ public class ClassManagementController {
 			MultipartFile getFile = request.getFileMap().get(key);
 			if (!getFile.isEmpty() && getFile != null) {
 				fileInfos = new ArrayList<CommonFileInfo>();
-				fileInfos = FileUtil.createFile(request);
+				fileInfos = fileUtil.createFile(request);
 
 			}
 		}

@@ -28,7 +28,7 @@ public class Blog {
 	@NotEmpty
 	private String blogTitle;
 	
-	@Column(name="BLOG_CONTENT")
+	@Column(name="BLOG_CONTENT", columnDefinition="TEXT")
 	@Description(logicalName="블로그내용")
 	private String blogContent;
 	

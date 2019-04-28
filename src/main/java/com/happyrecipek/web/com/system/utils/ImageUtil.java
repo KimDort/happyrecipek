@@ -14,7 +14,7 @@ public class ImageUtil {
 	private static final int THUMB_WIDTH=250;
 	private static final int RESIZE_WIDTH=500;
 	
-	public static final List<CommonFileInfo> imageResizer(String imgOriginalPath,String basePath, String baseWebPath, String imageExt, String fileName, List<CommonFileInfo> fileInfos) {
+	public static List<CommonFileInfo> imageResizer(String imgOriginalPath,String basePath, String baseWebPath, String imageExt, String fileName, List<CommonFileInfo> fileInfos) {
 		/**
 		 * Save Image Path 
 		 **/
@@ -134,6 +134,7 @@ public class ImageUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return fileInfos;
 	}
 }

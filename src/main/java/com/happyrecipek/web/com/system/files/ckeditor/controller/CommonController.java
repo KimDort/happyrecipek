@@ -36,7 +36,8 @@ public class CommonController {
 		 * Create File
 		 * */
 		List<CommonFileInfo> getFileInfos = new ArrayList<CommonFileInfo>();
-		getFileInfos = FileUtil.createFile(request);
+		FileUtil fileUtil = new FileUtil();
+		getFileInfos = fileUtil.createFile(request);
 		
 		/**
 		 * Insert DB File Info
