@@ -1,4 +1,4 @@
-package com.happyrecipek.web.admin.entities;
+package com.happyrecipek.web.admin.cookingclass.entities;
 
 import java.sql.Timestamp;
 import java.util.List;

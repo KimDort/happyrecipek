@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.happyrecipek.web.admin.entities.ClassBase;
-import com.happyrecipek.web.admin.repositories.ClassRepository;
+import com.happyrecipek.web.admin.cookingclass.entities.ClassBase;
+import com.happyrecipek.web.admin.cookingclass.repositories.ClassRepository;
 
 @Controller
 public class CookingController {

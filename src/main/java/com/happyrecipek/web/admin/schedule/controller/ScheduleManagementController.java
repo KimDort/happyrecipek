@@ -1,4 +1,4 @@
-package com.happyrecipek.web.admin.controller;
+package com.happyrecipek.web.admin.schedule.controller;
 
 import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Controller;

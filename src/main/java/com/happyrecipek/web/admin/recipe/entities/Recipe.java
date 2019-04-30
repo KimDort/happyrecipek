@@ -1,4 +1,4 @@
-package com.happyrecipek.web.admin.entities;
+package com.happyrecipek.web.admin.recipe.entities;
 
 import java.sql.Timestamp;
 

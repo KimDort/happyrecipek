@@ -11,8 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.happyrecipek.web.admin.entities.ClassBase;
-import com.happyrecipek.web.admin.repositories.ClassRepository;
+import com.happyrecipek.web.admin.cookingclass.entities.ClassBase;
+import com.happyrecipek.web.admin.cookingclass.repositories.ClassRepository;
 
 @Controller
 public class MainController {

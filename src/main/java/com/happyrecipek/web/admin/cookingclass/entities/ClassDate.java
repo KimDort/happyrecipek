@@ -1,4 +1,4 @@
-package com.happyrecipek.web.admin.entities;
+package com.happyrecipek.web.admin.cookingclass.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
