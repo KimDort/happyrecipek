@@ -1,5 +1,7 @@
 package com.happyrecipek.web.com.commonCode.controller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class CommonCodeController {
 	@RequestMapping("/common/code/create")
 	public String codeCreatePage(Device device, Model model) {
 		String returnPage="";
+		List<CommonHighCode> commonHigh = commonCodeRepository.findAll();
+		
+		model.addAttribute("codeList", commonHigh);
 		
 		if (device.isMobile()) {
 			returnPage = "web/pc/common/code/create";

@@ -87,7 +87,7 @@ Calendar.prototype.draw = function () {
     theContainers[2].appendChild(theLabel);
   }
 
-  theRows = [], theDays = [], theRadios = [];
+  theRows = [], theDays = [], theRadios = [], theEvent = [];
   for (var i = 0; i < 6; i++) {
     theRows[i] = document.createElement("DIV");
     theRows[i].className = "labels";
@@ -108,11 +108,16 @@ Calendar.prototype.draw = function () {
     theText = document.createElement("SPAN");
     theText.id = this.id + "-day-num-" + (i + 1);
 
+    //선택 달력 이벤트 여부 표시
+    if((i+1)==17){
+    	theEvent[i] = document.createElement("SPAN");
+    	theEvent[i].className = "glyphicon glyphicon-asterisk";
+    	theEvent[i].id = this.id+"-event-" + (i + 1);
+    	theDays[i].appendChild(theEvent[i]);
+    }
     theDays[i].appendChild(theText);
-  
     theRows[j].appendChild(theRadios[i]);
     theRows[j].appendChild(theDays[i]);
-
     if ((i + 1) % 7 == 0) {
       j++;
     }
@@ -297,7 +302,18 @@ Organizer.prototype.list = function (data) {
 
   content = ""; 
   for (var i = 0; i < data.length; i++) {
-    content += '<li id="' + this.id + '-list-item-' + i + '"><div><span class="' + this.id + ' time" id="' + this.id + '-list-item-' + i + '-time">' + data[i].startTime + ' - ' + data[i].endTime + '</span><span class="' + this.id + ' m" id="' + this.id + '-list-item-' + i + '-m">' + data[i].mTime + '</span></div><p id="' + this.id + '-list-item-' + i + '-text">' + data[i].text + '</p></li>';
+    content += '<li id="' + this.id 
+    		+ '-list-item-' 
+    		+ i + '"><div><span class="' 
+    		+ this.id + ' time" id="' + this.id 
+    		+ '-list-item-' + i + '-time">' 
+    		+ data[i].startTime + ' - ' + data[i].endTime 
+    		+ '</span><span class="' + this.id + ' m" id="' 
+    		+ this.id + '-list-item-' + i + '-m">' 
+    		+ data[i].mTime + '</span></div><p id="' + this.id + '-list-item-' + i + '-text">' 
+    		+ data[i].text + '</p>'
+    		+ "<p>" + data[i].done +"</p></li>"
+    		;
   }
 
   document.getElementById(this.id + "-list").innerHTML = content;
@@ -378,7 +394,8 @@ data = {
                   startTime: "6:00",
                   endTime: "6:30",
                   mTime: "pm",
-                  text: "Weirdo was born"
+                  text: "Weirdo was born",
+                  done:"yes"
                 }
               ]
             }
@@ -399,19 +416,22 @@ data = {
                   startTime: "6:00",
                   endTime: "7:00",
                   mTime: "am",
-                  text: "This is scheduled to show today, anyday."
+                  text: "This is scheduled to show today, anyday.",
+                  done:"yes"
                 },
                 {
                   startTime: "5:45",
                   endTime: "7:15",
                   mTime: "pm",
-                  text: "WIP Library"
+                  text: "WIP Library",
+                  done:"yes"
                 },
                 {
                   startTime: "10:00",
                   endTime: "11:00",
                   mTime: "pm",
-                  text: "Probably won't fix that (time width)"
+                  text: "Probably won't fix that (time width)",
+                  done:"yes"
                 },
                 {
                   startTime: "8:00",

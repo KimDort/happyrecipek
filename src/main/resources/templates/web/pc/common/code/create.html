@@ -25,6 +25,18 @@
 						<div class="panel-heading">Setting - Common High Code & Name</div>
 						<div class="panel-body">
 							<div class="col-md-12">
+								<ul>
+									<li>test</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading">Setting - Common High Code & Name</div>
+						<div class="panel-body">
+							<div class="col-md-12">
 								<div class="input-group">
 									<span class="input-group-addon">Common High Code</span>
 									<input type="text" class="form-control" name="commonHighCode">
@@ -38,7 +50,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="panel panel-primary">
+					<div class="panel panel-primary" id="panelLowCode">
 						<div class="panel-heading">Setting - Common Low Code & Name</div>
 						<div class="panel-body" id="panelLowCodeArea">
 							<div class="col-md-12">
@@ -61,7 +73,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 align-right">
-						<button type="button" class="btn btn-primary pull-right" onclick="submit()">Done</button>
+						<button type="button" class="btn btn-primary pull-right" id="codeSubmit">Done</button>
 						<button type="button" class="btn btn-danger pull-right">Cancle</button>
 					</div>
 				</div>
@@ -70,6 +82,11 @@
 	</div>
 	<th:block layout:fragment="custom_script">
 		<script>
+			$(document).ready(function(){
+				$("#codeSubmit").on("click",function(){
+					createCommonCodeIndex();
+				});
+			});
 			/* 
 			* Create Date & Time Area : S
 			*/
@@ -77,7 +94,7 @@
 				var cloneCommoLowCodeArea = $(getThis).closest("#panelLowCodeArea").clone();
 				cloneCommoLowCodeArea.find("input[id*=inputLowCode], input[id*=inputLowName]").val("");
 				/** Create Minus Button*/
-				if(cloneCommoLowCodeArea.find("button[id*='btnAddCommonCodeArea']").length <= 1){
+				if(cloneCommoLowCodeArea.find("button[id*='btnDelDateTimeArea']").length < 1){
 					cloneCommoLowCodeArea.find("button[id*='btnAddCommonCodeArea']").parent().append('<button type="button" class="btn btn-default" id="btnDelDateTimeArea" onclick="deleteCommonCodeArea(this)"><span class="glyphicon glyphicon-minus"></span></button>');
 				}
 				$(getThis).closest(".panel").append(cloneCommoLowCodeArea);
@@ -92,8 +109,9 @@
 			* Create Date & Time Index : S
 			*/
 			function createCommonCodeIndex(){
-				var getDateTimeCount = $("#panelDateTime").children().find("input[id*='class_start_day_']").length;
-				for(var i=0; i< getDateTimeCount; i++){
+				var getCodeCount = $("#panelLowCode").children().find("input[id*='inputLowCode']").length;
+				alert(getCodeCount);
+				for(var i=0; i< getCodeCount; i++){
 					/**Date*/
 					$("input[id*=inputLowCode]").eq(i).attr("name", "commonLowCodes["+i+"].commonLowCode");
 					$("input[id*=inputLowName]").eq(i).attr("name", "commonLowCodes["+i+"].commonLowCodeName");
