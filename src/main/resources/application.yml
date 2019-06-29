@@ -2,7 +2,7 @@ spring:
   datasource:
     #driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     driver-class-name: org.mariadb.jdbc.Driver
-    url : jdbc:mariadb://localhost:3306/happyrecipek
+    url : jdbc:mariadb://localhost:3306/happyrecipek?useUnicode=yes&characterEncoding=UTF-8
     username: root
     password: cjsekd13!
   jpa:

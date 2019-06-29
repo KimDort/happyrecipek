@@ -3,6 +3,8 @@ package com.happyrecipek.web.member.controller.blog;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,10 @@ public class BlogController {
 	@RequestMapping("/blog/list")
 	public String listPage(Device device, Model model, Pageable pageable) {
 		String returnPage = "";
-		List<Blog> getList = blogRepository.findAllByDisplayYnOrderByRegisterDateDesc("Y", pageable);
+		int page = (pageable.getPageNumber() == 0)? 0 : (pageable.getPageNumber() - 1);
+		pageable = PageRequest.of(page, 5);
+		Page<Blog> getList = blogRepository.findAllByDisplayYnOrderByRegisterDateDesc("Y", pageable);
+		
 		model.addAttribute("list",getList);
 		
 		if (device.isMobile()) {
