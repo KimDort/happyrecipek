@@ -84,4 +84,15 @@ public class CookingController {
 
 		return returnPage;
 	}
+	
+	/**
+	 * @author KYJ
+	 * @since 2019-05-27
+	 * @param Device
+	 * @return String Cooking Class Detail Page
+	 */
+	@RequestMapping("/cooking/classJoin")
+	public String classJoin() {
+		return "";
+	}
 }

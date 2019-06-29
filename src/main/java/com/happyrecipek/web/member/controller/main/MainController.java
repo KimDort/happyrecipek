@@ -30,7 +30,6 @@ public class MainController {
 
 		if (device.isMobile()) {
 			setReturn = "web/mobile/index";
-
 		} else if (device.isTablet()) {
 			setReturn = "web/mobile/index";
 		} else if (device.isNormal()) {
