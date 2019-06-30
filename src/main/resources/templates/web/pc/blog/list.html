@@ -34,12 +34,24 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="page-header">
-						<h1 id="">Fukuoka Life Story</h1>
+						<h1 id="">Fukuoka/Kitakushu - Life Story</h1>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12" th:each="blog : ${list}" th:onclick="'openClassModal(\'' + ${blog.blogSeq} + '\')'">
+				<div class="col-md-12">
+					<table class="table">
+						<tbody>
+							<tr th:each="blog : ${list}">
+								<td th:utext="${blog.blogTitle}"></td>
+								<td width="20%" align="right">
+									<h6 th:text="${#strings.abbreviate(blog.registerDate, 25)}"></h6>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-12" th:each="blog : ${list}">
 					<div class="col-md-12">
 						<div class="col-md-6">
 							<h4 th:text="${#strings.abbreviate(blog.blogTitle, 25)}"></h4>
@@ -59,12 +71,6 @@
 			    <ul class="pagination"
 			        th:with="start=${T(Math).floor(list.number/10)*10 + 1},
 			                    last=(${start + 9 < list.totalPages ? start + 9 : list.totalPages})">
-			        <li>
-			            <a th:href="@{/blog/list(page=1)}" aria-label="First">
-			                <span aria-hidden="true">First</span>
-			            </a>
-			        </li>
-			
 			        <li th:class="${list.first} ? 'disabled'">
 			            <a th:href="${list.first} ? '#' :@{/blog/list(page=${list.number})}" aria-label="Previous">
 			                <span aria-hidden="true">&lt;</span>
@@ -78,12 +84,6 @@
 			        <li th:class="${list.last} ? 'disabled'">
 			            <a th:href="${list.last} ? '#' : @{/blog/list(page=${list.number + 2})}" aria-label="Next">
 			                <span aria-hidden="true">&gt;</span>
-			            </a>
-			        </li>
-			
-			        <li>
-			            <a th:href="@{/blog/list(page=${list.totalPages})}" aria-label="Last">
-			                <span aria-hidden="true">Last</span>
 			            </a>
 			        </li>
 			    </ul>

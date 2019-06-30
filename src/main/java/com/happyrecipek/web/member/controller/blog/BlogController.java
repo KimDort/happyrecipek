@@ -37,9 +37,9 @@ public class BlogController {
 		model.addAttribute("list",getList);
 		
 		if (device.isMobile()) {
-			returnPage = "web/mobile/blog/list";
+			returnPage = "web/pc/blog/list";
 		} else if (device.isTablet()) {
-			returnPage = "web/mobile/blog/list";
+			returnPage = "web/pc/blog/list";
 		} else if (device.isNormal()) {
 			returnPage = "web/pc/blog/list";
 		}
