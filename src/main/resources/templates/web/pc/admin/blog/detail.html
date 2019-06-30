@@ -12,6 +12,7 @@
 <body>
 	<div layout:fragment="content" class="content">
 		<form th:action="@{/admin/blog/createProc}" method="POST" enctype="multipart/form-data" th:object="${blog}" role="form">
+			<input type="hidden" name="blogSeq" th:value="${getDetail.blogSeq}">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -27,7 +28,7 @@
 							<div class="col-md-12">
 								<div class="input-group">
 									<span class="input-group-addon">Title</span>
-									<input type="text" class="form-control" name="blogTitle">
+									<input type="text" class="form-control" name="blogTitle" th:value="${getDetail.blogTitle}">
 								</div>
 							</div>	
 						</div>
@@ -40,7 +41,7 @@
 						</div>
 						<div class="panel-body">
 							<div class="col-md-12" style="height: 500px;" id="blogContentDiv">
-								<textarea name="blogContent"></textarea>
+								<textarea name="blogContent" th:text="${getDetail.blogContent}"></textarea>
 							</div>
 						</div>
 					</div>
@@ -56,7 +57,7 @@
 			    					<a class="btn btn-primary btn-sm active" data-toggle="main_display_yn" data-title="Y">YES</a>
 			    					<a class="btn btn-primary btn-sm notActive" data-toggle="main_display_yn" data-title="N">NO</a>
 			    				</div>
-		    					<input type="hidden" name="displayYn" id="main_display_yn" value="Y">
+		    					<input type="hidden" name="displayYn" id="main_display_yn" th:value="${getDetail.displayYn}">
 							</div>
 						</div>
 					</div>
@@ -96,6 +97,26 @@
 			/* 
 			* Ckeditor : E
 			*/
+			/* 
+			* Radio Button Controller : S
+			*/
+			$(document).ready(function(){
+				var sel = $("#main_display_yn").val();
+				$('a[data-toggle="main_display_yn"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
+			    $('a[data-toggle="main_display_yn"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
+			});
+			$('#radioBtn a').on('click', function(){
+			    var sel = $(this).data('title');
+			    var tog = $(this).data('toggle');
+			    $('#main_display_yn').prop('value', sel);
+			    
+			    $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
+			    $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
+			});
+			/* 
+			* Radio Button Controller : E
+			*/
 		</script>
+		
 </body>
 </html>
