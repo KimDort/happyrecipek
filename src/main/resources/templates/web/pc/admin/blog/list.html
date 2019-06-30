@@ -44,10 +44,9 @@
 			<div class="row">
 				<section id="pinBoot">
 					<article class="white-panel" th:each="blog : ${blogList}" th:onclick="'openDetailPage(\'' + ${blog.blogSeq} + '\')'">
-						<!-- <img th:src="${class.fileInfo.commonFileThumbWebUrl}+${class.fileInfo.commonFileCopyName}" alt="" style="width: 100%;"> -->
 						<h4 th:text="${#strings.abbreviate(blog.blogTitle, 25)}"></h4>
 						<div style="width: 100%;">
-							<span>Day : </span>
+							<h5 th:utext="${#strings.abbreviate(blog.blogContent, 100)}"></h5>
 						</div>
 					</article>
 				</section>
