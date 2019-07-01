@@ -40,21 +40,47 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<table class="table">
+					<table class="table table-bordered">
 						<tbody>
 							<tr th:each="blog : ${list}">
-								<td th:utext="${blog.blogTitle}"></td>
+								<td>
+									<a th:href="|#blog_title_${blog.blogSeq}|" th:utext="${#strings.abbreviate(blog.blogTitle, 25)}">
+									</a>
+								</td>
 								<td width="20%" align="right">
-									<h6 th:text="${#strings.abbreviate(blog.registerDate, 25)}"></h6>
+									<h6 th:text="${blog.registerDate}"></h6>
 								</td>
 							</tr>
 						</tbody>
 					</table>
+					<div class="col-md-12">
+						<nav style="text-align: center;">
+						    <ul class="pagination"
+						        th:with="start=${T(Math).floor(list.number/10)*10 + 1},
+						                    last=(${start + 9 < list.totalPages ? start + 9 : list.totalPages})">
+						        <li th:class="${list.first} ? 'disabled'">
+						            <a th:href="${list.first} ? '#' :@{/blog/list(page=${list.number})}" aria-label="Previous">
+						                <span aria-hidden="true">&lt;</span>
+						            </a>
+						        </li>
+						
+						        <li th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == list.number + 1} ? 'active'">
+						            <a th:text="${page}" th:href="@{/blog/list(page=${page})}"></a>
+						        </li>
+						
+						        <li th:class="${list.last} ? 'disabled'">
+						            <a th:href="${list.last} ? '#' : @{/blog/list(page=${list.number + 2})}" aria-label="Next">
+						                <span aria-hidden="true">&gt;</span>
+						            </a>
+						        </li>
+						    </ul>
+						</nav>
+					</div>
 				</div>
 				<div class="col-md-12" th:each="blog : ${list}">
 					<div class="col-md-12">
 						<div class="col-md-6">
-							<h4 th:text="${#strings.abbreviate(blog.blogTitle, 25)}"></h4>
+							<h4 th:text="${#strings.abbreviate(blog.blogTitle, 25)}" th:id="|blog_title_${blog.blogSeq}|"></h4>
 						</div>
 						<div class="col-md-6 text-right">
 							<h6 th:text="${#strings.abbreviate(blog.registerDate, 25)}"></h6>
