@@ -53,7 +53,7 @@ public class BlogManagementController {
 	@RequestMapping("/admin/blog/createProc")
 	public String createProc(@ModelAttribute("blog") Blog blog) {
 		blogRepository.save(blog);
-		return "redirect:/blog/list";
+		return "redirect:/admin/blog/blogListPage";
 	}
 	
 	/**
