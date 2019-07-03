@@ -84,6 +84,9 @@ public class ClassBase{
 	@JoinColumn(name="classSeq")
 	private List<ClassDate> classDateManage;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="classSeq")
+	private List<ClassInterestUser> classInterestUser;
 	
 	public List<ClassDate> getClassDateManage() {
 		return classDateManage;
@@ -188,13 +191,22 @@ public class ClassBase{
 		this.fileInfo = fileInfo;
 	}
 
+	
+	public List<ClassInterestUser> getClassInterestUser() {
+		return classInterestUser;
+	}
+
+	public void setClassInterestUser(List<ClassInterestUser> classInterestUser) {
+		this.classInterestUser = classInterestUser;
+	}
+
 	@Override
 	public String toString() {
-		return "ClassManage [classSeq=" + classSeq + ", classTitle=" + classTitle + ", classContent=" + classContent
-				+ ", classMinMember=" + classMinMember + ", classMaxMember=" + classMaxMember + ", classDisplayYn="
-				+ classDisplayYn + ", registerDate=" + registerDate + ", registerId=" + registerId + ", updateDate="
-				+ updateDate + ", updateId=" + updateId + ", fileInfo=" + fileInfo + ", classDateManage="
-				+ classDateManage + "]";
+		return "ClassBase [classSeq=" + classSeq + ", classTitle=" + classTitle + ", classType=" + classType
+				+ ", classContent=" + classContent + ", classMinMember=" + classMinMember + ", classMaxMember="
+				+ classMaxMember + ", classDisplayYn=" + classDisplayYn + ", registerDate=" + registerDate
+				+ ", registerId=" + registerId + ", updateDate=" + updateDate + ", updateId=" + updateId + ", fileInfo="
+				+ fileInfo + ", classDateManage=" + classDateManage + ", classInterestUser=" + classInterestUser + "]";
 	}
 
 }

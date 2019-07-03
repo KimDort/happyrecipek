@@ -2,6 +2,8 @@ package com.happyrecipek.web.member.controller.cooking;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.happyrecipek.web.admin.cookingclass.entities.ClassBase;
+import com.happyrecipek.web.admin.cookingclass.entities.ClassInterestUser;
+import com.happyrecipek.web.admin.cookingclass.repositories.ClassInterestUserRepository;
 import com.happyrecipek.web.admin.cookingclass.repositories.ClassRepository;
 
 @Controller
@@ -22,6 +28,9 @@ public class CookingController {
 	
 	@Autowired
 	private ClassRepository classRepository;
+	
+	@Autowired
+	private ClassInterestUserRepository interestUserRepository;
 
 	@RequestMapping("/cooking/list")
 	public String listPage(Device device, Model model) {
@@ -54,7 +63,18 @@ public class CookingController {
 	@RequestMapping("/cooking/detail")
 	public @ResponseBody ClassBase classDetailPage(Integer classSeq) {
 		ClassBase getDetail = new ClassBase();
+		ClassInterestUser interestUser = new ClassInterestUser();
+		
 		getDetail = classRepository.findByClassSeq(classSeq);
+		HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+		String userIp = req.getHeader("X-FORWARDED-FOR");
+		if(userIp == null || userIp.isEmpty()) {
+			userIp = req.getRemoteAddr();
+		}
+		interestUser.setClassSeq(classSeq);
+		interestUser.setClassInterestUserIp(userIp);
+		interestUserRepository.save(interestUser);
+		
 		return getDetail;
 	}
 	
