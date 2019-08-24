@@ -69,6 +69,10 @@
 							<span>Min Member :</span>
 							<span th:text="${class.classMaxMember}"></span>
 						</div>
+						<div style="width: 100%;">
+							<span>Count : </span>
+							<span th:text= "${#lists.size(class.classInterestUser)}"></span>
+						</div>
 					</article>
 				</section>
 			</div>

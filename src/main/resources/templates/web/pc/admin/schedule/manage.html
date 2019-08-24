@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	layout:decorator="layout/pc/admin/default">
+<head>
+<title>Happy Recipe K - Schedule Management</title>
+<th:block layout:fragment="custom_css">
+	<style>
+		body {
+			display: felx;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+		}
+		
+		.wrapper {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+		}
+		
+		body>p {
+			font-family: "Satellite", "Roboto", sans-serif;
+			font-size: 20px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			margin: 20px 40px;
+			text-align: justify;
+		}
+		
+		.calendar {
+			width: 100%;
+			height: 800px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			font-family: "Satellite", "Roboto", sans-serif;
+			border: 1px solid rgba(21, 21, 21, 0.12);
+			-webkit-transform: scale(1);
+			transform: scale(1);
+			box-shadow: 0px 0px 4px rgba(21, 21, 21, 0.21);
+			-ms-user-select: none;
+			user-select: none;
+			-moz-user-select: none;
+			-khtml-user-select: none;
+			-webkit-user-select: none;
+			-o-user-select: none;
+		}
+		
+		.calendar.small {
+			width: 100%;
+			height: 400px;
+		}
+		
+		.calendar.medium {
+			width: 600px;
+			height: 600px;
+		}
+		
+		.calendar.large {
+			width: 800px;
+			height: 800px;
+		}
+		
+		.year {
+			width: calc(100%);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			padding: 5px;
+			font-size: 14px;
+		}
+		
+		.year>span {
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			text-transform: uppercase;
+		}
+		
+		.year>div {
+			cursor: pointer;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+		}
+		
+		.month {
+			width: calc(100%);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			padding: 20px 5px;
+			font-size: 40px;
+			box-shadow: 0px 2px 6px rgba(21, 21, 21, 0.21);
+		}
+		
+		.month>span {
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			text-transform: uppercase;
+		}
+		
+		.month>div {
+			cursor: pointer;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+		}
+		
+		.labels {
+			width: 100%;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+		}
+		
+		.labels>span {
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			font-size: 12px;
+			text-transform: uppercase;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			padding: 10px;
+		}
+		
+		.days {
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			box-shadow: 0px 2px 6px -2px rgba(21, 21, 21, 0.21);
+		}
+		
+		.row {
+			width: 100%;
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+		}
+		
+		.day {
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			padding: 5px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			border-bottom: 1px solid rgba(21, 21, 21, .12);
+			border-right: 1px solid rgba(21, 21, 21, .12);
+			cursor: pointer;
+			-webkit-transition: box-shadow 200ms ease-in-out;
+			transition: box-shadow 200ms ease-in-out;
+		}
+		
+		.day:last-child {
+			border-right: none;
+		}
+		
+		.day:hover {
+			background-color: rgba(21, 21, 21, 0.012);
+			box-shadow: inset 0px 0px 4px rgba(21, 21, 21, 0.21);
+		}
+		
+		.day-radios {
+			display: none;
+		}
+		
+		.day-radios:checked+.day {
+			background-color: rgba(21, 21, 21, 0.012);
+			box-shadow: inset 0px 0px 4px rgba(21, 21, 21, 0.21);
+		}
+		
+		.day>span {
+			width: auto;
+			font-size: 14px;
+			color: rgba(21, 21, 21, 0.84);
+		}
+		
+		.day.diluted {
+			background-color: rgba(21, 21, 21, 0.021);
+			box-shadow: inset 0px 0px 1px rgba(21, 21, 21, 0.12);
+		}
+		
+		.day.diluted>span {
+			width: auto;
+			font-size: 10px;
+			color: rgba(21, 21, 21, 0.73);
+		}
+		
+		.events {
+			width: 100%;
+			height: 800px;
+			font-family: "Satellite", "Roboto", sans-serif;
+			box-shadow: 0px 0px 4px rgba(21, 21, 21, 0.21);
+			border: 1px solid rgba(21, 21, 21, 0.12);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			-ms-user-select: none;
+			user-select: none;
+			-moz-user-select: none;
+			-khtml-user-select: none;
+			-webkit-user-select: none;
+			-o-user-select: none;
+		}
+		
+		.events.small {
+			width: 100%;
+			height: 400px;
+		}
+		
+		.events.medium {
+			width: 600px;
+			height: 600px;
+		}
+		
+		.events.large {
+			width: 800px;
+			height: 800px;
+		}
+		
+		.date {
+			width: calc(100%);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			background-color: ' + this.calendar.colors[1] + ';
+			color: ' + this.calendar.colors[3] + ';
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			padding: 5px;
+			font-size: 14px;
+		}
+		
+		.date>span {
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			text-transform: uppercase;
+		}
+		
+		.date>div {
+			cursor: pointer;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+		}
+		
+		.rows {
+			width: 100%;
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			overflow: hidden !important;
+		}
+		
+		.list {
+			width: 100%;
+			-webkit-box-flex: 1;
+			-ms-flex: 1;
+			flex: 1;
+			overflow-y: auto !important;
+			padding: 0;
+			margin: 0;
+			color: rgba(21, 21, 21, 0.94);
+		}
+		
+		.list>li {
+			width: 100%;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: row;
+			flex-direction: row;
+			border-bottom: 1px solid rgba(21, 21, 21, 0.12);
+		}
+		
+		.list>li:hover {
+			box-shadow: inset 0px 0px 4px rgba(21, 21, 21, 0.21);
+		}
+		
+		.list>li>div {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-flex: 2;
+			-ms-flex: 2;
+			flex: 2;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+			padding: 10px;
+			border-right: 1px solid rgba(21, 21, 21, 0.12);
+		}
+		
+		.time {
+			font-size: 14px;
+		}
+		
+		.m {
+			font-size: 14px;
+			text-transform: uppercase;
+			padding-left: 5px;
+		}
+		
+		.list>li>p {
+			-webkit-box-flex: 4;
+			-ms-flex: 4;
+			flex: 4;
+			margin: 10px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: start;
+			-ms-flex-pack: start;
+			justify-content: flex-start;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-ms-flex-line-pack: center;
+			align-content: center;
+			font-size: 18px;
+			word-wrap: break-word;
+			word-break: break-word;
+		}
+	</style>
+</th:block>
+</head>
+<body>
+	<div layout:fragment="content" style="margin-top: 50px">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="page-header">
+						<h1 id="">Schedule Management</h1>
+					</div>
+				</div>
+			</div>
+			<div id="calendarContainer" class="col-md-6"></div>
+			<div id="organizerContainer" class="col-md-6"></div>
+			<div class="row">
+				<div class="container" id="event_management_area">
+					<div class="page-header">
+						<h1 id="">Event Management</h1>
+					</div>
+					<div class="col-md-12" id="schedule_event_area">
+						<form th:object="${scheduleBase}" id="scheduleForm">
+							<div class="col-md-12" id="schedule_event_area_box">
+								<div class="col-md-4" id="schedle_date_area">
+									<div class="col-md-4" id="schedule_event_date_box" style="width: 100%;padding: 0;margin: 0;">
+										<div class="input-group" style="width: 70%;float: left;">
+											<span class="input-group-addon">Date</span>
+											<input type="text" class="form-control" readonly="readonly" name="scheduleDate">
+										</div>
+										<a class="btn btn-default glyphicon glyphicon-plus" id="btn_event_date_add" onclick="createEventDateArea(this)"></a>
+									</div>
+								</div>
+								<div class="col-md-8" id="schedule_time_area">
+									<div class="input-group" id="schedule_event_start_time_box" style="width: 85%;float: left;">
+										<span class="input-group-addon">Start</span>
+										<input type="text" class="form-control" readonly="readonly">
+										<!-- <input type="hidden"> -->
+									</div>
+									<a class="btn btn-default glyphicon glyphicon-plus" id="btn_event_add" onclick="createEventArea(this)"></a>
+									<div class="input-group" id="schedule_event_end_time_box" style="width: 85%;">
+										<span class="input-group-addon">End</span>
+										<input type="text" class="form-control" readonly="readonly">
+									</div>
+									<div class="input-group" id="schedule_event_content_box" style="width: 85%;">
+										<span class="input-group-addon">Text</span>
+										<textarea class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<input type="button" class="btn btn-primary" value="Done" onclick="sendForm();">
+					<input type="button" class="btn btn-danger" value="Cancle">
+				</div>
+			</div>
+		</div>
+	</div>
+	<th:block layout:fragment="custom_script">
+		<script th:src="@{'/assets/js/calendar.js'}"></script>
+		<script>
+			Map = function(){
+				this.map = new Object();
+			};  
+			
+			Map.prototype = {
+				put : function(key, value) {
+					this.map[key] = value;
+				},
+				
+				get : function(key) {
+					return this.map[key];
+				},
+				
+				containsKey : function(key) {
+					return key in this.map;
+				},
+		
+				containsValue : function(value) {
+					for ( var prop in this.map) {
+						if (this.map[prop] == value)
+							return true;
+					}
+					return false;
+				},
+				
+				isEmpty : function(key) {
+					return (this.size() == 0);
+				},
+		
+				clear : function() {
+					for ( var prop in this.map) {
+						delete this.map[prop];
+					}
+				},
+				remove : function(key) {
+					delete this.map[key];
+				},
+				keys : function() {
+					var keys = new Array();
+					for ( var prop in this.map) {
+						keys.push(prop);
+					}
+					return keys;
+				},
+				values : function() {
+					var values = new Array();
+					for ( var prop in this.map) {
+						values.push(this.map[prop]);
+					}
+					return values;
+				},
+				size : function() {
+					var count = 0;
+					for ( var prop in this.map) {
+						count++;
+					}
+					return count;
+				}
+			};
+		
+			$(document).ready(function(){
+				init();
+			});
+			
+			function validation(){
+				var scheduleEventAreaCount = $("div[id='schedule_event_area']").length;
+				
+				for(var i =0 ; i < scheduleEventAreaCount; i++){
+					var areaBoxCount= $("div[id='schedule_event_area']").eq(i).find("div[id='schedule_event_area_box']").length;
+					for(var j = 0; j < areaBoxCount; j++){
+						var getDate = $("div[id='schedule_event_area']").eq(i).find("div[id='schedle_date_area']").eq(j).find("#schedule_event_date_box").find("input[id*='schedule_date_']").val();
+						var getStartTime = $("div[id='schedule_event_area']").eq(i).find("div[id='schedule_event_area_box']").eq(j).find("#schedule_event_start_time_box").find("input[id*='schedule_start_time_']").val();
+						var getEndTime = $("div[id='schedule_event_area']").eq(i).find("div[id='schedule_event_area_box']").eq(j).find("#schedule_event_end_time_box").find("input[id*='schedule_end_time_']").val();
+						var getContent = $("div[id='schedule_event_area']").eq(i).find("div[id='schedule_event_area_box']").eq(j).find("#schedule_event_content_box").find("textarea[id*='schedule_content_']").val();
+						
+						if(getDate == ""){
+							alert("Pleas. Select Date");
+							return false;
+						}else if(getStartTime == ""){
+							alert("Pleas. Select Start Time");
+							return false;
+						}else if(getEndTime == ""){
+							alert("Pleas. Select End Time");
+							return false;
+						}else if(getContent == ""){
+							alert("Pleas. Write Event Content");
+							return false;
+						}
+					}
+				}
+			}
+			
+			//ajax 통신 후 리다이렉트를 위한 전역변수
+			function sendForm(){
+				var formCount = $("form[id='scheduleForm']").length;
+				var resultCount=0;
+				
+				if(validation() != false){
+					for(var i = 0; i < formCount;i++){
+						var getForm = $("form[id='scheduleForm']")[i];
+						var formData = new FormData(getForm);
+
+						$.ajax({
+							url:"/admin/schedule/addEventProc"
+							,processData: false
+							,contentType: false
+							,data: formData
+							,method : "POST"
+							,dataType:"json"
+							,success:function(data){
+								if(data != ""){
+									resultCount++;
+									redirect(formCount, resultCount, "http://localhost:8080/admin/schedule/scheduleManage");
+								}
+							}
+						});
+					}
+				}
+			}
+			
+			function redirect(start, end, url){
+				if(start == end){
+					$(location).attr("href", url);
+				}
+			}
+			
+			function init(){
+				createEventAreaDateBoxIndex();
+				createEventAreaDatePicker();
+				createEventAreaStartTimeBoxIndex();
+				createEventAreaEndTimeBoxIndex();
+				createEventAreaTimePicker();
+				createEventAreaContentBoxIndex();
+				createEventIndex();
+				/* createEventHiddenIndex(); */
+			}
+			
+			//Create Event Time Input Area
+			function createEventArea(area){
+				var coneEventArea = $(area).closest("#schedule_event_area_box").clone();
+				
+				$(coneEventArea).find("#schedule_event_date_box").remove();
+				$(coneEventArea).find("#schedule_time_area").find("#event_btn_delete").remove();
+				$(coneEventArea).find("#schedule_time_area").find("#schedule_event_end_time_box").before('<a class="btn btn-default glyphicon glyphicon-minus" id="event_btn_delete" onclick="removeEventArea(this)"></a>');
+				$(area).closest("#scheduleForm").append(coneEventArea);
+				init();
+			}
+			
+			//Create Event Date Input Area
+			function createEventDateArea(area){
+				var coneEventArea = $(area).closest("#schedule_event_area").clone();
+				
+				
+				$(coneEventArea).find("#schedule_event_date_box").find("#event_date_btn_delete").remove();
+				$(coneEventArea).find("#schedule_event_date_box").find("input").val("");
+				$(coneEventArea).find("#schedule_event_date_box").find("input").removeClass();
+				$(coneEventArea).find("#schedule_event_date_box").find("input").attr("class", "form-control");
+				$(coneEventArea).find("#schedule_time_area").find("input, textarea").val("");
+				$(coneEventArea).find("#schedule_event_date_box").append('<a class="btn btn-default glyphicon glyphicon-minus" id="event_date_btn_delete" onclick="removeEventDateArea(this)"></a>');
+				
+				var eventTimeAreaCount = $(coneEventArea).find("#schedule_event_area_box").length;
+				for(var i = eventTimeAreaCount; i > 0; i--){
+					if(i != 0){
+						$(coneEventArea).find("div[id='schedule_event_area_box']").eq(i).remove();
+					}
+				}
+				
+				$(area).closest("#event_management_area").append(coneEventArea);
+				init();
+			}
+			
+			//Remove Event Input Area
+			function removeEventArea(area){
+				$(area).closest("#schedule_event_area_box").remove();
+				init();
+			}
+			
+			//Remove Event Date Input Area
+			function removeEventDateArea(area){
+				$(area).closest("#schedule_event_area").remove();
+				init();
+			}
+			
+			//Create Event Input ID Index
+			function createEventAreaDateBoxIndex(){
+				var scheduleEventBoxLength = $("div[id='schedule_event_date_box']").length;
+				
+				for(var i=0; i < scheduleEventBoxLength; i++){
+					$("div[id='schedule_event_date_box']").eq(i).find("input[type=text]").attr("id", "schedule_date_"+i);
+				}			
+			}
+			//전역변수
+			var selectedDateMap = new Map();
+			selectedDateMap.put("default", "0000-00-00");
+			
+			function selectedDateDisable(date){
+				var keys = selectedDateMap.keys();
+				var selectedDateArray = new Array();
+				
+				for(var i = 0; i < keys.length; i++){
+					selectedDateArray.push(selectedDateMap.get(keys[i]));
+				}
+								
+				var month = ("0" + (date.getMonth() + 1)).slice(-2);
+				var dates = ("0" + date.getDate()).slice(-2);
+				var year = date.getFullYear();
+				
+				var dateStr = $.datepicker.formatDate('yy-mm-dd', date);
+				
+				for(var i = 0; i < selectedDateArray.length; i++){
+					if(selectedDateArray.indexOf(dateStr) != -1){
+						return [false];
+					}else{
+						return [true];
+					}
+				}
+			}
+			//Create Event DatePicker
+			function createEventAreaDatePicker(){
+				var scheduleEventInputLength = $("input[id*='schedule_date_']").length;
+				
+				var keys = selectedDateMap.keys();
+				
+				for(var i=0; i < scheduleEventInputLength; i++){
+					$("#schedule_date_"+i).datepicker({
+						changeMonth: true
+						, changeYear: true
+						, nextText: 'Next'
+						, prevText: 'prev'
+						, dateFormat: 'yy-mm-dd'
+						, beforeShowDay: selectedDateDisable
+						, onClose: function(selectedDate){
+							selectedDateMap.put($(this).attr("id"), selectedDate);
+						}
+					});
+				}
+			}
+						
+			//Crate Event TimePicker
+			function createEventAreaTimePicker(){
+				var scheduleEventAreaCount = $("div[id='schedule_event_area']").length;
+				
+				for(var i = 0; i < scheduleEventAreaCount; i++){
+					var areaBoxCount= $("div[id='schedule_event_area']").eq(i).find("div[id='schedule_event_area_box']").length;
+					for(var j = 0; j < areaBoxCount; j++){
+						$("#schedule_start_time_"+i+"_"+j).timepicker({
+							timeFormat: "HH:mm",
+							interval: 5
+						});
+						
+						$("#schedule_end_time_"+i+"_"+j).timepicker({
+							timeFormat: "HH:mm",
+							interval: 5
+						});
+					}
+				}
+			}
+			
+			//Create Event Start Time Index
+			function createEventAreaStartTimeBoxIndex(){
+				var scheduleEventAreaCount = $("div[id='schedule_event_area']").length;
+				
+				for(var i = 0; i < scheduleEventAreaCount; i++){
+					var areaBoxCount= $("div[id='schedule_event_area']").eq(i).find("div[id='schedule_event_area_box']").length;
+					for(var j = 0; j < areaBoxCount; j++){
+						$("div[id='schedule_event_area']").eq(i)
+						.find("div[id='schedule_event_area_box']")
+						.eq(j)
+						.find("#schedule_event_start_time_box")
+						.find("input:text")
+						.attr("id", "schedule_start_time_"+i+"_"+j);
+					}
+				}
+			}
+			
+			//Create Event End Time Index
+			function createEventAreaEndTimeBoxIndex(){
+				var scheduleEventAreaCount = $("div[id='schedule_event_area']").length;
+				
+				for(var i = 0; i < scheduleEventAreaCount; i++){
+					var areaBoxCount= $("div[id='schedule_event_area']").eq(i).find("div[id='schedule_event_area_box']").length;
+					for(var j = 0; j < areaBoxCount; j++){
+						$("div[id='schedule_event_area']")
+						.eq(i)
+						.find("div[id='schedule_event_area_box']")
+						.eq(j)
+						.find("#schedule_event_end_time_box")
+						.find("input:text")
+						.attr("id", "schedule_end_time_"+i+"_"+j);
+					}
+				}
+			}
+			
+			//Create Event Input Hidden Id
+			function createEventHiddenIndex(){
+				var scheduleEventAreaCount = $("div[id='schedule_event_area']").length;
+				
+				for(var i = 0; i < scheduleEventAreaCount; i++){
+					var areaBoxCount= $("div[id='schedule_event_area']").eq(i).find("div[id='schedule_event_area_box']").length;
+					for(var j = 0; j < areaBoxCount; j++){
+						$("div[id='schedule_event_area']")
+						.eq(i)
+						.find("div[id='schedule_event_area_box']")
+						.eq(j)
+						.find("div[id='schedule_event_start_time_box']")
+						.find("input[type='hidden']")
+						.attr("id", "schedule_event_seq_"+j);
+						
+						$("div[id='schedule_event_area']")
+						.eq(i)
+						.find("div[id='schedule_event_area_box']")
+						.eq(j).find("div[id='schedule_event_start_time_box']")
+						.find("input[type='hidden']")
+						.attr("name", "events["+j+"].scheduleEventSeq");
+					}
+				}
+			}
+			
+			//Create Event Start Time Index
+			function createEventAreaContentBoxIndex(){
+				var scheduleEventAreaCount = $("div[id='schedule_event_area']").length;
+				
+				for(var i = 0; i < scheduleEventAreaCount; i++){
+					var areaBoxCount= $("div[id='schedule_event_area']").eq(i).find("div[id='schedule_event_area_box']").length;
+					for(var j = 0; j < areaBoxCount; j++){
+						$("div[id='schedule_event_area']")
+						.eq(i)
+						.find("div[id='schedule_event_area_box']")
+						.eq(j)
+						.find("#schedule_event_content_box")
+						.find("textarea")
+						.attr("id", "schedule_content_"+j);
+					}
+				}
+			}
+			
+			//Create Event Index
+			function createEventIndex(){
+				var scheduleEventAreaCount = $("div[id='schedule_event_area']").length;
+				
+				for(var i = 0; i < scheduleEventAreaCount; i++){
+					var areaBoxCount= $("div[id='schedule_event_area']").eq(i).find("div[id='schedule_event_area_box']").length;
+					for(var j = 0; j < areaBoxCount; j++){
+						$("div[id='schedule_event_area']")
+							.eq(i)
+							.find("div[id='schedule_event_area_box']")
+							.eq(j)
+							.find("input[id*='schedule_start_time_']")
+							.attr("name", "events["+j+"].scheduleEventStartTime");
+						$("div[id='schedule_event_area']")
+							.eq(i)
+							.find("div[id='schedule_event_area_box']")
+							.eq(j)
+							.find("input[id*='schedule_end_time_']")
+							.attr("name", "events["+j+"].scheduleEventEndTime");
+						$("div[id='schedule_event_area']")
+						.eq(i)
+						.find("div[id='schedule_event_area_box']")
+						.eq(j)
+						.find("textarea[id*='schedule_content_']")
+						.attr("name", "events["+j+"].scheduleEventContent");
+					}
+				}
+			}
+		
+			
+		</script>
+		
+	</th:block>
+</body>
+</html>

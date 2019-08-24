@@ -15,44 +15,45 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer{
+public class WebConfig implements WebMvcConfigurer {
 
 	@Autowired
 	private MessageSource messageSource;
-	
-	
-	@Override public void addViewControllers(ViewControllerRegistry registry) {
-	  //registry.addViewController("/").setViewName("index");
-	  //registry.addViewController("/login").setViewName("/");
-	  //registry.addViewController("/home").setViewName("userhome");
-	  //registry.addViewController("/admin/home").setViewName("adminhome");
-	  //registry.addViewController("/403").setViewName("403"); }
-	  } 
- 
-    @Override
-    public Validator getValidator() {
-        LocalValidatorFactoryBean factory = new LocalValidatorFactoryBean();
-        factory.setValidationMessageSource(messageSource);
-        return factory;
-    }
- 
-    @Bean
-    public SpringSecurityDialect securityDialect() {
-         return new SpringSecurityDialect();
-    }
-	
-    @Bean
-    public DeviceResolverHandlerInterceptor deviceResolverHandlerInterceptor() {
-    	return new DeviceResolverHandlerInterceptor();
-    }
-    
-    @Bean
-    public DeviceHandlerMethodArgumentResolver deviceHandlerMethodArgumentResolver() {
-    	return new DeviceHandlerMethodArgumentResolver();
-    }
+
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		// registry.addViewController("/").setViewName("index");
+		// registry.addViewController("/login").setViewName("/");
+		// registry.addViewController("/home").setViewName("userhome");
+		// registry.addViewController("/admin/home").setViewName("adminhome");
+		// registry.addViewController("/403").setViewName("403"); }
+	}
+
+	@Override
+	public Validator getValidator() {
+		LocalValidatorFactoryBean factory = new LocalValidatorFactoryBean();
+		factory.setValidationMessageSource(messageSource);
+		return factory;
+	}
+
+	@Bean
+	public SpringSecurityDialect securityDialect() {
+		return new SpringSecurityDialect();
+	}
+
+	@Bean
+	public DeviceResolverHandlerInterceptor deviceResolverHandlerInterceptor() {
+		return new DeviceResolverHandlerInterceptor();
+	}
+
+	@Bean
+	public DeviceHandlerMethodArgumentResolver deviceHandlerMethodArgumentResolver() {
+		return new DeviceHandlerMethodArgumentResolver();
+	}
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
@@ -64,4 +65,8 @@ public class WebConfig implements WebMvcConfigurer{
 		resolvers.add(deviceHandlerMethodArgumentResolver());
 	}
 
+	@Bean
+	MappingJackson2JsonView jsonView() {
+		return new MappingJackson2JsonView();
+	}
 }

@@ -57,21 +57,21 @@ public class ClassBase{
 	private String classDisplayYn;
 	
 	@Column(name="REGISTER_DATE", updatable=false)
-	@Description(logicalName="클래스 등록일")
+	@Description(logicalName="등록일")
 	@CreationTimestamp
 	private Timestamp registerDate;
 	
 	@Column(name="REGISTER_ID")
-	@Description(logicalName="클래스 등록자")
+	@Description(logicalName="등록자")
 	private String registerId;
 	
 	@Column(name="UPDATE_DATE", updatable=true)
-	@Description(logicalName="클래스 수정일")
+	@Description(logicalName="수정일")
 	@LastModifiedDate
 	private Timestamp updateDate;
 	
 	@Column(name="UPDATE_ID")
-	@Description(logicalName="클래스 수정자")
+	@Description(logicalName="수정자")
 	private String updateId;
 
 	@OneToOne
