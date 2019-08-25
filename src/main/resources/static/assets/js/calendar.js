@@ -439,6 +439,15 @@ Organizer.prototype.list = function (data) {
 		}
 	}else{
 		for (var i = 0; i < data.length; i++) {
+			var getYes="notActive";
+			var getNo= "notActive";
+			
+			if(data[i].done == "Y"){
+				getYes= "active";
+			}else if(data[i].done == "N"){
+				getNo = "active"
+			}
+			
 			content += '<li id="' + this.id 
 	    			+ '-list-item-' 
 	    			+ i + '"><div><span class="' 
@@ -451,12 +460,47 @@ Organizer.prototype.list = function (data) {
 	    			+ '</span></div>'
 	    			+ '<p id="' + this.id + '-list-item-' + i + '-text">'
 	    			+ data[i].text + '</p>'
-	    			+ "<p>" + data[i].done +"</p></li>"
+	    			+ "<div id='radioBtn' class='btn-group'>"
+	    			+ "<form id='eventConfirm'>"
+					+ '<a class="btn btn-primary btn-sm '+getYes+'" data-toggle="main_display_yn" data-title="Y" id="confirmYes" onclick="confirmYn(this)">YES</a>'
+					+ '<a class="btn btn-primary btn-sm '+getNo+'" data-toggle="main_display_yn" data-title="N" id="confirmNo" onclick="confirmYn(this)">NO</a>'
+					+ '<input type="hidden" name="scheduleEventConfirmYn" id="eventConfirmYn" value="'+data[i].done+'">'
+					+ '<input type="hidden" name="scheduleEventSeq" id="eventSeq" value="'+data[i].seq+'">'
+					+ "</form>"
+	    			+"</div>"
+	    			+"</li>"
 	    			;
 		}
 	}
 	
 	document.getElementById(this.id + "-list").innerHTML = content;
+}
+
+function confirmYn(YN){
+	if($(YN).attr("id")=="confirmNo"){
+		$(YN).removeClass("notActive").addClass("active");
+		$(YN).closest("#radioBtn").find("#confirmYes").removeClass("active").addClass("notActive");
+		$(YN).closest("#radioBtn").find("#eventConfirmYn").val("N");
+	}else if($(YN).attr("id")=="confirmYes"){
+		$(YN).removeClass("notActive").addClass("active");
+		$(YN).closest("#radioBtn").find("#confirmNo").removeClass("active").addClass("notActive");
+		$(YN).closest("#radioBtn").find("#eventConfirmYn").val("Y");
+	}
+	
+	var getForm = $(YN).closest("#radioBtn").find("#eventConfirm")[0];
+	var formData = new FormData(getForm);
+	
+	$.ajax({
+		url:"/admin/schedule/updateEventYn"
+		,processData: false
+		,contentType: false
+		,data: formData
+		,method : "POST"
+		,dataType:"json"
+		,success:function(data){
+			console.log(data);
+		}
+	});
 }
 
 Organizer.prototype.setupBlock = function (blockId, theOrganizer, callback) {

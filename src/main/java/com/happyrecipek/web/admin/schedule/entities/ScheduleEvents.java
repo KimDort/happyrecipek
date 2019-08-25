@@ -39,7 +39,7 @@ public class ScheduleEvents {
 	private String scheduleEventContent;
 	
 	@Column(name="SCHEDULE_EVENT_CONFIRM_YN")
-	@Description(logicalName="스케줄 이벤트 종료 시간")
+	@Description(logicalName="스케줄 이벤트 처리여부")
 	private String scheduleEventConfirmYn;
 	
 	@Column(name="REGISTER_DATE", updatable=false)

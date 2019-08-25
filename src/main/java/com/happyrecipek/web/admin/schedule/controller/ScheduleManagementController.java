@@ -161,4 +161,25 @@ public class ScheduleManagementController {
 
 		return mv;
 	}
+	
+	/**
+	 * @author KYJ
+	 * @since 2019-08-09
+	 * @param Device
+	 * @return String Schedule List Page
+	 */
+	@RequestMapping("/admin/schedule/updateEventYn")
+	public ModelAndView updateEventYn(@ModelAttribute("scheduleEvent") ScheduleEvents scheduleEvent) {
+		ModelAndView mv = new ModelAndView("jsonView");
+		
+		ScheduleEvents getEvent = scheduleEventDetailRepository.findByScheduleEventSeq(scheduleEvent.getScheduleEventSeq());
+		getEvent.setScheduleEventConfirmYn(scheduleEvent.getScheduleEventConfirmYn());
+		ScheduleEvents saveEvent = scheduleEventDetailRepository.save(getEvent);
+		if(scheduleEvent.getScheduleEventConfirmYn().equals(saveEvent.getScheduleEventConfirmYn())) {
+			mv.addObject("result", "SUCCESS");
+		}else {
+			mv.addObject("result", "FAILED");
+		}
+		return mv;
+	}
 }
