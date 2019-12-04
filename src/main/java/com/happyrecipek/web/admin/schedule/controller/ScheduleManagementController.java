@@ -64,11 +64,13 @@ public class ScheduleManagementController {
 	public @ResponseBody int scheduleAddEventProc(@ModelAttribute("scheduleBase") ScheduleBase scheduleBase) {
 		ScheduleBase newBase = new ScheduleBase();
 		
+		for(int i = 0; i <scheduleBase.getEvents().size(); i++) {
+			scheduleBase.getEvents().get(i).setScheduleEventConfirmYn("N");
+		}
+		
 		if (scheduleBase.getScheduleSeq() > 0) {
 			scheduleEventRepository.delete(scheduleBase);
 			newBase = scheduleEventRepository.save(scheduleBase);
-			System.out.println("base : "+scheduleBase.toString());
-			System.out.println("events : "+ scheduleBase.getEvents().toString());
 		} else {
 			newBase = scheduleEventRepository.save(scheduleBase);
 		}

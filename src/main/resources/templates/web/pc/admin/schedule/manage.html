@@ -774,11 +774,24 @@
 						, beforeShowDay: selectedDateDisable
 						, onClose: function(selectedDate){
 							selectedDateMap.put($(this).attr("id"), selectedDate);
+							removeHiddenInput();
 						}
 					});
 				}
 			}
-						
+			
+			function removeHiddenInput(){
+				//불필요한 div 삭제
+				var eventAreaBoxLength = $("div[id='schedule_event_area_box']").length;
+				for(var i = eventAreaBoxLength; i > 0; i--){
+					if(i > 0){
+						$("div[id='schedule_event_area_box']").eq(i).remove();
+					}
+				}
+				$("div[id='schedule_event_area_box']").eq(0).find("input:hidden").remove();
+				$("div[id='schedule_event_area_box']").eq(0).find("#schedule_time_area").find("input, textarea").val("");
+			}
+			
 			//Crate Event TimePicker
 			function createEventAreaTimePicker(){
 				var scheduleEventAreaCount = $("div[id='schedule_event_area']").length;
