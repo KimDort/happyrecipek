@@ -101,6 +101,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 					.antMatchers("/blog/**").permitAll()
 					.antMatchers("/common/**").permitAll()
 					.antMatchers("/test").permitAll()
+					.antMatchers("/content/**").permitAll()
 					//.antMatchers("/introduce/write").hasRole("ADMIN")
 					//.antMatchers("/introduce/write").permitAll()
 					.anyRequest().authenticated()

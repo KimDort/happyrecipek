@@ -6,7 +6,7 @@ import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.happyrecipek.web.member.controller.main.MainController;
+import com.happyrecipek.web.member.main.controller.MainController;
 
 @Controller
 public class IntroduceController {

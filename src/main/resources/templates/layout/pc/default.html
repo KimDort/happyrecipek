@@ -9,11 +9,8 @@
 <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE"></title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
 <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon.png">
-<link rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}" />
 <link rel="stylesheet" th:href="@{/assets/css/pc/styles.css}" />
-<link rel="stylesheet" th:href="@{/assets/css/pc/template.css}" />
-<link rel="stylesheet" th:href="@{/assets/css/pc/template_base.css}" />
-<link rel="stylesheet" th:href="@{//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css}">
 <link rel="stylesheet" th:href="@{'//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css'}">
 <link th:href='@{https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600}' rel='stylesheet' type='text/css'>
 <link th:href="@{http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css}" rel="stylesheet">
@@ -22,111 +19,43 @@
 </head>
 
 <body>
-	<!-- Nav : S -->
-	<nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll="200">
-		<div class="container">
-            <div class="navbar-header">
-                <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar bar1"></span>
-                    <span class="icon-bar bar2"></span>
-                    <span class="icon-bar bar3"></span>
-                </button>
-                <a href="/" class="navbar-brand">
-                    Happy Recipe K
-                </a>
-            </div>
-            <div class="collapse navbar-collapse">
-            	<ul class="nav navbar-nav navbar-left navbar-uppercase">
-            		<li><a th:href="@{/introduce}" data-toggle="tooltip" title="회사소개">About us</a></li>
-	            	<li><a th:href="@{/cooking/list}" data-toggle="tooltip" title="쿠킹클래스">Cooking Class</a></li>
-	            	<li><a th:href="@{/blog/list?page=1}" data-toggle="tooltip" title="블로그">Blog</a></li>
-	            	<li><a th:href="@{/connect}" data-toggle="tooltip" title="연락하기">Connect us</a></li>
-	            	<li><a th:href="@{http://www.happyrecipek.co.jp}" data-toggle="tooltip" title="일본홈페이지">Japan</a></li>
-            	</ul>
-                <ul class="nav navbar-nav navbar-right navbar-uppercase">
-                    <li sec:authorize="isAuthenticated()">
-						<a th:href="@{/logout}">Logout</a><a sec:authentication="name"></a>
-					</li>
-					<li sec:authorize="!isAuthenticated()"><a href="" data-toggle="modal" data-target="#myModal">Login</a></li>
-                    <li class="dropdown">
-                        <a href="#gaia" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-share-alt"></i> Share
-                        </a>
-                        <ul class="dropdown-menu dropdown-danger">
-                            <li><a href="https://www.facebook.com/HappyRecipeK/"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-                            <!-- <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li> -->
-                            <li><a href="https://www.instagram.com/happy_recipe_k"><i class="fa fa-instagram"></i> Instagram</a></li>
-                        </ul>
-                    </li>
-                    <li>
-						<a th:href="@{'http://www.happyrecipek.co.jp'}">Japan</a>
-					</li>
-                </ul>
-            </div>
-        </div>
-	</nav>
-	<!-- Nav : E -->
-	
-	<div layout:fragment="content">
-		<!-- Your Page Content Here -->
-	</div>
-	
-	<!-- Login Modal : S -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<form action="home" th:action="@{/}" method="post" role="form">
-				<!-- Modal Head : S -->
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h4 class="modal-title" id="myModalLabel">Log in</h4>
-				</div>
-				<!-- Modal Head : E -->
-				
-				<!-- Modal Body : S -->
-				<div class="modal-body">
-						<div class="form-group">
-							<div class="input-group">
-								<input type="email" class="form-control" id="uLogin" placeholder="Login" name="username">
-								<label for="uLogin" class="input-group-addon glyphicon glyphicon-user"></label>
-							</div>
-						</div>
-	
-						<div class="form-group">
-							<div class="input-group">
-								<input type="password" class="form-control" id="uPassword" placeholder="Password" name="password">
-								<label for="uPassword" class="input-group-addon glyphicon glyphicon-lock"></label>
-							</div> <!-- /.input-group -->
-						</div>
-	
-						<div class="checkbox">
-							<label>
-								<input type="checkbox"> Remember me
-							</label>
-						</div>
-				</div>
-				<!-- Modal Body : E -->
-				
-				<!-- Modal Footer : S -->
-				<div class="modal-footer">
-					<button class="form-control btn btn-primary" id="btnLogin">Ok</button>
-				</div>
-				<div class="modal-footer">
-					<div style="text-align: center;">
-						<h5>SNS Login</h5>
-					</div>
-					<div style="float: left;">
-						<a th:href="@{'/login/google'}">
-							<img alt="" th:src="@{'/assets/img/google_signin_buttons/ios/1x/btn_google_light_normal_ios.png'}">
-						</a>
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li id="li_home"><a href="/">HOME</a></li>
+				<li id="li_about"><a href="#">ABOUT</a></li>
+				<li id="li_class"><a href="#">CLASS</a></li>
+				<li id="li_blog"><a href="#">BLOG</a></li>
+				<li id="li_japan"><a href="#">JAPAN</span></a></li>
+			</ul>
+		</div>
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<a href="#" class="btn" id="menu-toggle"><span
+							class="glyphicon glyphicon-align-justify"></span></a>
 					</div>
 				</div>
-				<!-- Modal Footer : S -->
-				</form>
+				<div layout:fragment="content">
+					<!-- Your Page Content Here -->
+				</div>
 			</div>
 		</div>
+		
 	</div>
+	<!-- footer : S -->
+	<footer class="navbar-default navbar-fixed-bottom">
+		<div class="container-fluid">
+			<div class="container text-center">
+				<small>Copyrightⓒ HappyRecipeK All right reserved</small>
+			</div>
+		</div>
+	</footer>
+	<!-- footer : E -->
 	<!-- Login Modal : E -->
 	<script th:src="@{'/assets/js/jquery-2.1.4.min.js'}"></script>
 	<script th:src="@{'/assets/bootstrap/js/bootstrap.min.js'}"></script>
@@ -134,127 +63,17 @@
 	<script th:src="@{'/assets/js/modernizr.js'}"></script>
 	<script th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
 	<script th:src="@{'//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js'}"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+				$("#wrapper").toggleClass("menuDisplayed");
+			});
+		});
+	</script>
 	<th:block layout:fragment="custom_script">
 	</th:block>
-	<!-- Footer : S -->
-	<footer class="footer footer-big footer-color-gray" data-color="black">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2 col-sm-3">
-                    <div class="info">
-                        <h5 class="title">Company</h5>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <a th:href="@{/}">Home</a></li>
-                                <li>
-                                <li>
-                                    <a th:href="@{/introduce}">About Us</a>
-                                </li>
-                                <li>
-                                    <a th:href="@{/cooking/list}">Cooking Class</a>
-                                </li>
-                                <li>
-                                    <a href="#"></a>
-                                </li>
-                                <li>
-                                    <a href="#"></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-md-3 col-md-offset-1 col-sm-3">
-                    <div class="info">
-                        <h5 class="title"> Help and Support</h5>
-                         <nav>
-                            <ul>
-                                <li>
-                                    <a th:href="@{/connect}">Contact Us</a>
-                                </li>
-                                <li>
-                                    <a href="#">How it works</a>
-                                </li>
-                                <li>
-                                    <a href="#"></a>
-                                </li>
-                                <li>
-                                    <a href="#"></a>
-                                </li>
-                                <li>
-                                    <a href="#"></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-3">
-                    <div class="info">
-                        <h5 class="title">Company Address</h5>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <a href="#">
-                                    	<i class="fa fa-compass"></i>
-                                        <b>서울특별시 중구 세종대로 55, 19층(태평로 2가, 부영태평빌딩)</b><br/>
-                                        <i class="fa fa-compass"></i><b>55, Sejong-daero, Jung-gu, Seoul</b><br/>
-                                        Zipcode : 04513
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="col-md-2 col-md-offset-1 col-sm-3">
-                    <div class="info">
-                        <h5 class="title">Follow us on</h5>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <a th:href="@{https://www.facebook.com/HappyRecipeK/}" class="btn btn-social btn-facebook btn-simple">
-                                        <i class="fa fa-facebook-square"></i> Facebook
-                                    </a>
-                                </li>
-                                <li>
-                                    <a th:href="@{https://www.instagram.com/happy_recipe_k/}" class="btn btn-social btn-instagram btn-simple">
-                                        <i class="fa fa-instagram"></i> Instagram
-                                    </a>
-                                </li>
-                                <li>
-                                    <a th:href="@{https://www.youtube.com/channel/UC7f85ApuuOnQeCBqPWtTHDA}" class="btn btn-social btn-youtube btn-simple">
-                                        <i class="fa fa-youtube"></i> Youtube
-                                    </a>
-                                </li>
-                                <li>
-                                	<a href="">
-                                		<img th:src="@{/assets/img/index/kakaolink_btn_small.png}" style="width:20px;-webkit-filter: grayscale(100%);filter: grayscale(100%);"> Kakao Plus Friend
-                                	</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-				<div class="col-md-2 col-sm-3">
-				    <div class="info">
-				        <h5 class="title">Other Site</h5>
-				         <nav>
-				            <ul>
-				                <li>
-				                    <a th:href="@{'http://www.happyrecipek.co.jp'}">
-				                    	<img th:src="@{'https://lipis.github.io/flag-icon-css/flags/4x3/jp.svg'}" class="btn btn-simple" style="width:70px;-webkit-filter: grayscale(100%);filter: grayscale(100%);"/>
-	               						Japan
-				                    </a>
-				                </li>
-				            </ul>
-				        </nav>
-				    </div>
-				</div>
-            </div>
-            <div class="copyright">
-                 © <script> document.write(new Date().getFullYear()) </script> Happy Recipe K - Copyright All Rights Reserved.
-            </div>
-        </div>
-    </footer>
+	
 	<!-- Footer : E -->
 </body>
 </html>
