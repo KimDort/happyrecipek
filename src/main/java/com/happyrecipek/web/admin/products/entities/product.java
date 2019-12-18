@@ -1,4 +1,4 @@
-package com.happyrecipek.web.member.contents.entities;
+package com.happyrecipek.web.admin.products.entities;
 
 import java.sql.Timestamp;
 
@@ -15,29 +15,25 @@ import org.springframework.data.annotation.LastModifiedDate;
 import com.happyrecipek.web.com.system.annotations.Description;
 
 @Entity
-@Table(name="content")
-public class Content {
+@Table(name="products")
+public class product {
 	@Id
-	@Column(name="CONTENT_SEQ")
-	@Description(logicalName="콘텐츠순번")
+	@Column(name="PRODUCT_SEQ")
+	@Description(logicalName="제품순번")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int contentSeq;
+	private int productSeq;
 	
 	@Column(name="CONTENT_CATEGORY_CODE")
 	@Description(logicalName="카테고리코드")
 	private String categoryCode;
 	
-	@Column(name="CONTENT_TITLE")
-	@Description(logicalName = "콘텐츠제목")
-	private String contentTitle;
+	@Column(name="PRODUCT_TITLE")
+	@Description(logicalName = "제품제목")
+	private String productTitle;
 	
-	@Column(name="CONTENT_YOUTUBE", columnDefinition="TEXT")
-	@Description(logicalName="콘텐츠유튜브")
-	private String contentYoutube;
-	
-	@Column(name="CONTENT_OTHER", columnDefinition="TEXT")
-	@Description(logicalName="콘텐츠기타설명")
-	private String contentOther;
+	@Column(name="PRODUCT_CONTENT", columnDefinition="TEXT")
+	@Description(logicalName = "제품내용")
+	private String productContent;
 	
 	@Column
 	@Description(logicalName = "표시여부")
