@@ -15,29 +15,29 @@ import org.springframework.data.annotation.LastModifiedDate;
 import com.happyrecipek.web.com.system.annotations.Description;
 
 @Entity
-@Table(name="products")
-public class product {
+@Table(name="product_manager")
+public class productManager {
 	@Id
-	@Column(name="PRODUCT_SEQ")
-	@Description(logicalName="제품순번")
+	@Column(name="PRODUCT_MANAGER_SEQ")
+	@Description(logicalName="제품관리순번")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int productSeq;
+	private int productManagerSeq;
 	
-	@Column(name="CONTENT_CATEGORY_CODE")
-	@Description(logicalName="카테고리코드")
-	private String categoryCode;
+	@Column(name="PRODUCT_MANAGER_COST")
+	@Description(logicalName="제품가격")
+	private int productManagerCost;
 	
-	@Column(name="PRODUCT_TITLE")
-	@Description(logicalName = "제품제목")
-	private String productTitle;
+	@Column(name="PRODUCT_MANAGER_STOCK")
+	@Description(logicalName="제품재고")
+	private int productManagerStock;
 	
-	@Column(name="PRODUCT_CONTENT", columnDefinition="TEXT")
-	@Description(logicalName = "제품내용")
-	private String productContent;
+	@Column(name="PRODUCT_MANAGER_SALE")
+	@Description(logicalName="제품할인율")
+	private int productManagerSale;
 	
-	@Column(name="DISPLAY_YN")
-	@Description(logicalName = "표시여부")
-	private String displayYn;
+	@Column
+	@Description(logicalName = "사용여부")
+	private String useYn;
 	
 	@Column(name="REGISTER_DATE", updatable=false)
 	@Description(logicalName="등록일")
@@ -57,44 +57,44 @@ public class product {
 	@Description(logicalName="수정자")
 	private String updateId;
 
-	public int getProductSeq() {
-		return productSeq;
+	public int getProductManagerSeq() {
+		return productManagerSeq;
 	}
 
-	public void setProductSeq(int productSeq) {
-		this.productSeq = productSeq;
+	public void setProductManagerSeq(int productManagerSeq) {
+		this.productManagerSeq = productManagerSeq;
 	}
 
-	public String getCategoryCode() {
-		return categoryCode;
+	public int getProductManagerCost() {
+		return productManagerCost;
 	}
 
-	public void setCategoryCode(String categoryCode) {
-		this.categoryCode = categoryCode;
+	public void setProductManagerCost(int productManagerCost) {
+		this.productManagerCost = productManagerCost;
 	}
 
-	public String getProductTitle() {
-		return productTitle;
+	public int getProductManagerStock() {
+		return productManagerStock;
 	}
 
-	public void setProductTitle(String productTitle) {
-		this.productTitle = productTitle;
+	public void setProductManagerStock(int productManagerStock) {
+		this.productManagerStock = productManagerStock;
 	}
 
-	public String getProductContent() {
-		return productContent;
+	public int getProductManagerSale() {
+		return productManagerSale;
 	}
 
-	public void setProductContent(String productContent) {
-		this.productContent = productContent;
+	public void setProductManagerSale(int productManagerSale) {
+		this.productManagerSale = productManagerSale;
 	}
 
-	public String getDisplayYn() {
-		return displayYn;
+	public String getUseYn() {
+		return useYn;
 	}
 
-	public void setDisplayYn(String displayYn) {
-		this.displayYn = displayYn;
+	public void setUseYn(String useYn) {
+		this.useYn = useYn;
 	}
 
 	public Timestamp getRegisterDate() {

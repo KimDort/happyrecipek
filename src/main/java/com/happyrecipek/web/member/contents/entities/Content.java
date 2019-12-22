@@ -39,7 +39,7 @@ public class Content {
 	@Description(logicalName="콘텐츠기타설명")
 	private String contentOther;
 	
-	@Column
+	@Column(name="DISPLAY_YN")
 	@Description(logicalName = "표시여부")
 	private String displayYn;
 	
@@ -60,4 +60,85 @@ public class Content {
 	@Column(name="UPDATE_ID")
 	@Description(logicalName="수정자")
 	private String updateId;
+
+	public int getContentSeq() {
+		return contentSeq;
+	}
+
+	public void setContentSeq(int contentSeq) {
+		this.contentSeq = contentSeq;
+	}
+
+	public String getCategoryCode() {
+		return categoryCode;
+	}
+
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
+	}
+
+	public String getContentTitle() {
+		return contentTitle;
+	}
+
+	public void setContentTitle(String contentTitle) {
+		this.contentTitle = contentTitle;
+	}
+
+	public String getContentYoutube() {
+		return contentYoutube;
+	}
+
+	public void setContentYoutube(String contentYoutube) {
+		this.contentYoutube = contentYoutube;
+	}
+
+	public String getContentOther() {
+		return contentOther;
+	}
+
+	public void setContentOther(String contentOther) {
+		this.contentOther = contentOther;
+	}
+
+	public String getDisplayYn() {
+		return displayYn;
+	}
+
+	public void setDisplayYn(String displayYn) {
+		this.displayYn = displayYn;
+	}
+
+	public Timestamp getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(Timestamp registerDate) {
+		this.registerDate = registerDate;
+	}
+
+	public String getRegisterId() {
+		return registerId;
+	}
+
+	public void setRegisterId(String registerId) {
+		this.registerId = registerId;
+	}
+
+	public Timestamp getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Timestamp updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public String getUpdateId() {
+		return updateId;
+	}
+
+	public void setUpdateId(String updateId) {
+		this.updateId = updateId;
+	}
+	
 }
