@@ -23,9 +23,13 @@ public class Content {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int contentSeq;
 	
-	@Column(name="CONTENT_CATEGORY_CODE")
+	@Column(name="CONTENT_HIGH_CATEGORY_CODE")
 	@Description(logicalName="카테고리코드")
-	private String categoryCode;
+	private String categoryHighCode;
+	
+	@Column(name="CONTENT_LOW_CATEGORY_CODE")
+	@Description(logicalName="카테고리코드")
+	private String categoryLowCode;
 	
 	@Column(name="CONTENT_TITLE")
 	@Description(logicalName = "콘텐츠제목")
@@ -67,14 +71,6 @@ public class Content {
 
 	public void setContentSeq(int contentSeq) {
 		this.contentSeq = contentSeq;
-	}
-
-	public String getCategoryCode() {
-		return categoryCode;
-	}
-
-	public void setCategoryCode(String categoryCode) {
-		this.categoryCode = categoryCode;
 	}
 
 	public String getContentTitle() {
@@ -139,6 +135,30 @@ public class Content {
 
 	public void setUpdateId(String updateId) {
 		this.updateId = updateId;
+	}
+
+	public String getCategoryHighCode() {
+		return categoryHighCode;
+	}
+
+	public void setCategoryHighCode(String categoryHighCode) {
+		this.categoryHighCode = categoryHighCode;
+	}
+
+	public String getCategoryLowCode() {
+		return categoryLowCode;
+	}
+
+	public void setCategoryLowCode(String categoryLowCode) {
+		this.categoryLowCode = categoryLowCode;
+	}
+
+	@Override
+	public String toString() {
+		return "Content [contentSeq=" + contentSeq + ", categoryHighCode=" + categoryHighCode + ", categoryLowCode="
+				+ categoryLowCode + ", contentTitle=" + contentTitle + ", contentYoutube=" + contentYoutube
+				+ ", contentOther=" + contentOther + ", displayYn=" + displayYn + ", registerDate=" + registerDate
+				+ ", registerId=" + registerId + ", updateDate=" + updateDate + ", updateId=" + updateId + "]";
 	}
 	
 }
