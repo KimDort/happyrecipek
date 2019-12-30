@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE"></title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon.png">
+<link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/assets/css/pc/styles.css}" />
+<link rel="stylesheet" th:href="@{'//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css'}">
+<link th:href='@{https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600}' rel='stylesheet' type='text/css'>
+<link th:href="@{http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css}" rel="stylesheet">
+<th:block layout:fragment="custom_css">
+</th:block>
+</head>
+
+<body>
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li id="li_home"><a href="/">HOME</a></li>
+				<li id="li_about"><a href="#">ABOUT</a></li>
+				<li id="li_class"><a href="#">CLASS</a></li>
+				<li id="li_blog"><a href="#">BLOG</a></li>
+				<li id="li_japan"><a href="#">JAPAN</span></a></li>
+			</ul>
+		</div>
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<a href="#" class="btn" id="menu-toggle"><span
+							class="glyphicon glyphicon-align-justify"></span></a>
+					</div>
+				</div>
+				<div layout:fragment="content">
+					<!-- Your Page Content Here -->
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<!-- footer : S -->
+	<footer class="navbar-default navbar-fixed-bottom">
+		<div class="container-fluid">
+			<div class="container text-center">
+				<small>Copyrightⓒ HappyRecipeK All right reserved</small>
+			</div>
+		</div>
+	</footer>
+	<!-- footer : E -->
+	<!-- Login Modal : E -->
+	<script th:src="@{'/assets/js/jquery-2.1.4.min.js'}"></script>
+	<script th:src="@{'/assets/bootstrap/js/bootstrap.min.js'}"></script>
+	<script th:src="@{'/assets/js/gaia.js'}"></script>
+	<script th:src="@{'/assets/js/modernizr.js'}"></script>
+	<script th:src="@{'https://code.jquery.com/ui/1.12.1/jquery-ui.js'}"></script>
+	<script th:src="@{'//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js'}"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+				$("#wrapper").toggleClass("menuDisplayed");
+			});
+		});
+	</script>
+	<th:block layout:fragment="custom_script">
+	</th:block>
+	
+	<!-- Footer : E -->
+</body>
+</html>
