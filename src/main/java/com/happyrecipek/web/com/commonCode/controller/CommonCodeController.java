@@ -1,6 +1,8 @@
 package com.happyrecipek.web.com.commonCode.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,11 +25,28 @@ public class CommonCodeController {
 	private CommonCodeRepository commonCodeRepository;
 	
 	@RequestMapping("/common/code/create")
-	public String codeCreatePage(Device device, Model model) {
+	public String codeCreatePage(Device device, Model model, Locale locale) {
 		String returnPage="";
-		List<CommonHighCode> commonHigh = commonCodeRepository.findAll();
+		String lang = locale.getLanguage().toUpperCase();
+		CommonHighCode languageCode = new CommonHighCode();
+		List<CommonHighCode> highCodes = new ArrayList<>();
 		
-		model.addAttribute("codeList", commonHigh);
+		highCodes = commonCodeRepository.findByCommonHighCodeLocale(lang);
+		
+		if(lang.equals("KO")) {
+			languageCode = commonCodeRepository.findByCommonHighCode("COMMLOC001");
+		}else if(lang.equals("JA")) {
+			languageCode = commonCodeRepository.findByCommonHighCode("COMMLOC002");
+		}else if(lang.equals("EN")) {
+			languageCode = commonCodeRepository.findByCommonHighCode("COMMLOC003");
+		}
+		
+		log.info("[LOGGER] ===== Code Create Page Controlle");
+		log.info("[LOGGER] ===== Locale {}", locale);
+		log.info("[LOGGER] ===== Code List {}", highCodes);
+		
+		model.addAttribute("codeList", highCodes);
+		model.addAttribute("languageCode", languageCode);
 		
 		if (device.isMobile()) {
 			returnPage = "web/pc/common/code/create";

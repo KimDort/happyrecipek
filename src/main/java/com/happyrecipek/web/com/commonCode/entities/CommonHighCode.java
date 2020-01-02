@@ -133,5 +133,12 @@ public class CommonHighCode {
 	public void setCommonLowCodes(List<CommonLowCode> commonLowCodes) {
 		this.commonLowCodes = commonLowCodes;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "CommonHighCode [commonHighCodeSeq=" + commonHighCodeSeq + ", commonHighCode=" + commonHighCode
+				+ ", commonHighCodeLocale=" + commonHighCodeLocale + ", commonHighCodeName=" + commonHighCodeName
+				+ ", registerDate=" + registerDate + ", registerId=" + registerId + ", updateDate=" + updateDate
+				+ ", updateId=" + updateId + ", commonLowCodes=" + commonLowCodes + "]";
+	}
 }

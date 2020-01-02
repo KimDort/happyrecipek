@@ -28,7 +28,7 @@
 								<div class="col-md-6">
 									<select class="form-control">
 										<option>선택</option>
-										<option th:each="code : ${codeList}" th:value="${code.commonHighCode}" th:text="${code.commonHighCodeName}"></option>
+										<option th:each="codeList : ${codeList}" th:value="${codeList.commonHighCode}" th:text="${codeList.commonHighCodeName}"></option>
 									</select>
 								</div>
 								<div class="col-md-6">
@@ -42,7 +42,23 @@
 				</div>
 				<div class="row">
 					<div class="panel panel-primary">
-						<div class="panel-heading">Setting - Common High Code & Name</div>
+						<div class="panel-heading"><h5 th:text="#{setting}+' - '+#{language}"></h5></div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div class="input-group">
+									<span class="input-group-addon" th:text="#{language}"></span>
+									<select class="form-control">
+										<option>선택</option>
+										<option th:each="loc : ${languageCode.commonLowCodes}" th:value="${loc.commonLowCode}" th:text="${loc.commonLowCodeName}"></option>
+									</select>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
+						<div class="panel-heading"><h5 th:text="#{setting}+' - '+#{common}+' '+#{high}+' '+#{code}+' & '+#{name}"></h5></div>
 						<div class="panel-body">
 							<div class="col-md-12">
 								<div class="input-group">
