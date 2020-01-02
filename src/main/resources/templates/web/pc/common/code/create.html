@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.springframework.org/schema/security"
-	layout:decorator="layout/pc/admin/default">
+	layout:decorator="layout/admin/pc/default">
 <head>
 <title>Happy Recipe K - Administrator Class Add Page</title>
 <th:block layout:fragment="custom_css">
@@ -22,12 +22,20 @@
 				</div>
 				<div class="row">
 					<div class="panel panel-primary">
-						<div class="panel-heading">Setting - Common High Code & Name</div>
+						<div class="panel-heading"><h5 th:text="#{common}+' '+#{code}+' '+#{list}"></h5></div>
 						<div class="panel-body">
 							<div class="col-md-12">
-								<ul>
-									<li>test</li>
-								</ul>
+								<div class="col-md-6">
+									<select class="form-control">
+										<option>선택</option>
+										<option th:each="code : ${codeList}" th:value="${code.commonHighCode}" th:text="${code.commonHighCodeName}"></option>
+									</select>
+								</div>
+								<div class="col-md-6">
+									<select class="form-control">
+										<option>선택</option>
+									</select>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -110,7 +118,6 @@
 			*/
 			function createCommonCodeIndex(){
 				var getCodeCount = $("#panelLowCode").children().find("input[id*='inputLowCode']").length;
-				alert(getCodeCount);
 				for(var i=0; i< getCodeCount; i++){
 					/**Date*/
 					$("input[id*=inputLowCode]").eq(i).attr("name", "commonLowCodes["+i+"].commonLowCode");
