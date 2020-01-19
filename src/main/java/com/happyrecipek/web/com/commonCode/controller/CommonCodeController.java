@@ -11,7 +11,9 @@ import org.springframework.mobile.device.Device;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.happyrecipek.web.com.commonCode.entities.CommonHighCode;
 import com.happyrecipek.web.com.commonCode.repositories.CommonCodeRepository;
@@ -64,5 +66,13 @@ public class CommonCodeController {
 		log.debug("common code insert {}", commonCode);
 		
 		return "redirect:/common/code/create";
+	}
+	
+	@RequestMapping("/common/code/getDetailCode")
+	public @ResponseBody CommonHighCode getCodeDetail(@RequestBody CommonHighCode code){
+		CommonHighCode highCode = new CommonHighCode();
+		highCode = commonCodeRepository.findByCommonHighCode(code.getCommonHighCode());
+		
+		return highCode;
 	}
 }
