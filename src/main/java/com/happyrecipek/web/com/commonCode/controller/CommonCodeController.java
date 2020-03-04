@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.happyrecipek.web.com.commonCode.entities.CommonHighCode;
+import com.happyrecipek.web.com.commonCode.entities.CommonLowCode;
 import com.happyrecipek.web.com.commonCode.repositories.CommonCodeRepository;
 
 @Controller
@@ -43,10 +44,6 @@ public class CommonCodeController {
 			languageCode = commonCodeRepository.findByCommonHighCode("COMMLOC003");
 		}
 		
-		log.info("[LOGGER] ===== Code Create Page Controlle");
-		log.info("[LOGGER] ===== Locale {}", locale);
-		log.info("[LOGGER] ===== Code List {}", highCodes);
-		
 		model.addAttribute("codeList", highCodes);
 		model.addAttribute("languageCode", languageCode);
 		
@@ -61,9 +58,10 @@ public class CommonCodeController {
 	}
 	
 	@RequestMapping("/common/code/createProc")
-	public String codeCreatePageProc(@ModelAttribute("commonCode")CommonHighCode commonCode) {
-		commonCodeRepository.save(commonCode);
+	public String codeCreatePageProc(@ModelAttribute("commonCode")CommonHighCode commonCode, Locale locale) {
 		log.debug("common code insert {}", commonCode);
+		
+		commonCodeRepository.save(commonCode);
 		
 		return "redirect:/common/code/create";
 	}

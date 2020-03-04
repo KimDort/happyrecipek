@@ -43,6 +43,10 @@ public class Content {
 	@Description(logicalName="콘텐츠기타설명")
 	private String contentOther;
 	
+	@Column(name="CONTENT_LOCALE")
+	@Description(logicalName="콘텐츠언어")
+	private String contentLocale;
+	
 	@Column(name="DISPLAY_YN")
 	@Description(logicalName = "표시여부")
 	private String displayYn;

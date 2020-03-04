@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div layout:fragment="content" class="content">
-		<form th:action="@{/common/code/createProc}" method="POST" enctype="multipart/form-data" th:object="${commonCode}" role="form">
+		<form th:action="@{/common/code/createProc}" method="POST" enctype="multipart/form-data" th:object="${commonCode}" role="form" id="codeForm">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -20,20 +20,19 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="panel panel-primary">
 						<div class="panel-heading"><h5 th:text="#{common}+' '+#{code}+' '+#{list}"></h5></div>
 						<div class="panel-body">
 							<div class="col-md-12">
 								<div class="col-md-6">
-									<select class="form-control">
-										<option>선택</option>
+									<select multiple class="form-control" >
 										<option th:each="codeList : ${codeList}" th:value="${codeList.commonHighCode}" th:text="${codeList.commonHighCodeName}"></option>
 									</select>
 								</div>
 								<div class="col-md-6">
-									<select class="form-control">
-										<option>선택</option>
+									<select multiple class="form-control">
 									</select>
 								</div>
 							</div>
@@ -47,9 +46,9 @@
 							<div class="col-md-12">
 								<div class="input-group">
 									<span class="input-group-addon" th:text="#{language}"></span>
-									<select class="form-control">
+									<select class="form-control" name="commonHighCodeLocale" id="hightCodeLoc">
 										<option>선택</option>
-										<option th:each="loc : ${languageCode.commonLowCodes}" th:value="${loc.commonLowCode}" th:text="${loc.commonLowCodeName}"></option>
+										<option th:each="loc : ${languageCode.commonLowCodes}" th:value="${loc.commonLowCodeLocale}" th:text="${loc.commonLowCodeName}"></option>
 									</select>
 								</div>
 							</div>	
@@ -81,6 +80,7 @@
 								<div class="input-group" id="commonLowCode">
 									<span class="input-group-addon">Common Low Code</span>
 									<input type="text" class="form-control" id="inputLowCode">
+									<input type="hidden" id="lowCodeLoc">
 								</div>
 							</div>
 							<div class="col-md-12">
@@ -109,6 +109,7 @@
 			$(document).ready(function(){
 				$("#codeSubmit").on("click",function(){
 					createCommonCodeIndex();
+					$("#codeForm")[0].submit();
 				});
 			});
 			/* 
@@ -134,10 +135,14 @@
 			*/
 			function createCommonCodeIndex(){
 				var getCodeCount = $("#panelLowCode").children().find("input[id*='inputLowCode']").length;
+				var getLoc = $("#hightCodeLoc").val();
+				
 				for(var i=0; i< getCodeCount; i++){
 					/**Date*/
 					$("input[id*=inputLowCode]").eq(i).attr("name", "commonLowCodes["+i+"].commonLowCode");
 					$("input[id*=inputLowName]").eq(i).attr("name", "commonLowCodes["+i+"].commonLowCodeName");
+					$("input[id*=lowCodeLoc]").eq(i).attr("name", "commonLowCodes["+i+"].commonLowCodeLocale");
+					$("input[id*=lowCodeLoc]").eq(i).attr("value", getLoc);
 				}
 			}
 			/* 

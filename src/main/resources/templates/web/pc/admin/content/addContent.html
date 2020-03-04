@@ -22,6 +22,22 @@
 				</div>
 				<div class="row">
 					<div class="panel panel-primary">
+						<div class="panel-heading"><h5 th:text="#{setting}+' - '+#{language}"></h5></div>
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div class="input-group">
+									<span class="input-group-addon" th:text="#{language}"></span>
+									<select class="form-control" name="commonHighCodeLocale" id="contentLocale">
+										<option>선택</option>
+										<option th:each="loc : ${languageCode.commonLowCodes}" th:value="${loc.commonLowCodeLocale}" th:text="${loc.commonLowCodeName}"></option>
+									</select>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="panel panel-primary">
 						<div class="panel-heading"><h5 th:text="#{content_category_bar}"></h5></div>
 						<div class="panel-body">
 							<div class="col-md-12">
