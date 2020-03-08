@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	layout:decorator="layout/pc/default">
+<head>
+<title>Happy Recipe K</title>
+<th:block layout:fragment="custom_css">
+
+</th:block>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row">
+			<div class="col-md-12">
+				About - Happy Recipe K
+			</div>
+			<div class="col-md-12" th:each="content : ${contensts}">
+				<div class="col-md-2" th:each="list : ${content}">
+					<div style="height: 300px">
+						<img th:src="${list.fileInfo.commonFileThumbWebUrl}+${list.fileInfo.commonFileCopyName}" style="width: 100%;height: 100%;"/>
+					</div>
+					<div><h5 th:text="${#strings.abbreviate(list.contentTitle, 20)}"></h5></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<th:block layout:fragment="custom_script">
+	</th:block>
+	<!-- Custom Script  : E -->
+</body>
+</html>

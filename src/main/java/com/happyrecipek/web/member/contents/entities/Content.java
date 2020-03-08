@@ -7,12 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.happyrecipek.web.com.system.annotations.Description;
+import com.happyrecipek.web.com.system.files.ckeditor.entities.CommonFileInfo;
 
 @Entity
 @Table(name="content")
@@ -69,6 +73,12 @@ public class Content {
 	@Description(logicalName="수정자")
 	private String updateId;
 
+	@OneToOne
+	@JoinColumns({
+		@JoinColumn(name="commonFileSeq")
+	})
+	private CommonFileInfo fileInfo;
+	
 	public int getContentSeq() {
 		return contentSeq;
 	}
@@ -129,6 +139,14 @@ public class Content {
 		return updateDate;
 	}
 
+	public String getContentLocale() {
+		return contentLocale;
+	}
+
+	public void setContentLocale(String contentLocale) {
+		this.contentLocale = contentLocale;
+	}
+
 	public void setUpdateDate(Timestamp updateDate) {
 		this.updateDate = updateDate;
 	}
@@ -155,6 +173,14 @@ public class Content {
 
 	public void setCategoryLowCode(String categoryLowCode) {
 		this.categoryLowCode = categoryLowCode;
+	}
+	
+	public CommonFileInfo getFileInfo() {
+		return fileInfo;
+	}
+
+	public void setFileInfo(CommonFileInfo fileInfo) {
+		this.fileInfo = fileInfo;
 	}
 
 	@Override

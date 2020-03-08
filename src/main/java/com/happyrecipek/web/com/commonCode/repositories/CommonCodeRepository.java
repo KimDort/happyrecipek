@@ -10,5 +10,6 @@ import com.happyrecipek.web.com.commonCode.entities.CommonHighCode;
 @Repository
 public interface CommonCodeRepository extends JpaRepository<CommonHighCode, Integer>{
 	CommonHighCode findByCommonHighCode(String code);
+	CommonHighCode findByCommonHighCodeAndCommonHighCodeLocale(String code, String locale);
 	List<CommonHighCode> findByCommonHighCodeLocale(String local);
 }

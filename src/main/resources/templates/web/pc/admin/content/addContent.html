@@ -27,7 +27,7 @@
 							<div class="col-md-12">
 								<div class="input-group">
 									<span class="input-group-addon" th:text="#{language}"></span>
-									<select class="form-control" name="commonHighCodeLocale" id="contentLocale">
+									<select class="form-control" name="contentLocale">
 										<option>선택</option>
 										<option th:each="loc : ${languageCode.commonLowCodes}" th:value="${loc.commonLowCodeLocale}" th:text="${loc.commonLowCodeName}"></option>
 									</select>
@@ -41,21 +41,12 @@
 						<div class="panel-heading"><h5 th:text="#{content_category_bar}"></h5></div>
 						<div class="panel-body">
 							<div class="col-md-12">
-								<div class="col-md-6">
-									<div class="input-group">
-										<span class="input-group-addon" th:text="#{content_select_parent}"></span>
-										<select class="form-control">
-											<option>선택</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="input-group">
-										<span class="input-group-addon" th:text="#{content_select_child}"></span>
-										<select class="form-control">
-											<option>선택</option>
-										</select>
-									</div>
+								<div class="input-group">
+									<span class="input-group-addon" th:text="#{content_select_parent}"></span>
+									<select class="form-control" name="categoryLowCode">
+										<option>선택</option>
+										<option th:each="category : ${categoriesCode.commonLowCodes}" th:value="${category.commonLowCode}" th:text="${category.commonLowCodeName}"></option>
+									</select>
 								</div>
 							</div>	
 						</div>

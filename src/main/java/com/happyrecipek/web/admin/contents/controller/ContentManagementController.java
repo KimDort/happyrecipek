@@ -20,6 +20,7 @@ import com.happyrecipek.web.com.system.files.ckeditor.entities.CommonFileInfo;
 import com.happyrecipek.web.com.system.files.ckeditor.repositories.CommonFileRepository;
 import com.happyrecipek.web.com.system.utils.FileUtil;
 import com.happyrecipek.web.member.contents.entities.Content;
+import com.happyrecipek.web.member.contents.repositories.ContentRepository;
 
 @Controller
 public class ContentManagementController {
@@ -31,21 +32,21 @@ public class ContentManagementController {
 	@Autowired
 	private CommonCodeRepository commonCodeRepository;
 	
+	@Autowired
+	private ContentRepository contentRepository;
+	
 	@RequestMapping("/admin/content/addContentPage")
 	public String addContentPage(Device device, Locale locale, Model model) {
 		String returnPage="";
 		String lang = locale.getLanguage().toUpperCase();
 		CommonHighCode languageCode = new CommonHighCode();
+		CommonHighCode categoriesCode = new CommonHighCode();
 		
-		if(lang.equals("KO")) {
-			languageCode = commonCodeRepository.findByCommonHighCode("COMMLOC001");
-		}else if(lang.equals("JA")) {
-			languageCode = commonCodeRepository.findByCommonHighCode("COMMLOC002");
-		}else if(lang.equals("EN")) {
-			languageCode = commonCodeRepository.findByCommonHighCode("COMMLOC003");
-		}
+		languageCode = commonCodeRepository.findByCommonHighCodeAndCommonHighCodeLocale("COMMLOC", lang);
+		categoriesCode = commonCodeRepository.findByCommonHighCodeAndCommonHighCodeLocale("CATEGORY", lang);
 		
 		model.addAttribute("languageCode", languageCode);
+		model.addAttribute("categoriesCode", categoriesCode);
 		
 		if (device.isMobile()) {
 			returnPage = "web/pc/admin/content/addContent";
@@ -81,15 +82,20 @@ public class ContentManagementController {
 		/**
 		 * Step 2 : Insert File Info
 		 **/
-
 		CommonFileInfo getSavedFileInfo = null;
 		if (fileInfos != null && !fileInfos.isEmpty()) {
 			for (CommonFileInfo fileInfo : fileInfos) {
 				getSavedFileInfo = new CommonFileInfo();
-				fileInfo.setCommonFileLocation("CONTENT_");
+				fileInfo.setCommonFileLocation("CONTENT_"+content.getCategoryLowCode());
 				getSavedFileInfo = commonFileRepository.save(fileInfo);
+				content.setFileInfo(fileInfo);
 			}
 		}
+		
+		/**
+		 * Step 3 : Insert Content Info
+		 **/
+		contentRepository.save(content);
 		return returnPage;
 	}
 }
