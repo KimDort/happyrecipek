@@ -9,8 +9,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.happyrecipek.web.member.contents.entities.Content;
 
 public interface ContentRepository extends JpaRepository<Content, Integer>{
-	List<Content> findByCategoryLowCodeAndContentLocale(String lowCode, String locale);
+	List<Content> findByCategoryLowCodeAndContentLocaleOrderByRegisterDateDesc(String lowCode, String locale);
 	Page<Content> findByCategoryLowCodeAndContentLocale(String lowCode, String locale, Pageable page);
 	Content findByCategoryLowCodeAndContentLocaleAndContentSeq(String lowCode, String locale, int seq);
+	List<Content> findByCategoryLowCodeAndContentLocaleAndContentSeqNotInOrderByRegisterDateDesc(String lowCode, String locale, int seq);
 	long countByCategoryLowCodeAndContentLocale(String lowCode, String locale);
 }

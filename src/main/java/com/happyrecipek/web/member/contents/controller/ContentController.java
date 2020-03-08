@@ -42,7 +42,7 @@ public class ContentController {
 		
 		for(int i = 0; i < rows; i++) {
 			Pageable pageable = PageRequest.of(i+1, 6, new Sort(Direction.DESC, "register_date"));
-			contensRow = contentRepository.findByCategoryLowCodeAndContentLocale(category, lang);
+			contensRow = contentRepository.findByCategoryLowCodeAndContentLocaleOrderByRegisterDateDesc(category, lang);
 			contensts.add(contensRow);
 		}
 		
@@ -57,9 +57,9 @@ public class ContentController {
 		String returnPage = "web/pc/contents/content";
 		String lang = locale.getLanguage().toUpperCase();
 		Content content = contentRepository.findByCategoryLowCodeAndContentLocaleAndContentSeq(category, lang, contentId);
-		
+		List<Content> contents = contentRepository.findByCategoryLowCodeAndContentLocaleAndContentSeqNotInOrderByRegisterDateDesc(category, lang, contentId);
 		model.addAttribute("content", content);
-		
+		model.addAttribute("contents", contents);
 		return returnPage;
 	}
 	

@@ -14,7 +14,7 @@
 	<div layout:fragment="content">
 		<div class="row">
 			<div class="col-md-12">
-				About - Happy Recipe K
+				<h1 th:text="'Happy Recipe K - '+${category.commonLowCodeName}"></h1>
 			</div>
 			<div class="col-md-12" th:each="content : ${contensts}">
 				<div class="col-md-2" th:each="list : ${content}">

@@ -17,7 +17,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="page-header">
-					<h1 id="">About Happy Recipe K</h1>
+					<h1 id="" th:text="'Happy Recipe K -' + ${content.contentTitle}"></h1>
 				</div>
 				<div class="col-md-8">
 					<div class="row" style="height: 100%;">
@@ -31,72 +31,16 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					<div class="col-md-4">
-						<div class="col-md-12" style="border:1px solid;">
-							<div style="height: 200px">
-								product 1
-							</div>
-							<div>
-								product 1 title
-							</div>
-						</div>
-						<div class="col-md-12" style="border:1px solid;">
-							<div style="height: 200px">
-								product 2
-							</div>
-							<div>
-								product 2 title
-							</div>
-						</div>
-						<div class="col-md-12" style="border:1px solid;">
-							<div style="height: 200px">
-								product 3
-							</div>
-							<div>
-								product 3 title
-							</div>
-						</div>
-						<div class="col-md-12" style="border:1px solid;">
-							<div style="height: 200px">
-								product 4
-							</div>
-							<div>
-								product 4 title
-							</div>
-						</div>
-					</div>
 					<div class="col-md-8">
-						<div class="col-md-12" style="border:1px solid;">
-							<div style="height: 200px">
-								side bar 1
+						<div class="col-md-12" th:each="list : ${contents}">
+							<div  class="col-md-4" style="margin-top: 5px;border: 3px solid;height: 100px; padding: 0;" id="otherContents">
+								<a th:href="@{/content/}+${list.categoryLowCode}+'/'+${list.contentSeq}">
+									<img th:src="${list.fileInfo.commonFileThumbWebUrl}+${list.fileInfo.commonFileCopyName}" 
+									style="width: 100%;height: 100%;"/>
+								</a>
 							</div>
-							<div>
-								side bar 1 title
-							</div>
-						</div>
-						<div class="col-md-12" style="border:1px solid;">
-							<div style="height: 200px">
-								side bar 1
-							</div>
-							<div>
-								side bar 1 title
-							</div>
-						</div>
-						<div class="col-md-12" style="border:1px solid;">
-							<div style="height: 200px">
-								side bar 1
-							</div>
-							<div>
-								side bar 1 title
-							</div>
-						</div>
-						<div class="col-md-12" style="border:1px solid;">
-							<div style="height: 200px">
-								side bar 1
-							</div>
-							<div>
-								side bar 1 title
-							</div>
+							<div th:text="${#strings.abbreviate(list.contentTitle, 40)}" 
+							class="col-md-8"></div>
 						</div>
 					</div>
 				</div>
@@ -105,6 +49,14 @@
 	</div>
 	<th:block layout:fragment="custom_script">
 		<script>
+			$(document).ready(function(){
+				var count = $("div[id*=otherContents]").length;
+				
+				for(var i = 0; i < count; i++){
+					var colorCode = "#"+Math.round(Math.random() * 0xffffff).toString(16);
+					$("div[id*=otherContents]").eq(i).css("border-color", colorCode);
+				}
+			});
 		</script>
 	</th:block>
 </body>
