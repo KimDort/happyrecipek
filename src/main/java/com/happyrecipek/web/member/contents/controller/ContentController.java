@@ -39,10 +39,9 @@ public class ContentController {
 		long totalCount = contentRepository.countByCategoryLowCodeAndContentLocale(category, lang);
 		
 		int rows = (int) (totalCount / 6)==0?1:(int) (totalCount / 6);
-		
-		for(int i = 0; i < rows; i++) {
-			Pageable pageable = PageRequest.of(i+1, 6, new Sort(Direction.DESC, "register_date"));
-			contensRow = contentRepository.findByCategoryLowCodeAndContentLocaleOrderByRegisterDateDesc(category, lang);
+		for(int i = 0; i <= rows; i++) {
+			Pageable pageable = PageRequest.of(i, 6, new Sort(Direction.DESC, "registerDate"));
+			contensRow = contentRepository.findByCategoryLowCodeAndContentLocale(category, lang, pageable);
 			contensts.add(contensRow);
 		}
 		
