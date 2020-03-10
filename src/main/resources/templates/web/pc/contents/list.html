@@ -14,14 +14,16 @@
 	<div layout:fragment="content">
 		<div class="row">
 			<div class="col-md-12">
-				<h1 th:text="'Happy Recipe K - '+${category.commonLowCodeName}"></h1>
+				<h4 th:text="'Happy Recipe K - '+${category.commonLowCodeName}"></h4>
 			</div>
 			<div class="col-md-12" th:each="content : ${contensts}">
 				<div class="col-md-2" th:each="list : ${content}">
 					<div style="height: 300px">
-						<img th:src="${list.fileInfo.commonFileThumbWebUrl}+${list.fileInfo.commonFileCopyName}" style="width: 100%;height: 100%;"/>
+						<a th:href="@{/content/}+${list.categoryLowCode}+'/'+${list.contentSeq}">
+							<img th:src="${list.fileInfo.commonFileThumbWebUrl}+${list.fileInfo.commonFileCopyName}" style="width: 100%;height: 100%;"/>
+						</a>
 					</div>
-					<div><h5 th:text="${#strings.abbreviate(list.contentTitle, 20)}"></h5></div>
+					<h5><a th:href="@{/content/}+${list.categoryLowCode}+'/'+${list.contentSeq}" th:text="${#strings.abbreviate(list.contentTitle, 20)}"></a></h5>
 				</div>
 			</div>
 		</div>

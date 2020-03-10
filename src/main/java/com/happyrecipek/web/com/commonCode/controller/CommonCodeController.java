@@ -36,13 +36,7 @@ public class CommonCodeController {
 		
 		highCodes = commonCodeRepository.findByCommonHighCodeLocale(lang);
 		
-		if(lang.equals("KO")) {
-			languageCode = commonCodeRepository.findByCommonHighCode("COMMLOC001");
-		}else if(lang.equals("JA")) {
-			languageCode = commonCodeRepository.findByCommonHighCode("COMMLOC002");
-		}else if(lang.equals("EN")) {
-			languageCode = commonCodeRepository.findByCommonHighCode("COMMLOC003");
-		}
+		languageCode = commonCodeRepository.findByCommonHighCodeAndCommonHighCodeLocale("COMMLOC", lang);
 		
 		model.addAttribute("codeList", highCodes);
 		model.addAttribute("languageCode", languageCode);

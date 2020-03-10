@@ -1,46 +1,67 @@
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @font-face{
+	font-family: NanumBarunGothic;
+	src:url("/assets/fonts/Noto_Sans/NotoSansKR-Regular.otf");
+}
+/* @font-face{
 	font-family:bebas nenu;
-	src:url("/assets/fonts/woff-cffbased/BebasNeue-Regular.woff")
-}
-body {
-	font-family: "bebas nenu";
-}
+	src:url("/assets/fonts/woff-cffbased/BebasNeue-Regular.woff");
+} */
 
-@media all and(min-device-width: 320px) and (max-device-width: 1024px){
-	#sidebar-wrapper {
-		z-index: 1;
-		position: absolute;
+@media screen and (max-width: 768px) {
+    #sidebar-wrapper {
+		/* z-index: 1; */
+		position: fixed;
 		width: 0px;
 		height: 100%;
 		overflow-y: hidden;
-		background: #262626;
+		/* background: #262626; */
 		opacity: 0.9;
 		transition: all .5s;
-		display: flex;
+		/* display: flex; */
+		/* align-items:center; */
+	}
+	/* Main Content */
+	#page-content-wrapper {
+		width: 100%;
+		position: absolute;
+		padding-left: 0px;
+		transition: all .5s;
 	}
 }
 
-/* Sidebar */
-#sidebar-wrapper {
-	z-index: 1;
-	position: absolute;
-	width: 50px;
-	height: 100%;
-	overflow-y: hidden;
-	background: #262626;
-	opacity: 0.9;
-	transition: all .5s;
-	display: flex;
-	/* align-items:center; */
+@media screen and (min-width: 1024px){
+	/* Sidebar */
+	#sidebar-wrapper {
+		/* z-index: 1; */
+		position: fixed;
+		width: 0px;
+		height: 100%;
+		overflow-y: hidden;
+		/* background: #262626; */
+		opacity: 0.9;
+		transition: all .5s;
+		/* display: flex; */
+		/* align-items:center; */
+	}
+	
+	/* Main Content */
+	#page-content-wrapper {
+		width: 100%;
+		position: absolute;
+		padding-left: 0px;
+		transition: all .5s;
+	}
 }
 
-/* Main Content */
-#page-content-wrapper {
-	width: 100%;
-	position: absolute;
-	padding-left: 50px;
-	transition: all .5s;
+a {
+	text-decoration: none;
+	color: #7a7a7a;
+}
+a:hover{
+	text-decoration: none;
+	color: #2e2e2e;
+	font-weight: bold;
 }
 
 #menu-toggle {
@@ -50,10 +71,12 @@ body {
 /* Change the width of the sidebar to display it*/
 #wrapper.menuDisplayed #sidebar-wrapper {
 	width: 150px;
+	height: 100%;
 }
 
 #wrapper.menuDisplayed #page-content-wrapper {
 	padding-left: 150px;
+	height: 100%;
 }
 
 /* Sidebar styling */
@@ -62,6 +85,7 @@ body {
 	list-style: none;
 	transition: all .5s;
 	width: 100%;
+	height: 100%;
 	text-align: center;
 }
 
@@ -75,13 +99,9 @@ body {
 .sidebar-nav li a {
 	display: block;
 	text-decoration: none;
-	color: #ddd;
+	color: #2e2e2e;
 }
 
 .sidebar-nav li:hover {
 	background: #7b98c4;
-}
-
-#sticky-footer {
-	flex-shrink: none;
 }
